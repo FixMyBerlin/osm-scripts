@@ -60,10 +60,10 @@ const addSmoothnessConfidenceCategory = (
   categoryString,
   sourceString
 ) => {
-  feature.properties[`FMC:SmoothnessConfidence:ForScope${scope}`] = "yes"
-  feature.properties[`FMC:SmoothnessConfidence:ForScope${scope}:Category`] =
+  feature.properties[`FMC:smoothnessConfidence:ForScope${scope}`] = "yes"
+  feature.properties[`FMC:smoothnessConfidence:ForScope${scope}:Confidence`] =
     categoryString
-  feature.properties[`FMC:SmoothnessConfidence:ForScope${scope}:Source`] =
+  feature.properties[`FMC:smoothnessConfidence:ForScope${scope}:Source`] =
     sourceString
 }
 
@@ -77,9 +77,9 @@ const addSmoothnessConfidenceCategorySmoothnessValue = (
     "High",
     `Based on 'smoothness=${
       feature.properties.smoothness
-    }', which we normalize to '${
-      normalizedSmoothness[feature.properties.smoothness]
-    }'`
+    }', which we normalize to '${normalizedSmoothness(
+      feature.properties.smoothness
+    )}'`
   )
 }
 
