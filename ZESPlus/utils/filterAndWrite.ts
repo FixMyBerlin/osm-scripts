@@ -6,7 +6,7 @@ export const filterAndWrite = (filterMethod, allHighways, outputFolder) => {
   // Filter Data
   const filteredData = allHighways.features.filter(filterMethod)
 
-  addCustomProperties(filteredData)
+  addCustomProperties(filteredData, filterMethod.name)
 
   collectLeftOverHighways(filteredData, filterMethod.name)
 
