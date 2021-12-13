@@ -29,12 +29,36 @@ export const filterGenerallyIrrelevantWays = (feature) => {
   // Haltestellen ingorieren wir
   const haltestellen = feature.properties.highway === "platform"
 
+  // A general list of the top40 highway values for BerlinBrandenburg that we do not want to work with.
+  // How to get this list:
+  // 1. Choose a taginfo instance for your region (Bundesland, Stadt) at https://osm.rlin.eu/geofabrik/
+  // 2. Return all values for Key `highway`. The URL filters on 'ways', but the list below does not to cover more edge cases.
+  //   https://taginfo.geofabrik.de/europe/germany/brandenburg/keys/highway?filter=ways#values
+  //   As JSON: https://taginfo.geofabrik.de/europe/germany/brandenburg/api/4/key/values?key=highway&filter=ways&lang=de&sortname=count&sortorder=desc&page=1&rp=40&qtype=value&format=json_pretty
+  const top40FilterList = [
+    "street_lamp",
+    "bus_stop",
+    "traffic_signals",
+    "give_way",
+    "passing_place",
+    "stop",
+    "elevator",
+    "emergency_access_point",
+    "turning_loop",
+    "raceway",
+    "milestone",
+    "speed_camera",
+    "corridor",
+    "mini_roundabout",
+  ].includes(feature.properties.highway)
+
   return (
     kurzeGrundstuecksZufahrtenZugaenge ||
     privateWays ||
     zufahrten ||
     baustellen ||
     treppen ||
-    haltestellen
+    haltestellen ||
+    top40FilterList
   )
 }
