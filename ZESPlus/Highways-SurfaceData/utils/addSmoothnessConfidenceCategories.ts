@@ -10,11 +10,9 @@ const addSmoothnessConfidenceCategory = (
   categoryString: string,
   sourceString: string
 ) => {
-  feature.properties[`FMC:smoothnessConfidence:ForScope${scope}`] = "yes"
-  feature.properties[`FMC:smoothnessConfidence:ForScope${scope}:Confidence`] =
-    categoryString
-  feature.properties[`FMC:smoothnessConfidence:ForScope${scope}:Source`] =
-    sourceString
+  feature.properties[`FMC:Smoothness:Scope${scope}`] = "yes"
+  feature.properties[`FMC:Smoothness:Scope${scope}:Confidence`] = categoryString
+  feature.properties[`FMC:Smoothness:Scope${scope}:Source`] = sourceString
   // TODO We can make this nicer.
   // The goal is to have a list of scopes so that we can use this in
   // checkIfHighwayIsInMultipleCategories() to exclude those with multiple scopes from the list.
