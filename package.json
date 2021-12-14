@@ -1,4 +1,10 @@
 {
+  "scripts": {
+    "lint": "eslint --fix --ext .ts .",
+    "prettier": "prettier --write .",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch"
+  },
   "devDependencies": {
     "@types/node": "^16.11.7",
     "eslint": "^8.2.0",
