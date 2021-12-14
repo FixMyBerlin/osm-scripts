@@ -54,6 +54,10 @@ fs.readFile(
       },
     ]
 
-    checkIfHighwayIsInMultipleCategories(outputFolder, manualCheckList)
+    checkIfHighwayIsInMultipleCategories(
+      allHighways,
+      outputFolder,
+      manualCheckList
+    )
   }
 )

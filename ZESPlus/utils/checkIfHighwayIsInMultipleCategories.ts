@@ -11,8 +11,24 @@ type FeaturesToCheckProps = {
   [key: string]: FeaturesToCheckEntryProps
 }
 
+// const extractSafeList = (allHighways: FeatureCollection) => {
+//   const saveList = allHighways.features
+//     .filter((feature) => {
+//       const rawScopes = (feature.properties["FMC:appliedScopes"] ||
+//         []) as string[]
+//       const scopes = rawScopes.filter(
+//         (item, pos, self) => self.indexOf(item) == pos
+//       )
+//       return scopes.length > 1
+//     })
+//     .map((feature) => feature.id)
+//
+//   return saveList
+// }
+
 // Dopplungen prüfen
 export const checkIfHighwayIsInMultipleCategories = (
+  allHighways: FeatureCollection,
   outputFolder: string,
   manualCheckList?: object[]
 ) => {
@@ -33,12 +49,24 @@ export const checkIfHighwayIsInMultipleCategories = (
     featureIdToCategory
   ).filter((featureIds) => featureIdToCategory[featureIds].length > 1)
 
+  // Filter: Include only features that are not on our savelist
+  // TODO: This is not working, yet
+  const featureIdsWithMultipleCategoriesWithoutSaveList =
+    featureIdsWithMultipleCategories
+  // const saveList = extractSafeList(allHighways)
+  // const featureIdsWithMultipleCategoriesWithoutSaveList = Object.keys(
+  //   featureIdToCategory
+  // ).filter(
+  //   (featureId) =>
+  //     !saveList.includes(featureIdToCategory[featureId])
+  // )
+
   // TODO fix TS with something FeaturesToCheckEntryProps
   const featuresToCheck: any = Object.fromEntries(
-    featureIdsWithMultipleCategories.map((featureId) => [
+    featureIdsWithMultipleCategoriesWithoutSaveList.map((featureId) => [
       featureId,
       {
-        categories: featureIdToCategory[featureId],
+        categories: filteredHighwayFeatureIdsWithCategories[featureId],
         url: `https://www.openstreetmap.org/${featureId}`,
       },
     ])

@@ -15,6 +15,15 @@ const addSmoothnessConfidenceCategory = (
     categoryString
   feature.properties[`FMC:smoothnessConfidence:ForScope${scope}:Source`] =
     sourceString
+  // TODO We can make this nicer.
+  // The goal is to have a list of scopes so that we can use this in
+  // checkIfHighwayIsInMultipleCategories() to exclude those with multiple scopes from the list.
+  // Issue 1: We have to manually overwrite the types here (for now)
+  // Issue 2: The array holds duplicate values for some reason, which are filterin later but should not have to.
+  feature.properties["FMC:appliedScopes"] = [
+    ...((feature.properties["FMC:appliedScopes"] || []) as any),
+    scope,
+  ] as any
 }
 
 export const addSmoothnessConfidenceCategorySmoothnessValue = (
