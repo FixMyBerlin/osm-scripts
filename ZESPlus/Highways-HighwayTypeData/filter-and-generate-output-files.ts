@@ -47,6 +47,13 @@ fs.readFile(
       outputFolder
     )
 
-    checkIfHighwayIsInMultipleCategories(outputFolder)
+    // We can use this list to add notes to the list output/TODO_featuresWithMultipleCategories.json
+    const manualCheckList = [
+      {
+        "way/123": "Test eines veralteten Eintrags",
+      },
+    ]
+
+    checkIfHighwayIsInMultipleCategories(outputFolder, manualCheckList)
   }
 )
