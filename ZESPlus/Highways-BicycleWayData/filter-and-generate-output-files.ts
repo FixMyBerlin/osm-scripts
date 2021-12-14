@@ -1,7 +1,7 @@
 import fs from "fs"
 import { checkIfHighwayIsInMultipleCategories } from "../utils/checkIfHighwayIsInMultipleCategories"
 import { filterAndWrite } from "../utils/filterAndWrite"
-import { fahrradstraße } from "./filter/fahrradstraße"
+import { fahrradstrasse } from "./filter/fahrradstr"
 import { fussgaengerzonenWegFahrradFrei } from "./filter/fussgaengerzonenWegFahrradFrei"
 import { gehUndRadwegGemeinsam } from "./filter/gehUndRadwegGemeinsam"
 import { gehUndRadwegGetrennt } from "./filter/gehUndRadwegGetrennt"
@@ -45,7 +45,7 @@ fs.readFile(
     filterAndWrite(gehUndRadwegGemeinsam, allHighways, outputFolder)
     filterAndWrite(gehUndRadwegGetrennt, allHighways, outputFolder)
     filterAndWrite(TODO_RadwegUnspezifisch, allHighways, outputFolder)
-    filterAndWrite(fahrradstraße, allHighways, outputFolder)
+    filterAndWrite(fahrradstrasse, allHighways, outputFolder)
     filterAndWrite(radwegBaulichAbgesetzt, allHighways, outputFolder)
     filterAndWrite(radfahrstreifen, allHighways, outputFolder)
 

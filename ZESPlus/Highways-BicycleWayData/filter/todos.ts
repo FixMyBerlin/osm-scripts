@@ -1,4 +1,4 @@
-import { fahrradstraße } from "./fahrradstraße"
+import { fahrradstrasse } from "./fahrradstr"
 import { fussgaengerzonenWegFahrradFrei } from "./fussgaengerzonenWegFahrradFrei"
 import { gehUndRadwegGemeinsam } from "./gehUndRadwegGemeinsam"
 import { radfahrstreifen } from "./radfahrstreifen"
@@ -33,7 +33,7 @@ export const TODO_FahrradFrei_CheckTagging = (feature) => {
 export const TODO_RadwegUnspezifisch = (feature) => {
   return (
     feature.properties.highway === "cycleway" &&
-    !fahrradstraße(feature) &&
+    !fahrradstrasse(feature) &&
     !radwegBaulichAbgesetzt(feature) &&
     !radfahrstreifen(feature)
   )
