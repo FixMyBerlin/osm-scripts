@@ -70,45 +70,43 @@ const addSmoothnessConfidenceCategory = (
 }
 
 const addSmoothnessConfidenceCategorySmoothnessValue = (
-  feature,
+  featureToAddHelperProps,
+  checkSmoothness,
   scope: ScopeValues
 ) => {
   addSmoothnessConfidenceCategory(
-    feature,
+    featureToAddHelperProps,
     scope,
     "High",
-    `Based on 'smoothness=${
-      feature.properties.smoothness
-    }', which we normalize to '${normalizedSmoothness(
-      feature.properties.smoothness
+    `Based on 'smoothness=${checkSmoothness}', which we normalize to '${normalizedSmoothness(
+      checkSmoothness
     )}'`
   )
 }
 
 const addSmoothnessConfidenceCategorySurfaceValue = (
-  feature,
+  featureToAddHelperProps,
+  checkSurface,
   scope: ScopeValues
 ) => {
   addSmoothnessConfidenceCategory(
-    feature,
+    featureToAddHelperProps,
     scope,
     "Medium",
-    `Based on 'surface=${feature.properties.surface}', which we translate to '${
-      surfaceToSmoothness[feature.properties.surface]
-    }'`
+    `Based on 'surface=${checkSurface}', which we translate to '${surfaceToSmoothness[checkSurface]}'`
   )
 }
 
 const addSmoothnessConfidenceCategoryHighwayType = (
-  feature,
-  scope: ScopeValues,
-  highwayType
+  featureToAddHelperProps,
+  checkHighwayType,
+  scope: ScopeValues
 ) => {
   addSmoothnessConfidenceCategory(
-    feature,
+    featureToAddHelperProps,
     scope,
     "Low",
-    `Based on 'highway=${highwayType}', which we translate to '${highwayToAssumedSurface[highwayType]}'`
+    `Based on 'highway=${checkHighwayType}', which we translate to '${highwayToAssumedSurface[checkHighwayType]}'`
   )
 }
 
@@ -126,14 +124,15 @@ const smoothnessNormalization = {
 }
 
 const normalizedSmoothness = (smoothnessValue) => {
-  const assumedSmoothness = smoothnessNormalization[smoothnessValue]
-  if (!assumedSmoothness) {
-    return console.error(
-      `Error: Cannot find assumed surface for smoothness=${smoothnessValue}`
+  const normalizedSmoothness = smoothnessNormalization[smoothnessValue]
+  if (!normalizedSmoothness) {
+    console.error(
+      `Error: Cannot find normalized smoothness for smoothness=${smoothnessValue}`
     )
+    console.log("normalizedSmoothness", smoothnessValue, normalizedSmoothness)
   }
 
-  return assumedSmoothness
+  return normalizedSmoothness
 }
 
 const TODO_fixSmoothnessValues = (feature) => {
@@ -167,10 +166,11 @@ const surfaceToSmoothness = {
 
 const assumedSmoothnessBasedOnSurface = (surfaceValue) => {
   const assumedSmoothness = surfaceToSmoothness[surfaceValue]
-  if (!assumedSmoothness)
-    return console.error(
-      `Error: Cannot find assumed surface for surface=${surfaceValue}`
+  if (!assumedSmoothness) {
+    console.error(
+      `Error: Cannot find assumed smoothness for surface=${surfaceValue}`
     )
+  }
 
   return assumedSmoothness
 }
@@ -200,12 +200,13 @@ const highwayToAssumedSurface = {
 
 const assumedSmoothnessBasedOnHighway = (highwayValue) => {
   const assumedSurface = highwayToAssumedSurface[highwayValue]
-  if (!assumedSurface)
-    return console.error(
+  if (!assumedSurface) {
+    console.error(
       `Error: Cannot find assumed surface for highway=${highwayValue}`
     )
+  }
 
-  return assumedSmoothnessBasedOnSurface(highwayToAssumedSurface[highwayValue])
+  return assumedSmoothnessBasedOnSurface(assumedSurface)
 }
 
 type ScopeValues = "MainWay" | "SidewalkOnMainWay" | "CyclewayOnMainWay"
@@ -213,8 +214,8 @@ type ScopeValues = "MainWay" | "SidewalkOnMainWay" | "CyclewayOnMainWay"
 const checkSmoothnessForValues = (
   featureSmoothness,
   checkSmoothness,
-  surface,
-  highwayType,
+  checkSurface,
+  checkHighwayType,
   scope: ScopeValues,
   featureToAddHelperProps
 ) => {
@@ -222,25 +223,30 @@ const checkSmoothnessForValues = (
   if (featureSmoothness) {
     addSmoothnessConfidenceCategorySmoothnessValue(
       featureToAddHelperProps,
+      checkSmoothness,
       scope
     )
     return normalizedSmoothness(featureSmoothness) === checkSmoothness
   }
 
   // Second best is, assuming the smoothness based of the surface
-  if (surface) {
-    addSmoothnessConfidenceCategorySurfaceValue(featureToAddHelperProps, scope)
-    return assumedSmoothnessBasedOnSurface(surface) === checkSmoothness
+  if (checkSurface) {
+    addSmoothnessConfidenceCategorySurfaceValue(
+      featureToAddHelperProps,
+      checkSurface,
+      scope
+    )
+    return assumedSmoothnessBasedOnSurface(checkSurface) === checkSmoothness
   }
 
   // Third best is, assuming the smoothness based of the highway type
-  if (highwayType) {
+  if (checkHighwayType) {
     addSmoothnessConfidenceCategoryHighwayType(
       featureToAddHelperProps,
       scope,
-      highwayType
+      checkHighwayType
     )
-    return assumedSmoothnessBasedOnHighway(highwayType) === checkSmoothness
+    return assumedSmoothnessBasedOnHighway(checkHighwayType) === checkSmoothness
   }
 }
 
