@@ -1,4 +1,6 @@
-export const filterGenerallyIrrelevantWays = (feature) => {
+import { Feature } from "./types"
+
+export const filterGenerallyIrrelevantWays = (feature: Feature) => {
   // highway=service wird nicht grundsätzlich ausgeschlossen, da hier möglicherweise service=* Details fehlen und der Weg doch geeignet ist.
   // Kurze Zufahrts- und Zugangswege zu Gebäuden wollen wir ausschließen.
   // Wir prüfen hier aber nicht auf service=driveway, da dieses Attribut manchmal fehlt.

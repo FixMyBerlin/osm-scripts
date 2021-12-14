@@ -1,8 +1,10 @@
+import { Feature } from "./types"
+
 /**
  * Add custom `FMC:*` helper properties.
  */
 export const addCustomProperties = (
-  features: any[],
+  features: Feature[],
   filterMethodName: string
 ) => {
   features.forEach((feature) => {
