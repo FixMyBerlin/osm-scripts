@@ -1,3 +1,4 @@
+import { fahrradstrasse } from "./fahrradstr"
 import { stufen } from "./stufen"
 
 // Gemeinsamer Geh- und Radweg
@@ -5,6 +6,7 @@ import { stufen } from "./stufen"
 // TODO: way/231469978 ist highway=cycleway, aber müsste vielleicht =path sein?
 export const gehUndRadwegGemeinsam = (feature) => {
   if (stufen(feature)) return false
+  if (fahrradstrasse(feature)) return false
 
   const basedOnSign = feature.properties.traffic_sign?.startsWith("DE:240")
 
