@@ -1,15 +1,16 @@
-import { leftOverHighwaysGrouped } from "./collectLeftOverHighways"
+import { filteredHighwayFeatureIdsWithCategories } from "./collectFilteredHighways"
+import { FeatureCollection } from "./types"
 import { writeFile } from "./writeFile"
 
-type FeaturesToCheckEntryProps = {
-  categories: string[]
-  todo?: string
-  url?: string
-  manualCheck?: string
-}
-type FeaturesToCheckProps = {
-  [key: string]: FeaturesToCheckEntryProps
-}
+// type FeaturesToCheckEntryProps = {
+//   categories: string[]
+//   todo?: string
+//   url?: string
+//   manualCheck?: string
+// }
+// type FeaturesToCheckProps = {
+//   [key: string]: FeaturesToCheckEntryProps
+// }
 
 // const extractSafeList = (allHighways: FeatureCollection) => {
 //   const saveList = allHighways.features
@@ -32,22 +33,12 @@ export const checkIfHighwayIsInMultipleCategories = (
   outputFolder: string,
   manualCheckList?: object[]
 ) => {
-  // Re-Map data: All categories of a featureId
-  const featureIdToCategory = {}
-  // console.log(leftOverHighwaysGrouped)
-  Object.keys(leftOverHighwaysGrouped).forEach((category) => {
-    leftOverHighwaysGrouped[category].forEach((featureId) => {
-      featureIdToCategory[featureId] = [
-        ...(featureIdToCategory[featureId] || []),
-        category,
-      ]
-    })
-  })
-
   // Filter: Include only features with multiple categories
   const featureIdsWithMultipleCategories = Object.keys(
-    featureIdToCategory
-  ).filter((featureIds) => featureIdToCategory[featureIds].length > 1)
+    filteredHighwayFeatureIdsWithCategories
+  ).filter(
+    (featureId) => filteredHighwayFeatureIdsWithCategories[featureId].length > 1
+  )
 
   // Filter: Include only features that are not on our savelist
   // TODO: This is not working, yet
@@ -55,10 +46,10 @@ export const checkIfHighwayIsInMultipleCategories = (
     featureIdsWithMultipleCategories
   // const saveList = extractSafeList(allHighways)
   // const featureIdsWithMultipleCategoriesWithoutSaveList = Object.keys(
-  //   featureIdToCategory
+  //   filteredHighwayFeatureIdsWithCategories
   // ).filter(
   //   (featureId) =>
-  //     !saveList.includes(featureIdToCategory[featureId])
+  //     !saveList.includes(filteredHighwayFeatureIdsWithCategories[featureId])
   // )
 
   // TODO fix TS with something FeaturesToCheckEntryProps

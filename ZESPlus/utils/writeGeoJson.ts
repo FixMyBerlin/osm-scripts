@@ -1,6 +1,7 @@
+import { Feature } from "./types"
 import { writeFile } from "./writeFile"
 
-type Props = { data: object[]; folder: string; fileNamePart: string }
+type Props = { data: Feature[]; folder: string; fileNamePart: string }
 
 export const writeGeoJson = ({ data, folder, fileNamePart }: Props) => {
   const geoJsonString = JSON.stringify(
