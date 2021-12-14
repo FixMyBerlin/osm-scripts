@@ -3,6 +3,7 @@ import { checkIfHighwayIsInMultipleCategories } from "../utils/checkIfHighwayIsI
 import { cleanupDirectory } from "../utils/cleanupDirectory"
 import { filterAndWrite } from "../utils/filterAndWrite"
 import { TODO_filterLeftoverHighwaysToBeCheckedManually } from "../utils/filterLeftoverHighwaysToBeCheckedManually"
+import { FeatureCollection } from "../utils/types"
 import { irrelevanteWege } from "./filter/irrelevanteWege"
 import {
   smoothnessBad,
@@ -17,7 +18,6 @@ import {
   TODO_WegeOhneSurface,
 } from "./filter/todos"
 
-let allHighways = {}
 const outputFolder = "./ZESPlus/Highways-SurfaceData/output/"
 
 fs.readFile(
@@ -30,7 +30,7 @@ fs.readFile(
     }
     cleanupDirectory(outputFolder)
 
-    allHighways = JSON.parse(data)
+    const allHighways: FeatureCollection = JSON.parse(data)
 
     filterAndWrite(irrelevanteWege, allHighways, outputFolder)
 

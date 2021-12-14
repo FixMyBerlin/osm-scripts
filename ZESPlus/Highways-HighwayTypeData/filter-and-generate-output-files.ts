@@ -12,8 +12,8 @@ import { typWohnstrasse } from "./filter/typWohnstrasse"
 import { checkIfHighwayIsInMultipleCategories } from "../utils/checkIfHighwayIsInMultipleCategories"
 import { filterAndWrite } from "../utils/filterAndWrite"
 import { TODO_filterLeftoverHighwaysToBeCheckedManually } from "../utils/filterLeftoverHighwaysToBeCheckedManually"
+import { FeatureCollection } from "../utils/types"
 
-let allHighways: any = {}
 const outputFolder = "./ZESPlus/Highways-HighwayTypeData/output/"
 
 fs.readFile(
@@ -25,7 +25,7 @@ fs.readFile(
       return
     }
 
-    allHighways = JSON.parse(data)
+    const allHighways: FeatureCollection = JSON.parse(data)
 
     filterAndWrite(irrelevanteWege, allHighways, outputFolder)
 

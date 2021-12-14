@@ -18,8 +18,8 @@ import {
 } from "./filter/todos"
 import { verkehrsberuhigterBereichMitFahrradFrei } from "./filter/verkehrsberuhigterBereichMitFahrradFrei"
 import { TODO_filterLeftoverHighwaysToBeCheckedManually } from "../utils/filterLeftoverHighwaysToBeCheckedManually"
+import { FeatureCollection } from "../utils/types"
 
-let allHighways = {}
 const outputFolder = "./ZESPlus/Highways-BicycleWayData/output/"
 
 fs.readFile(
@@ -31,7 +31,7 @@ fs.readFile(
       return
     }
 
-    allHighways = JSON.parse(data)
+    const allHighways: FeatureCollection = JSON.parse(data)
 
     filterAndWrite(irrelevanteWege, allHighways, outputFolder)
     filterAndWrite(stufen, allHighways, outputFolder)
