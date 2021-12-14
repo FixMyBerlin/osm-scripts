@@ -8,7 +8,7 @@ export const filterGenerallyIrrelevantWays = (feature: Feature) => {
   // Exkurs: Wir dürfen nicht zu offensiv auf Basis der "length" filtern, da klein zerschnittene Straßensegmente sonst gefiltert würden.
   const kurzeGrundstuecksZufahrtenZugaenge =
     ["service", "footway"].includes(feature.properties.highway) &&
-    feature.properties["FMC:length"] <= 10.0
+    parseFloat(feature.properties["FMC:length"]) <= 10.0
 
   // Auch 'destination' raus, weil nicht teil der Infrastrutkur
   const privateWays = ["private", "no", "destination"].includes(

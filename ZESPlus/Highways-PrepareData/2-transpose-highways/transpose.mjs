@@ -33,8 +33,8 @@ const addLenghtFromOverpassStatsResultToGeoJson = (rawJsonData, geoJsonData) => 
     const featureLength = lengthObject[Object.keys(lengthObject).find(key => key == feature.properties.id)]
     if (!featureLength) console.error('Could not find lenght for', feature.properties.id)
 
-    // Add length to GeoJSON
-    feature.properties['FMC:length'] = parseFloat(featureLength)
+    // Add length to GeoJSON as string (since all keys and values are of type string)
+    feature.properties["FMC:length"] = `${parseFloat(featureLength)}`
   })
 
   console.log(geoJsonData.features.map(feature => feature.properties).slice(0, 5))
