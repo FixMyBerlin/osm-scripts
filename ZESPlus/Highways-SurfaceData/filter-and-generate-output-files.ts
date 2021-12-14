@@ -14,6 +14,7 @@ import {
   smoothnessBad,
   smoothnessVeryBad,
 } from "./filter/smoothnessCategories"
+import { cleanupDirectory } from "../utils/cleanupDirectory"
 
 let allHighways = {}
 const outputFolder = "./ZESPlus/Highways-SurfaceData/output/"
@@ -26,6 +27,7 @@ fs.readFile(
       console.error(err)
       return
     }
+    cleanupDirectory(outputFolder)
 
     allHighways = JSON.parse(data)
 
