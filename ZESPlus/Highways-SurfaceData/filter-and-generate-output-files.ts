@@ -56,8 +56,13 @@ fs.readFile(
     // We can use this list to add notes to the list output/TODO_featuresWithMultipleCategories.json
     const manualCheckList = [
       {
-        "way/627588107":
-          "Zu Recht: cycleway:right=track + sidewalk:left:bicycle=yes(+ traffic_sign)",
+        "way/4929432": "Has multiple scopes",
+      },
+      {
+        "way/8067760": "Has multiple scopes",
+      },
+      {
+        "way/23707342": "Has multiple scopes",
       },
       {
         "way/123": "Test eines veralteten Eintrags",

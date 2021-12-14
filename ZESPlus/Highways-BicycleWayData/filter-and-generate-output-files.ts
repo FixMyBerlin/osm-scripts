@@ -76,6 +76,15 @@ fs.readFile(
         "way/40375021": "Tagging fehler, siehe Checker",
       },
       {
+        "way/230113392": "Ist korrigiert in OSM",
+      },
+      {
+        "way/334195666": "Ist korrigiert in OSM",
+      },
+      {
+        "way/553340583": "Ist korrigiert in OSM",
+      },
+      {
         "way/123": "Test eines veralteten Eintrags",
       },
     ]

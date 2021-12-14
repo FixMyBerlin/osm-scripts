@@ -50,6 +50,9 @@ fs.readFile(
     // We can use this list to add notes to the list output/TODO_featuresWithMultipleCategories.json
     const manualCheckList = [
       {
+        "way/26825929": "OK, da separate gemappte Wege vorhanden",
+      },
+      {
         "way/123": "Test eines veralteten Eintrags",
       },
     ]
