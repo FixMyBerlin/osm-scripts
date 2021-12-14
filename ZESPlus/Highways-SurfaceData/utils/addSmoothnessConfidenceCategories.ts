@@ -7,11 +7,12 @@ import { Feature } from "../../utils/types"
 const addSmoothnessConfidenceCategory = (
   feature: Feature,
   scope: ScopeValues,
-  categoryString: string,
+  conficenceString: string,
   sourceString: string
 ) => {
   feature.properties[`FMC:Smoothness:Scope${scope}`] = "yes"
-  feature.properties[`FMC:Smoothness:Scope${scope}:Confidence`] = categoryString
+  feature.properties[`FMC:Smoothness:Scope${scope}:Confidence`] =
+    conficenceString
   feature.properties[`FMC:Smoothness:Scope${scope}:Source`] = sourceString
   // TODO We can make this nicer.
   // The goal is to have a list of scopes so that we can use this in
