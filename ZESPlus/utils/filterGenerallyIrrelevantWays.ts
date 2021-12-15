@@ -31,6 +31,10 @@ export const filterGenerallyIrrelevantWays = (feature: Feature) => {
   // Haltestellen ingorieren wir
   const haltestellen = feature.properties.highway === "platform"
 
+  // Flächen neben Schnellstraßen ignorieren wir, da sie nicht Teil des Netzes sind
+  // https://wiki.openstreetmap.org/wiki/DE:Tag:highway=rest%20area
+  const highwayRestArea = feature.properties.highway === "rest_area"
+
   // A general list of the top40 highway values for BerlinBrandenburg that we do not want to work with.
   // How to get this list:
   // 1. Choose a taginfo instance for your region (Bundesland, Stadt) at https://osm.rlin.eu/geofabrik/
@@ -61,6 +65,7 @@ export const filterGenerallyIrrelevantWays = (feature: Feature) => {
     baustellen ||
     treppen ||
     haltestellen ||
+    highwayRestArea ||
     top40FilterList
   )
 }
