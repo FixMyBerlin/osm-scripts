@@ -3,5 +3,7 @@ import { Feature } from "../../utils/types"
 
 // Wege, die wir aktiv ausschließen von allen Abfragen
 export const irrelevanteWege = (feature: Feature) => {
-  return filterGenerallyIrrelevantWays(feature)
+  const stufen = feature.properties.highway === "steps"
+
+  return filterGenerallyIrrelevantWays(feature) || stufen
 }

@@ -1,7 +1,11 @@
+import { irrelevanteWege } from "./irrelevanteWege"
+
 // Baulich abgesetzter Radweg
 // https://wiki.openstreetmap.org/wiki/DE:Tag:cycleway%3Dtrack
 // https://wiki.openstreetmap.org/wiki/DE:Tag:cycleway%3Dopposite_track
 export const radwegBaulichAbgesetzt = (feature) => {
+  if (irrelevanteWege(feature)) return false
+
   // Eg https://www.openstreetmap.org/way/278057274
   const RadwegNebenStrasse =
     feature.properties.highway === "cycleway" &&

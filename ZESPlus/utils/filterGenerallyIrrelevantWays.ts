@@ -25,9 +25,6 @@ export const filterGenerallyIrrelevantWays = (feature: Feature) => {
     feature.properties.highway
   )
 
-  // Stufen ignorieren wir, auch wenn sie eine ramp hätten, da sie dann eine Lücke erzeugen und damit eine Planung triggern
-  const treppen = feature.properties.highway === "steps"
-
   // Haltestellen ingorieren wir
   const haltestellen = feature.properties.highway === "platform"
 
@@ -63,7 +60,6 @@ export const filterGenerallyIrrelevantWays = (feature: Feature) => {
     privateWays ||
     zufahrten ||
     baustellen ||
-    treppen ||
     haltestellen ||
     highwayRestArea ||
     top40FilterList

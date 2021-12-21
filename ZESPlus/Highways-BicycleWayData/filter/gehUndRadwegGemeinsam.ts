@@ -1,10 +1,12 @@
 import { fahrradstrasse } from "./fahrradstr"
+import { irrelevanteWege } from "./irrelevanteWege"
 import { stufen } from "./stufen"
 
 // Gemeinsamer Geh- und Radweg
 // traffic_sign=DE:240, https://wiki.openstreetmap.org/wiki/DE:Tag:traffic_sign%3DDE:240
 // TODO: way/231469978 ist highway=cycleway, aber müsste vielleicht =path sein?
 export const gehUndRadwegGemeinsam = (feature) => {
+  if (irrelevanteWege(feature)) return false
   if (stufen(feature)) return false
   if (fahrradstrasse(feature)) return false
 

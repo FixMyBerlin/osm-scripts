@@ -9,5 +9,7 @@ export const irrelevanteWege = (feature) => {
     (feature.properties.highway === "footway" &&
       feature.properties.is_sidepath === "yes")
 
-  return filterGenerallyIrrelevantWays(feature) || gehwege
+  const stufen = feature.properties.highway === "steps"
+
+  return filterGenerallyIrrelevantWays(feature) || gehwege || stufen
 }
