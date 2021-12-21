@@ -1,12 +1,33 @@
 # Initially, prepare the clipping area
 
-1. Run query
-   Siehe https://docs.google.com/document/d/1zIXtoB8J7oHosHivZmyyRxKYnLU58dChyKuEavs-ri8/edit#
+1. Run [Query](#Query)
 
 2. Export into clipboard, paste into raw.json
 
 3. Run transpose
 
    ```
-   npx osmtogeojson ./ZESPlus/0-area/raw.json > ./ZESPlus/0-area/area.geojson
+   npx osmtogeojson ./ZESPlus/AreaOfInterest/raw.json > ./ZESPlus/AreaOfInterest/area.geojson
    ```
+
+## TODOs
+
+- [ ] Create a script to automate this process.
+- [ ] Filter nodes that are part of relation like https://www.openstreetmap.org/node/29562985.
+
+## Query
+
+```php
+[out:json][timeout:25];
+(
+  relation["boundary"="administrative"]["admin_level"="8"]["name"="Zeuthen"]({{bbox}});
+  relation["boundary"="administrative"]["admin_level"="8"]["name"="Eichwalde"]({{bbox}});
+  relation["boundary"="administrative"]["admin_level"="8"]["name"="Schulzendorf"]({{bbox}});
+
+  relation["boundary"="administrative"]["admin_level"="8"]["name"="Wildau"]({{bbox}});
+  relation["boundary"="administrative"]["admin_level"="8"]["name"="Königs Wusterhausen"]({{bbox}});
+  relation["boundary"="administrative"]["admin_level"="8"]["name"="Schönefeld"]({{bbox}});
+);
+>;
+out skel qt;
+```
