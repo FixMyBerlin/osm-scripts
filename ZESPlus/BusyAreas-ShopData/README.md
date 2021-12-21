@@ -1,8 +1,16 @@
-# Extract ShopData to visualize busy areas
+# Extract data for shops (…) to visualize busy areas
 
 This data is used on a heatmap to show areas that require a different infrastructure.
 
-The list of amenity values is based on an extract of the reagion, manually filtered to exclude some POI that are not relevant.
+## Steps
+
+1. Run the [Query](#Query) on https://overpass-turbo.eu/
+
+1. 'Export' => Save as GeoJSON
+
+1. Rename to `geschaefte.geojson` in this folder
+
+## Query
 
 ```php
 [out:json][timeout:25];
@@ -15,9 +23,16 @@ The list of amenity values is based on an extract of the reagion, manually filte
   area["boundary"="administrative"]["admin_level"="8"]["name"="Schönefeld"];
 )->.searchArea;
 (
-  node["amenity"~"^(atm|bank|bar|cafe|charging_station|childcare|community_centre|dentist|doctors|driving_school|fast_food|fuel|kindergarten|library|marketplace|nightclub|pharmacy|place_of_worship|post_office|public_bookcase|restaurant|social_facility|swingerclub|townhall|vending_machine|veterinary|)$"](area.searchArea);
+  node["amenity"]["amenity"!="bench"]["amenity"!="bicycle_parking"]["amenity"!="parking"]["amenity"!="telephone"]["amenity"!="waste_basket"]["amenity"!="parking_entrance"]["amenity"!="shelter"]["amenity"="recycling"]["amenity"="hunting_stand"]["amenity"="post_box"]["access"!="private"](area.searchArea);
+  node["shop"](area.searchArea);
 );
-out body;
+out center;
 >;
 out skel qt;
+
+{{style:
+  node[amenity] {
+    text: amenity
+  }
+}}
 ```

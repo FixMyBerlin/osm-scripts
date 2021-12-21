@@ -1,14 +1,10 @@
 # Initially, prepare the clipping area
 
-1. Run [Query](#Query)
+1. Run the [Query](#Query) on https://overpass-turbo.eu/
 
-2. Export into clipboard, paste into raw.json
+1. 'Export' => Save as GeoJSON
 
-3. Run transpose
-
-   ```
-   npx osmtogeojson ./ZESPlus/AreaOfInterest/raw.json > ./ZESPlus/AreaOfInterest/area.geojson
-   ```
+1. Rename to `area.geojson` in this folder
 
 ## TODOs
 
