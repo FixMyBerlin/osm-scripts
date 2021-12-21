@@ -1,25 +1,9 @@
-2. Abspeichern in osm-highways.json
+# About
 
-3. In GeoJSON umwandeln
+The script here use OSM data to generate maps for https://www.zesplus.de/forschungsprojekt. Those maps are used to plan the bicycle infrastructure in the reagion.
 
-```
-npx osmtogeojson ./ZESPlus/osm-highway-values/osmRawHighways.json > test.geojson
-```
+Details can be found in the README files in each folder.
 
-3. TODO Betrachtungsgebiet zuschneiden
+## TODOs
 
-https://drive.google.com/drive/folders/1uK1NX9A9_R2JmBscAxSBCm281BeeSTfC
-
-4. Filtern
-
-Quelle https://docs.google.com/spreadsheets/d/1pc0MYbtJ0RPYf7DGn9mWr4UJW6eXX42GkIXxR5Yi8FQ/edit#gid=0
-
-Radweg im Seitenraum (neben Gehweg)
-
-Führung auf der Fahrbahn
-
-Gehweg Radfahrer frei
-
-Sonstiges
-
-Hauptstraßen vs. Wohnstraßen?
+- [ ] Add link to general process documentation
