@@ -6,7 +6,8 @@ import { writeGeoJson } from "./writeGeoJson"
 export const filterAndWrite = (
   filterMethod: (feature: Feature) => boolean,
   allHighways: FeatureCollection,
-  outputFolder: string
+  outputFolder: string,
+  collectedHighways?: Feature[]
 ) => {
   // Filter Data
   const filteredData = allHighways.features.filter(filterMethod)
@@ -14,6 +15,9 @@ export const filterAndWrite = (
   addCustomProperties(filteredData, filterMethod.name)
 
   collectFilteredHighways(filteredData, filterMethod.name)
+
+  collectedHighways &&
+    filteredData.forEach((feature) => collectedHighways.push(feature))
 
   writeGeoJson({
     data: filteredData,

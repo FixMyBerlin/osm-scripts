@@ -18,7 +18,8 @@ import {
 } from "./filter/todos"
 import { verkehrsberuhigterBereichMitFahrradFrei } from "./filter/verkehrsberuhigterBereichMitFahrradFrei"
 import { TODO_filterLeftoverHighwaysToBeCheckedManually } from "../utils/filterLeftoverHighwaysToBeCheckedManually"
-import { FeatureCollection } from "../utils/types"
+import { Feature, FeatureCollection } from "../utils/types"
+import { writeGeoJson } from "../utils/writeGeoJson"
 
 const outputFolder = "./ZESPlus/Highways-BicycleWayData/output/"
 
@@ -32,23 +33,55 @@ fs.readFile(
     }
 
     const allHighways: FeatureCollection = JSON.parse(data)
+    const collectedHighways: Feature[] = []
 
     filterAndWrite(irrelevanteWege, allHighways, outputFolder)
-    filterAndWrite(stufen, allHighways, outputFolder)
+    filterAndWrite(stufen, allHighways, outputFolder, collectedHighways)
     filterAndWrite(
       verkehrsberuhigterBereichMitFahrradFrei,
       allHighways,
-      outputFolder
+      outputFolder,
+      collectedHighways
     )
-    filterAndWrite(fussgaengerzonenWegFahrradFrei, allHighways, outputFolder)
-    filterAndWrite(gehwegRadfarerFrei, allHighways, outputFolder)
-    filterAndWrite(gehUndRadwegGemeinsam, allHighways, outputFolder)
-    filterAndWrite(gehUndRadwegGetrennt, allHighways, outputFolder)
-    filterAndWrite(TODO_RadwegUnspezifisch, allHighways, outputFolder)
-    filterAndWrite(fahrradstrasse, allHighways, outputFolder)
-    filterAndWrite(radwegBaulichAbgesetzt, allHighways, outputFolder)
-    filterAndWrite(radfahrstreifen, allHighways, outputFolder)
+    filterAndWrite(
+      fussgaengerzonenWegFahrradFrei,
+      allHighways,
+      outputFolder,
+      collectedHighways
+    )
+    filterAndWrite(
+      gehwegRadfarerFrei,
+      allHighways,
+      outputFolder,
+      collectedHighways
+    )
+    filterAndWrite(
+      gehUndRadwegGemeinsam,
+      allHighways,
+      outputFolder,
+      collectedHighways
+    )
+    filterAndWrite(
+      gehUndRadwegGetrennt,
+      allHighways,
+      outputFolder,
+      collectedHighways
+    )
+    filterAndWrite(fahrradstrasse, allHighways, outputFolder, collectedHighways)
+    filterAndWrite(
+      radwegBaulichAbgesetzt,
+      allHighways,
+      outputFolder,
+      collectedHighways
+    )
+    filterAndWrite(
+      radfahrstreifen,
+      allHighways,
+      outputFolder,
+      collectedHighways
+    )
 
+    filterAndWrite(TODO_RadwegUnspezifisch, allHighways, outputFolder)
     filterAndWrite(
       TODO_FussgaengerzonenWeg_AccessPruefen,
       allHighways,
@@ -94,5 +127,11 @@ fs.readFile(
       outputFolder,
       manualCheckList
     )
+
+    writeGeoJson({
+      data: collectedHighways,
+      folder: outputFolder,
+      fileNamePart: "collectedHighways",
+    })
   }
 )
