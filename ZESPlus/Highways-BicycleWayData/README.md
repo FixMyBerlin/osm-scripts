@@ -1,5 +1,5 @@
 # Generate files
 
 ```
-npx ts-node ./ZESPlus/Highways-BicycleWayData/filter-and-generate-output-files.ts
+npx ts-node ./ZESPlus/Highways-BicycleWayData/process.ts
 ```
