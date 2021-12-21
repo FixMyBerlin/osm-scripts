@@ -13,7 +13,9 @@ export const gehUndRadwegGetrennt = (feature) => {
   const basedOnAccess =
     feature.properties.bicycle === "designated" &&
     feature.properties.foot === "designated" &&
-    feature.properties.segregated === "yes"
+    feature.properties.segregated === "yes" &&
+    // "Gemeinsamer Geh- und Radweg" gewinnt gegen "segregated=yes".
+    feature.properties.traffic_sign !== "DE:240"
 
   return basedOnSign || basedOnAccess
 }
