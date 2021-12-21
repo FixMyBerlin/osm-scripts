@@ -102,20 +102,7 @@ fs.readFile(
     // We can use this list to add notes to the list output/TODO_featuresWithMultipleCategories.json
     const manualCheckList = [
       {
-        "way/627588107":
-          "Zu Recht: cycleway:right=track + sidewalk:left:bicycle=yes(+ traffic_sign)",
-      },
-      {
         "way/40375021": "Tagging fehler, siehe Checker",
-      },
-      {
-        "way/230113392": "Ist korrigiert in OSM",
-      },
-      {
-        "way/334195666": "Ist korrigiert in OSM",
-      },
-      {
-        "way/553340583": "Ist korrigiert in OSM",
       },
       {
         "way/123": "Test eines veralteten Eintrags",
