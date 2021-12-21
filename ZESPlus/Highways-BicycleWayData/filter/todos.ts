@@ -1,9 +1,13 @@
 import { fahrradstrasse } from "./fahrradstr"
 import { fussgaengerzonenWegFahrradFrei } from "./fussgaengerzonenWegFahrradFrei"
 import { gehUndRadwegGemeinsam } from "./gehUndRadwegGemeinsam"
+import { gehUndRadwegGetrennt } from "./gehUndRadwegGetrennt"
+import { gehwegRadfarerFrei } from "./gehwegRadfarerFrei"
 import { irrelevanteWege } from "./irrelevanteWege"
 import { radfahrstreifen } from "./radfahrstreifen"
 import { radwegBaulichAbgesetzt } from "./radwegBaulichAbgesetzt"
+import { radwegFreiGefuehrt } from "./radwegFreiGefuehrt"
+import { radwegVerbindungsstueck } from "./radwegVerbindungsstueck"
 import { verkehrsberuhigterBereichMitFahrradFrei } from "./verkehrsberuhigterBereichMitFahrradFrei"
 
 export const TODO_VerkehrsberuhigterBereich_AccessPruefen = (feature) => {
@@ -39,13 +43,15 @@ export const TODO_FahrradFrei_CheckTagging = (feature) => {
 // https://wiki.openstreetmap.org/wiki/DE:Tag:highway=cycleway
 export const TODO_RadwegUnspezifisch = (feature) => {
   if (irrelevanteWege(feature)) return false
+  if (gehUndRadwegGemeinsam(feature)) return false
+  if (gehUndRadwegGetrennt(feature)) return false
+  if (gehwegRadfarerFrei(feature)) return false
+  if (radfahrstreifen(feature)) return false
+  if (radwegBaulichAbgesetzt(feature)) return false
+  if (radwegFreiGefuehrt(feature)) return false
+  if (radwegVerbindungsstueck(feature)) return false
 
-  return (
-    feature.properties.highway === "cycleway" &&
-    !fahrradstrasse(feature) &&
-    !radwegBaulichAbgesetzt(feature) &&
-    !radfahrstreifen(feature)
-  )
+  return feature.properties.highway === "cycleway"
 }
 
 // Getrennter Geh- und Radweg / Getrennter Rad- und Gehweg muss seggregated=yes haben
@@ -80,4 +86,10 @@ export const TODO_MissingSeggregationForTrafficSign = (feature) => {
     (feature.properties.traffic_sign?.startsWith("DE:241") &&
       !feature.properties.segregated)
   )
+}
+
+export const TODO_AreaHighwaysCheckIfSeparatelyMappedWaysExist = (feature) => {
+  if (irrelevanteWege(feature)) return false
+
+  return feature.properties.highway && feature.properties.area === "yes"
 }

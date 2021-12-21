@@ -1,3 +1,4 @@
+import { gehUndRadwegGemeinsam } from "./gehUndRadwegGemeinsam"
 import { irrelevanteWege } from "./irrelevanteWege"
 import { stufen } from "./stufen"
 
@@ -7,15 +8,15 @@ import { stufen } from "./stufen"
 export const gehUndRadwegGetrennt = (feature) => {
   if (irrelevanteWege(feature)) return false
   if (stufen(feature)) return false
+  // "Gemeinsamer Geh- und Radweg" gewinnt gegen "segregated=yes".
+  if (gehUndRadwegGemeinsam(feature)) return false
 
   const basedOnSign = feature.properties.traffic_sign?.startsWith("DE:241")
 
   const basedOnAccess =
     feature.properties.bicycle === "designated" &&
     feature.properties.foot === "designated" &&
-    feature.properties.segregated === "yes" &&
-    // "Gemeinsamer Geh- und Radweg" gewinnt gegen "segregated=yes".
-    feature.properties.traffic_sign !== "DE:240"
+    feature.properties.segregated === "yes"
 
   return basedOnSign || basedOnAccess
 }

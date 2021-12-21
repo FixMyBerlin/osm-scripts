@@ -18,14 +18,14 @@ export const gehwegRadfarerFrei = (feature) => {
     feature.properties["sidewalk:right:bicycle"] === "yes" ||
     feature.properties["sidewalk:both:bicycle"] === "yes"
 
-  // EdgeCase: Sometimes we use highway=cycleway where the traffic_sign is set when the road is split, so we exclude this here.
-  const includeIfSignFits =
+  const includeIfSignFitsWithoutEdgeCase =
     feature.properties.traffic_sign === "DE:239,1022-10" &&
+    // EdgeCase: Sometimes we use highway=cycleway where the traffic_sign is set when the road is split, so we explicitly exclude this here.
     feature.properties.highway !== "cycleway"
 
   return (
     includeGehwegMitFreigabe ||
     includeGehwegMitFreigabeTaggingMainWay ||
-    includeIfSignFits
+    includeIfSignFitsWithoutEdgeCase
   )
 }

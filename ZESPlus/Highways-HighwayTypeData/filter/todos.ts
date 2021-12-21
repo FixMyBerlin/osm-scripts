@@ -8,8 +8,6 @@ export const TODO_BuergersteigTaggingFehlt = (feature) => {
   )
 }
 
-export const TODO_AreaWegePruefenObRelevantGgfVerbindungenEinfuegen = (
-  feature
-) => {
+export const TODO_AreaHighwaysCheckIfSeparatelyMappedWaysExist = (feature) => {
   return feature.properties.highway && feature.properties.area === "yes"
 }

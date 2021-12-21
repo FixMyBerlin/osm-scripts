@@ -11,6 +11,7 @@ import { radfahrstreifen } from "./filter/radfahrstreifen"
 import { radwegBaulichAbgesetzt } from "./filter/radwegBaulichAbgesetzt"
 import { stufen } from "./filter/stufen"
 import {
+  TODO_AreaHighwaysCheckIfSeparatelyMappedWaysExist,
   TODO_FahrradFrei_CheckTagging,
   TODO_FussgaengerzonenWeg_AccessPruefen,
   TODO_RadwegUnspezifisch,
@@ -20,6 +21,8 @@ import { verkehrsberuhigterBereichMitFahrradFrei } from "./filter/verkehrsberuhi
 import { TODO_filterLeftoverHighwaysToBeCheckedManually } from "../utils/filterLeftoverHighwaysToBeCheckedManually"
 import { Feature, FeatureCollection } from "../utils/types"
 import { writeGeoJson } from "../utils/writeGeoJson"
+import { radwegVerbindungsstueck } from "./filter/radwegVerbindungsstueck"
+import { radwegFreiGefuehrt } from "./filter/radwegFreiGefuehrt"
 
 const outputFolder = "./ZESPlus/Highways-BicycleWayData/output/"
 
@@ -75,6 +78,18 @@ fs.readFile(
       collectedHighways
     )
     filterAndWrite(
+      radwegFreiGefuehrt,
+      allHighways,
+      outputFolder,
+      collectedHighways
+    )
+    filterAndWrite(
+      radwegVerbindungsstueck,
+      allHighways,
+      outputFolder,
+      collectedHighways
+    )
+    filterAndWrite(
       radfahrstreifen,
       allHighways,
       outputFolder,
@@ -94,6 +109,13 @@ fs.readFile(
       outputFolder
     )
     filterAndWrite(
+      TODO_AreaHighwaysCheckIfSeparatelyMappedWaysExist,
+      allHighways,
+      outputFolder
+    )
+
+    // Needs to be at the end of the list, since it checks all previously categorised highways
+    filterAndWrite(
       TODO_filterLeftoverHighwaysToBeCheckedManually,
       allHighways,
       outputFolder
@@ -101,9 +123,6 @@ fs.readFile(
 
     // We can use this list to add notes to the list output/TODO_featuresWithMultipleCategories.json
     const manualCheckList = [
-      {
-        "way/40375021": "Tagging fehler, siehe Checker",
-      },
       {
         "way/123": "Test eines veralteten Eintrags",
       },

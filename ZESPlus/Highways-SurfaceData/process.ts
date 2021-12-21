@@ -47,6 +47,8 @@ fs.readFile(
       outputFolder
     )
     filterAndWrite(TODO_fixSmoothnessValues, allHighways, outputFolder)
+
+    // Needs to be at the end of the list, since it checks all previously categorised highways
     filterAndWrite(
       TODO_filterLeftoverHighwaysToBeCheckedManually,
       allHighways,

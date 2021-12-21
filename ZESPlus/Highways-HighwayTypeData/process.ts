@@ -1,7 +1,7 @@
 import fs from "fs"
 import { irrelevanteWege } from "./filter/irrelevanteWege"
 import {
-  TODO_AreaWegePruefenObRelevantGgfVerbindungenEinfuegen,
+  TODO_AreaHighwaysCheckIfSeparatelyMappedWaysExist,
   TODO_BuergersteigTaggingFehlt,
 } from "./filter/todos"
 import { typAusserorts } from "./filter/typAusserorts"
@@ -35,14 +35,16 @@ fs.readFile(
     filterAndWrite(typFreiGefuehrt, allHighways, outputFolder)
     filterAndWrite(typSchnellstrassen, allHighways, outputFolder)
 
+    filterAndWrite(TODO_BuergersteigTaggingFehlt, allHighways, outputFolder)
     filterAndWrite(
-      TODO_filterLeftoverHighwaysToBeCheckedManually,
+      TODO_AreaHighwaysCheckIfSeparatelyMappedWaysExist,
       allHighways,
       outputFolder
     )
-    filterAndWrite(TODO_BuergersteigTaggingFehlt, allHighways, outputFolder)
+
+    // Needs to be at the end of the list, since it checks all previously categorised highways
     filterAndWrite(
-      TODO_AreaWegePruefenObRelevantGgfVerbindungenEinfuegen,
+      TODO_filterLeftoverHighwaysToBeCheckedManually,
       allHighways,
       outputFolder
     )
