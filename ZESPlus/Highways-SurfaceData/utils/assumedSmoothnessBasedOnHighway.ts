@@ -3,7 +3,7 @@ import { assumedSmoothnessBasedOnSurface } from "./assumedSmoothnessBasedOnSurfa
 export const highwayToAssumedSurface = {
   bridleway: "pebblestone",
   cycleway: "paving_stones",
-  footway: "sett",
+  footway: "paving_stones",
   living_street: "paving_stones",
   motorway_link: "asphalt",
   motorway: "asphalt",
@@ -14,7 +14,7 @@ export const highwayToAssumedSurface = {
   residential: "sett", // This is very ZES+ specific, in other reagions it is likely 'asphalt'
   rest_area: "asphalt",
   secondary: "asphalt",
-  service: "sett",
+  service: "paving_stones",
   tertiary_link: "asphalt",
   tertiary: "asphalt",
   track: "compacted",
