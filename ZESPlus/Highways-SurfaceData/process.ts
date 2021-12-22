@@ -3,7 +3,8 @@ import { checkIfHighwayIsInMultipleCategories } from "../utils/checkIfHighwayIsI
 import { cleanupDirectory } from "../utils/cleanupDirectory"
 import { filterAndWrite } from "../utils/filterAndWrite"
 import { TODO_filterLeftoverHighwaysToBeCheckedManually } from "../utils/filterLeftoverHighwaysToBeCheckedManually"
-import { FeatureCollection } from "../utils/types"
+import { Feature, FeatureCollection } from "../utils/types"
+import { writeGeoJson } from "../utils/writeGeoJson"
 import { irrelevanteWege } from "./filter/irrelevanteWege"
 import {
   smoothnessBad,
@@ -31,14 +32,30 @@ fs.readFile(
     cleanupDirectory(outputFolder)
 
     const allHighways: FeatureCollection = JSON.parse(data)
+    const collectedHighways: Feature[] = []
 
     filterAndWrite(irrelevanteWege, allHighways, outputFolder)
 
-    filterAndWrite(smoothnessExcellent, allHighways, outputFolder)
-    filterAndWrite(smoothnessGood, allHighways, outputFolder)
-    filterAndWrite(smoothnessIntermediate, allHighways, outputFolder)
-    filterAndWrite(smoothnessBad, allHighways, outputFolder)
-    filterAndWrite(smoothnessVeryBad, allHighways, outputFolder)
+    filterAndWrite(
+      smoothnessExcellent,
+      allHighways,
+      outputFolder,
+      collectedHighways
+    )
+    filterAndWrite(smoothnessGood, allHighways, outputFolder, collectedHighways)
+    filterAndWrite(
+      smoothnessIntermediate,
+      allHighways,
+      outputFolder,
+      collectedHighways
+    )
+    filterAndWrite(smoothnessBad, allHighways, outputFolder, collectedHighways)
+    filterAndWrite(
+      smoothnessVeryBad,
+      allHighways,
+      outputFolder,
+      collectedHighways
+    )
 
     filterAndWrite(TODO_WegeOhneSurface, allHighways, outputFolder)
     filterAndWrite(
@@ -76,5 +93,11 @@ fs.readFile(
       outputFolder,
       manualCheckList
     )
+
+    writeGeoJson({
+      data: collectedHighways,
+      folder: outputFolder,
+      fileNamePart: "collectedHighways",
+    })
   }
 )
