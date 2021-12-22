@@ -1,5 +1,6 @@
 import fs from "fs"
 import { checkIfHighwayIsInMultipleCategories } from "../utils/checkIfHighwayIsInMultipleCategories"
+import { cleanupOutputFolder } from "../utils/cleanupOutputFolder"
 import { filterAndWrite } from "../utils/filterAndWrite"
 import { fahrradstrasse } from "./filter/fahrradstr"
 import { fussgaengerzonenWegFahrradFrei } from "./filter/fussgaengerzonenWegFahrradFrei"
@@ -34,6 +35,8 @@ fs.readFile(
       console.error(err)
       return
     }
+
+    // cleanupOutputFolder(outputFolder)
 
     const allHighways: FeatureCollection = JSON.parse(data)
     const collectedHighways: Feature[] = []
