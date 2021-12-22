@@ -11,7 +11,7 @@ export const highwayToAssumedSurface = {
   pedestrian: "paving_stones",
   primary_link: "asphalt",
   primary: "asphalt",
-  residential: "asphalt",
+  residential: "sett", // This is very ZES+ specific, in other reagions it is likely 'asphalt'
   rest_area: "asphalt",
   secondary: "asphalt",
   service: "sett",
