@@ -4,8 +4,13 @@ import { irrelevanteWege } from "./irrelevanteWege"
 /* K 6161 ist Landstraße und führt dann in die Stadt;
 TODO: Innerhalb der Stadt müssten wir sie manuell umkategorisieren und als Hauptstraße taggen. */
 export const typAusserorts = (feature) => {
-  return (
-    !irrelevanteWege(feature) &&
-    ["tertiary", "tertiary_link"].includes(feature.properties.highway)
+  if (irrelevanteWege(feature)) return false
+
+  const byType = ["tertiary", "tertiary_link"].includes(
+    feature.properties.highway
   )
+
+  const byRef = feature.properties.ref?.startsWith("L ")
+
+  return byType || byRef
 }
