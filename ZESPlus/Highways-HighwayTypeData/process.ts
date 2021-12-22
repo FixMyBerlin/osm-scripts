@@ -12,7 +12,8 @@ import { typWohnstrasse } from "./filter/typWohnstrasse"
 import { checkIfHighwayIsInMultipleCategories } from "../utils/checkIfHighwayIsInMultipleCategories"
 import { filterAndWrite } from "../utils/filterAndWrite"
 import { TODO_filterLeftoverHighwaysToBeCheckedManually } from "../utils/filterLeftoverHighwaysToBeCheckedManually"
-import { FeatureCollection } from "../utils/types"
+import { Feature, FeatureCollection } from "../utils/types"
+import { writeGeoJson } from "../utils/writeGeoJson"
 
 const outputFolder = "./ZESPlus/Highways-HighwayTypeData/output/"
 
@@ -26,14 +27,30 @@ fs.readFile(
     }
 
     const allHighways: FeatureCollection = JSON.parse(data)
+    const collectedHighways: Feature[] = []
 
     filterAndWrite(irrelevanteWege, allHighways, outputFolder)
 
-    filterAndWrite(typWohnstrasse, allHighways, outputFolder)
-    filterAndWrite(typHauptUndSammelstrasse, allHighways, outputFolder)
-    filterAndWrite(typAusserorts, allHighways, outputFolder)
-    filterAndWrite(typFreiGefuehrt, allHighways, outputFolder)
-    filterAndWrite(typSchnellstrassen, allHighways, outputFolder)
+    filterAndWrite(typWohnstrasse, allHighways, outputFolder, collectedHighways)
+    filterAndWrite(
+      typHauptUndSammelstrasse,
+      allHighways,
+      outputFolder,
+      collectedHighways
+    )
+    filterAndWrite(typAusserorts, allHighways, outputFolder, collectedHighways)
+    filterAndWrite(
+      typFreiGefuehrt,
+      allHighways,
+      outputFolder,
+      collectedHighways
+    )
+    filterAndWrite(
+      typSchnellstrassen,
+      allHighways,
+      outputFolder,
+      collectedHighways
+    )
 
     filterAndWrite(TODO_BuergersteigTaggingFehlt, allHighways, outputFolder)
     filterAndWrite(
@@ -64,5 +81,11 @@ fs.readFile(
       outputFolder,
       manualCheckList
     )
+
+    writeGeoJson({
+      data: collectedHighways,
+      folder: outputFolder,
+      fileNamePart: "collectedHighways",
+    })
   }
 )
