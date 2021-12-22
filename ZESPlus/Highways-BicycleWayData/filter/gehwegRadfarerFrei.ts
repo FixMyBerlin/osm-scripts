@@ -8,6 +8,10 @@ export const gehwegRadfarerFrei = (feature) => {
   if (irrelevanteWege(feature)) return false
   if (stufen(feature)) return false
   if (fussgaengerzonenWegFahrradFrei(feature)) return false
+  // The access based tagging would include free running path through woods
+  // like https://www.openstreetmap.org/way/23366687
+  // We filter those based on mtb:scale=*.
+  if (feature.properties["mtb:scale"]) return false
 
   const includeGehwegMitFreigabe =
     ["footway", "path"].includes(feature.properties.highway) &&
