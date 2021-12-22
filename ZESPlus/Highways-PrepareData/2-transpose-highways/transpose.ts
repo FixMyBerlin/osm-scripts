@@ -5,26 +5,31 @@ import { addLenghtFromOverpassStatsResultToGeoJson } from "./utils/addLenghtFrom
 
 const outputFolder = "./ZESPlus/Highways-PrepareData/2-transpose-highways/"
 
-fs.readFile(
-  "./ZESPlus/Highways-PrepareData/1-download-highways/osmRawHighways.json",
-  "utf8",
-  (err, _data) => {
-    if (err) {
-      console.error(err)
-      return
+export const transposeData = () => {
+  fs.readFile(
+    "./ZESPlus/Highways-PrepareData/1-download-highways/osmRawHighways.json",
+    "utf8",
+    (err, _data) => {
+      if (err) {
+        console.error(err)
+        return
+      }
+      console.log("transposeData()", "Parse, Transform, Enhance and Write file")
+
+      const rawJsonData = JSON.parse(_data)
+      const geoJsonData = osmtogeojson(rawJsonData)
+
+      addLenghtFromOverpassStatsResultToGeoJson(rawJsonData, geoJsonData)
+
+      writeFile({
+        dataString: JSON.stringify(geoJsonData, null, 2),
+        dataLength: geoJsonData.features.length,
+        outputFolder: outputFolder,
+        fileNamePart: "osmHighwaysUnclipped",
+        format: "geojson",
+      })
     }
+  )
+}
 
-    const rawJsonData = JSON.parse(_data)
-    const geoJsonData = osmtogeojson(rawJsonData)
-
-    addLenghtFromOverpassStatsResultToGeoJson(rawJsonData, geoJsonData)
-
-    writeFile({
-      dataString: JSON.stringify(geoJsonData, null, 2),
-      dataLength: geoJsonData.features.length,
-      outputFolder: outputFolder,
-      fileNamePart: "osmHighwaysUnclipped",
-      format: "geojson",
-    })
-  }
-)
+transposeData()
