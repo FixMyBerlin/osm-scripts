@@ -22,7 +22,11 @@ export const typHauptUndSammelstrasse = (feature) => {
     ["residential", "unclassified", "secondary"].includes(
       feature.properties.highway
     ) &&
-    feature.properties.surface !== "unpaved" // unpaved macht es zu FreiGefuehrt
+    // // unpaved macht es zu FreiGefuehrt
+    feature.properties.surface !== "unpaved" &&
+    // Wenn Segement zu klein, dann bleibt es was es vorher war.
+    // Beispiel https://www.openstreetmap.org/way/4935069
+    parseFloat(feature.properties["FMC:length"]) >= 50.0
 
   const zubringerMitGuterOberflaeche =
     feature.properties.highway === "unclassified" &&
