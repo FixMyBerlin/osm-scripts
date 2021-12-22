@@ -1,5 +1,5 @@
 import { irrelevanteWege } from "./irrelevanteWege"
-import { typHauptUndSammelstrasse } from "./typHauptUndSammelstrasse"
+import { typHauptUndSammelstrasse } from "./typC_HauptUndSammelstrasse"
 
 // TYP A + B – Wohnweg/Wohnstraße (Erschließungsstraßen)
 // Mindset: Wir müssen hier präzise sein, um eine Abgrenung zu TypHauptUndSammelstrasse zu erreichen
@@ -7,7 +7,17 @@ export const typWohnstrasse = (feature) => {
   if (irrelevanteWege(feature)) return false
   if (typHauptUndSammelstrasse(feature)) return false
 
-  return feature.properties.highway === "residential"
+  const byType = ["residential", "living_street"].includes(
+    feature.properties.highway
+  )
+
+  const serviceWithName =
+    feature.properties.highway === "service" &&
+    feature.properties.name &&
+    // Which we have in typFreiGefuehrt()
+    feature.properties.service !== "drive-through"
+
+  return byType || serviceWithName
 
   // const includeWohnstrassenMitGeringerGeschwindigkeit =
   //   ["residential", "unclassified"].includes(feature.properties.highway) &&

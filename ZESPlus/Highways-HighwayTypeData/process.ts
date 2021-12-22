@@ -4,11 +4,10 @@ import {
   TODO_AreaHighwaysCheckIfSeparatelyMappedWaysExist,
   TODO_BuergersteigTaggingFehlt,
 } from "./filter/todos"
-import { typAusserorts } from "./filter/typAusserorts"
-import { typFreiGefuehrt } from "./filter/typFreiGefuehrt"
-import { typHauptUndSammelstrasse } from "./filter/typHauptUndSammelstrasse"
-import { typSchnellstrassen } from "./filter/typSchnellstrassen"
-import { typWohnstrasse } from "./filter/typWohnstrasse"
+import { typAusserorts } from "./filter/typE_Ausserorts"
+import { typFreiGefuehrt } from "./filter/typF_FreiGefuehrt"
+import { typHauptUndSammelstrasse } from "./filter/typC_HauptUndSammelstrasse"
+import { typWohnstrasse } from "./filter/typA_Wohnstrasse"
 import { checkIfHighwayIsInMultipleCategories } from "../utils/checkIfHighwayIsInMultipleCategories"
 import { filterAndWrite } from "../utils/filterAndWrite"
 import { TODO_filterLeftoverHighwaysToBeCheckedManually } from "../utils/filterLeftoverHighwaysToBeCheckedManually"
@@ -45,12 +44,6 @@ fs.readFile(
       outputFolder,
       collectedHighways
     )
-    filterAndWrite(
-      typSchnellstrassen,
-      allHighways,
-      outputFolder,
-      collectedHighways
-    )
 
     filterAndWrite(TODO_BuergersteigTaggingFehlt, allHighways, outputFolder)
     filterAndWrite(
@@ -68,9 +61,6 @@ fs.readFile(
 
     // We can use this list to add notes to the list output/TODO_featuresWithMultipleCategories.json
     const manualCheckList = [
-      {
-        "way/26825929": "OK, da separate gemappte Wege vorhanden",
-      },
       {
         "way/123": "Test eines veralteten Eintrags",
       },

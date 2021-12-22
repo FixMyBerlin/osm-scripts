@@ -26,7 +26,8 @@ export const typFreiGefuehrt = (feature) => {
     (feature.properties.highway == "unclassified" &&
       feature.properties.surface === "unpaved") ||
     (feature.properties.highway == "footway" &&
-      feature.properties.is_sidepath !== "yes")
+      (feature.properties.is_sidepath !== "yes" ||
+        feature.properties.footway !== "crossing"))
 
   return (
     includePathTrack ||

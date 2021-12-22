@@ -1,9 +1,10 @@
 import { irrelevanteWege } from "./irrelevanteWege"
-import { typWohnstrasse } from "./typWohnstrasse"
+import { typAusserorts } from "./typE_Ausserorts"
 
 // TYP C – Haupt-/Sammel-[Wohn]straße
 export const typHauptUndSammelstrasse = (feature) => {
   if (irrelevanteWege(feature)) return false
+  if (typAusserorts(feature)) return false
 
   const residentialMitRadwegIstSammelstrasse =
     feature.properties.highway === "residential" &&

@@ -6,7 +6,7 @@ TODO: Innerhalb der Stadt müssten wir sie manuell umkategorisieren und als Haup
 export const typAusserorts = (feature) => {
   if (irrelevanteWege(feature)) return false
 
-  const byType = ["tertiary", "tertiary_link"].includes(
+  const byType = ["tertiary", "tertiary_link", "trunk", "trunk_link"].includes(
     feature.properties.highway
   )
 
