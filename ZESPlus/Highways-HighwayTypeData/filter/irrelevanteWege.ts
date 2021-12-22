@@ -15,10 +15,21 @@ export const irrelevanteWege = (feature) => {
     feature.properties.highway
   )
 
+  const ignoreSmallServiceSegments =
+    feature.properties.highway === "service" &&
+    parseFloat(feature.properties["FMC:length"]) <= 40.0
+
+  const ignoreByServiceType = feature.properties.service === "alley"
+
+  const ignoreByAccess = feature.properties.access === "delivery"
+
   return (
     filterGenerallyIrrelevantWays(feature) ||
     gehwege ||
     stufen ||
-    schnellstrasse
+    schnellstrasse ||
+    ignoreSmallServiceSegments ||
+    ignoreByServiceType ||
+    ignoreByAccess
   )
 }
