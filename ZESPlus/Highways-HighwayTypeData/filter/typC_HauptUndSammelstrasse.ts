@@ -13,9 +13,9 @@ export const typHauptUndSammelstrasse = (feature) => {
   // Beispiel für forward/backward https://www.openstreetmap.org/way/164719884
   // TODO OSM: Eine Wohnstraße ohne Gehweg mit maxspeed 50? way/4920400
   const hoherMaxSpeed =
-    feature.properties.maxspeed >= 50 ||
-    feature.properties["maxspeed:forward"] >= 50 ||
-    feature.properties["maxspeed:backward"] >= 50
+    parseFloat(feature.properties.maxspeed) >= 50.0 ||
+    parseFloat(feature.properties["maxspeed:forward"]) >= 50.0 ||
+    parseFloat(feature.properties["maxspeed:backward"]) >= 50.0
 
   const residentialMitMit50plusIstSammelstrasse =
     hoherMaxSpeed &&
