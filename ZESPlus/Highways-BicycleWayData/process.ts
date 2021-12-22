@@ -2,6 +2,9 @@ import fs from "fs"
 import { checkIfHighwayIsInMultipleCategories } from "../utils/checkIfHighwayIsInMultipleCategories"
 import { cleanupOutputFolder } from "../utils/cleanupOutputFolder"
 import { filterAndWrite } from "../utils/filterAndWrite"
+import { TODO_filterLeftoverHighwaysToBeCheckedManually } from "../utils/filterLeftoverHighwaysToBeCheckedManually"
+import { Feature, FeatureCollection } from "../utils/types"
+import { writeGeoJson } from "../utils/writeGeoJson"
 import { fahrradstrasse } from "./filter/fahrradstr"
 import { fussgaengerzonenWegFahrradFrei } from "./filter/fussgaengerzonenWegFahrradFrei"
 import { gehUndRadwegGemeinsam } from "./filter/gehUndRadwegGemeinsam"
@@ -10,6 +13,8 @@ import { gehwegRadfarerFrei } from "./filter/gehwegRadfarerFrei"
 import { irrelevanteWege } from "./filter/irrelevanteWege"
 import { radfahrstreifen } from "./filter/radfahrstreifen"
 import { radwegBaulichAbgesetzt } from "./filter/radwegBaulichAbgesetzt"
+import { radwegFreiGefuehrt } from "./filter/radwegFreiGefuehrt"
+import { radwegVerbindungsstueck } from "./filter/radwegVerbindungsstueck"
 import { stufen } from "./filter/stufen"
 import {
   TODO_AreaHighwaysCheckIfSeparatelyMappedWaysExist,
@@ -19,11 +24,6 @@ import {
   TODO_VerkehrsberuhigterBereich_AccessPruefen,
 } from "./filter/todos"
 import { verkehrsberuhigterBereichMitFahrradFrei } from "./filter/verkehrsberuhigterBereichMitFahrradFrei"
-import { TODO_filterLeftoverHighwaysToBeCheckedManually } from "../utils/filterLeftoverHighwaysToBeCheckedManually"
-import { Feature, FeatureCollection } from "../utils/types"
-import { writeGeoJson } from "../utils/writeGeoJson"
-import { radwegVerbindungsstueck } from "./filter/radwegVerbindungsstueck"
-import { radwegFreiGefuehrt } from "./filter/radwegFreiGefuehrt"
 
 const outputFolder = "./ZESPlus/Highways-BicycleWayData/output/"
 
