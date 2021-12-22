@@ -2,6 +2,8 @@ import { irrelevanteWege } from "./irrelevanteWege"
 
 // TYP F – Frei geführt / Fußgängerweg [Außerorts]
 export const typFreiGefuehrt = (feature) => {
+  if (irrelevanteWege(feature)) return false
+
   const includePathTrack = ["path", "track", "bridleway"].includes(
     feature.properties.highway
   )
@@ -27,11 +29,10 @@ export const typFreiGefuehrt = (feature) => {
       feature.properties.is_sidepath !== "yes")
 
   return (
-    !irrelevanteWege(feature) &&
-    (includePathTrack ||
-      includeGehwegMitRadwegFrei ||
-      includeDurchfahrtswege ||
-      includeRadwege ||
-      includeZwischenwege)
+    includePathTrack ||
+    includeGehwegMitRadwegFrei ||
+    includeDurchfahrtswege ||
+    includeRadwege ||
+    includeZwischenwege
   )
 }

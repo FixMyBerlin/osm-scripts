@@ -3,6 +3,8 @@ import { typWohnstrasse } from "./typWohnstrasse"
 
 // TYP C – Haupt-/Sammel-[Wohn]straße
 export const typHauptUndSammelstrasse = (feature) => {
+  if (irrelevanteWege(feature)) return false
+
   const residentialMitRadwegIstSammelstrasse =
     feature.properties.highway === "residential" &&
     feature.properties["cycleway:both"] === "separate"
@@ -26,10 +28,8 @@ export const typHauptUndSammelstrasse = (feature) => {
     feature.properties.surface === "asphalt"
 
   return (
-    !irrelevanteWege(feature) &&
-    !typWohnstrasse(feature) &&
-    (residentialMitRadwegIstSammelstrasse ||
-      residentialMitMit50plusIstSammelstrasse ||
-      zubringerMitGuterOberflaeche)
+    residentialMitRadwegIstSammelstrasse ||
+    residentialMitMit50plusIstSammelstrasse ||
+    zubringerMitGuterOberflaeche
   )
 }
