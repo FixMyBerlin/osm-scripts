@@ -11,5 +11,14 @@ export const irrelevanteWege = (feature) => {
 
   const stufen = feature.properties.highway === "steps"
 
-  return filterGenerallyIrrelevantWays(feature) || gehwege || stufen
+  const schnellstrasse = ["motorway_link", "motorway"].includes(
+    feature.properties.highway
+  )
+
+  return (
+    filterGenerallyIrrelevantWays(feature) ||
+    gehwege ||
+    stufen ||
+    schnellstrasse
+  )
 }
