@@ -12,9 +12,17 @@ export const TODO_WegeOhneSmoothnessAberMitSurface = (feature: Feature) => {
   return feature.properties.surface && !feature.properties.smoothness
 }
 
-// A list of borken smoothness values that we need to cleanup in OSM.
 export const TODO_fixSmoothnessValues = (feature: Feature) => {
   if (irrelevanteWege(feature)) return false
 
-  return ["verbad"].includes(feature.properties.smoothness)
+  // A list of borken smoothness values that we need to cleanup in OSM.
+  const hasTypos = ["verbad"].includes(feature.properties.smoothness)
+
+  const hasCapitalLetters =
+    feature.properties.smoothness?.toLowerCase() !==
+      feature.properties.smoothness ||
+    feature.properties.surface?.toLowerCase() !== feature.properties.surface ||
+    feature.properties.highway?.toLowerCase() !== feature.properties.highway
+
+  return hasTypos || hasCapitalLetters
 }

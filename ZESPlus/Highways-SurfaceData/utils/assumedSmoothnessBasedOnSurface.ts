@@ -24,7 +24,8 @@ const surfaceToSmoothness = {
 }
 
 export const assumedSmoothnessBasedOnSurface = (surfaceValue: string) => {
-  const assumedSmoothness = surfaceToSmoothness[surfaceValue]
+  const assumedSmoothness =
+    surfaceToSmoothness[surfaceValue.toLocaleLowerCase()]
 
   if (!assumedSmoothness) {
     console.error(
