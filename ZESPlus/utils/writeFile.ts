@@ -16,18 +16,16 @@ export const writeFile = ({
   format,
 }: Props) => {
   const resultPostFix = dataLength ? "" : "--empty"
+  const filePathAndName = `${outputFolder}${fileNamePart}${resultPostFix}.${format}`
 
-  fs.writeFile(
-    `${outputFolder}${fileNamePart}${resultPostFix}.${format}`,
-    dataString,
-    function (error) {
-      if (error) throw error
+  fs.writeFile(filePathAndName, dataString, function (error) {
+    if (error) throw error
 
-      console.log(
-        `${format} ${fileNamePart} mit ${dataLength} ${
-          format == "geojson" ? "Feature" : "Zeilen/Elementen"
-        } geschrieben.`
-      )
-    }
-  )
+    console.log(
+      "writeFile()",
+      `${format} ${fileNamePart} mit ${dataLength} ${
+        format == "geojson" ? "Feature" : "Zeilen/Elementen"
+      } geschrieben.`
+    )
+  })
 }
