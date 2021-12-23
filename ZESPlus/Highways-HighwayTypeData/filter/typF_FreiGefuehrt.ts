@@ -18,7 +18,9 @@ export const typFreiGefuehrt = (feature) => {
     feature.properties.service === "drive-through" &&
     feature.properties.tunnel !== "building_passage"
 
-  const includeRadwege = feature.properties.highway === "cycleway"
+  const includeRadwege =
+    feature.properties.highway === "cycleway" &&
+    parseFloat(feature.properties["FMC:length"]) > 20.0
 
   // Haben Charakter einer Zufahrtsstraße zu Gebäuden; Ähnlich Wohnstraße. Vermutlich als "unclassified" falsch getaggt
   const includeZwischenwege =
