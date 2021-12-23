@@ -11,11 +11,16 @@ export const typHauptUndSammelstrasse = (feature) => {
     feature.properties["cycleway:both"] === "separate"
 
   // Beispiel für forward/backward https://www.openstreetmap.org/way/164719884
-  // TODO OSM: Eine Wohnstraße ohne Gehweg mit maxspeed 50? way/4920400
+  // TBD: This rule is too broad. In some regions, no one bothered to formally classify roads as maxspeed=30
+  //   just because they are not used that much. So formally they are 50. But still residential.
+  // const hoherMaxSpeed =
+  //   parseFloat(feature.properties.maxspeed) >= 50.0 ||
+  //   parseFloat(feature.properties["maxspeed:forward"]) >= 50.0 ||
+  //   parseFloat(feature.properties["maxspeed:backward"]) >= 50.0
   const hoherMaxSpeed =
-    parseFloat(feature.properties.maxspeed) >= 50.0 ||
-    parseFloat(feature.properties["maxspeed:forward"]) >= 50.0 ||
-    parseFloat(feature.properties["maxspeed:backward"]) >= 50.0
+    parseFloat(feature.properties.maxspeed) >= 50.1 ||
+    parseFloat(feature.properties["maxspeed:forward"]) >= 50.1 ||
+    parseFloat(feature.properties["maxspeed:backward"]) >= 50.1
 
   const residentialMitMit50plusIstSammelstrasse =
     hoherMaxSpeed &&
