@@ -11,15 +11,18 @@ export const typWohnstrasse = (feature) => {
     feature.properties.highway
   )
 
+  // Which we have in typFreiGefuehrt()
+  const notDriveThrought = feature.properties.service !== "drive-through"
+
   const serviceWithName =
     feature.properties.highway === "service" &&
     feature.properties.name &&
-    // Which we have in typFreiGefuehrt()
-    feature.properties.service !== "drive-through"
+    notDriveThrought
 
   const serviceWithMaxspeed =
     feature.properties.highway === "service" &&
-    feature.properties.maxspeed === "30"
+    feature.properties.maxspeed === "30" &&
+    notDriveThrought
 
   return byType || serviceWithName || serviceWithMaxspeed
 
