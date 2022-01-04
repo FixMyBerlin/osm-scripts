@@ -4,13 +4,19 @@ import { irrelevanteWege } from "./irrelevanteWege"
 export const typFreiGefuehrt = (feature) => {
   if (irrelevanteWege(feature)) return false
 
-  const includePathTrack = ["path", "track", "bridleway"].includes(
-    feature.properties.highway
-  )
+  const sidepathOrCrossing =
+    feature.properties.is_sidepath ||
+    feature.properties?.footway === "crossing" ||
+    feature.properties?.cycleway === "crossing"
+
+  const includePathTrack =
+    ["path", "track", "bridleway", "footway"].includes(
+      feature.properties.highway
+    ) && !sidepathOrCrossing
 
   // Fußweg mit Fahrrad frei
   const includeGehwegMitRadwegFrei =
-    feature.properties.traffic_sign === "DE:239,1022-10"
+    feature.properties.traffic_sign === "DE:239,1022-10" && !sidepathOrCrossing
 
   const includeDurchfahrtswege =
     feature.properties.highway === "service" &&
@@ -19,16 +25,14 @@ export const typFreiGefuehrt = (feature) => {
 
   const includeRadwege =
     feature.properties.highway === "cycleway" &&
-    parseFloat(feature.properties["FMC:length"]) > 20.0
+    parseFloat(feature.properties["FMC:length"]) > 20.0 &&
+    !sidepathOrCrossing
 
   // Haben Charakter einer Zufahrtsstraße zu Gebäuden; Ähnlich Wohnstraße. Vermutlich als "unclassified" falsch getaggt
   const includeZwischenwege =
-    feature.properties.highway == "pedestrian" ||
-    (feature.properties.highway == "unclassified" &&
-      feature.properties.surface === "unpaved") ||
-    (feature.properties.highway == "footway" &&
-      (feature.properties.is_sidepath !== "yes" ||
-        feature.properties.footway !== "crossing"))
+    feature.properties.highway === "pedestrian" ||
+    (feature.properties.highway === "unclassified" &&
+      feature.properties.surface === "unpaved")
 
   return (
     includePathTrack ||
