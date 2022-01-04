@@ -12,10 +12,9 @@ export const typFreiGefuehrt = (feature) => {
   const includeGehwegMitRadwegFrei =
     feature.properties.traffic_sign === "DE:239,1022-10"
 
-  // TODO, wollen wir das? Bspw. https://www.openstreetmap.org/way/672629306
   const includeDurchfahrtswege =
     feature.properties.highway === "service" &&
-    feature.properties.service === "drive-through" &&
+    ["drive-through", "alley"].includes(feature.properties.service) &&
     feature.properties.tunnel !== "building_passage"
 
   const includeRadwege =
