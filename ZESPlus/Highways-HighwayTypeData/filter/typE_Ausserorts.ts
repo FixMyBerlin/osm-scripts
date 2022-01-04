@@ -12,6 +12,7 @@ export const typAusserorts = (feature) => {
     "trunk",
     "trunk_link",
     "primary",
+    "secondary",
   ].includes(feature.properties.highway)
 
   const byRef = feature.properties.ref?.startsWith("L ")
