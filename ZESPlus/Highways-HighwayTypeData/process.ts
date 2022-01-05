@@ -1,8 +1,10 @@
 import fs from "fs"
 import { irrelevanteWege } from "./filter/irrelevanteWege"
 import {
+  TODO_AddIsSidepath,
   TODO_AreaHighwaysCheckIfSeparatelyMappedWaysExist,
   TODO_BuergersteigTaggingFehlt,
+  TODO_ServiceWithoutAccessAndSubtagging,
 } from "./filter/todos"
 import { typAusserorts } from "./filter/typE_Ausserorts"
 import { typFreiGefuehrt } from "./filter/typF_FreiGefuehrt"
@@ -46,6 +48,12 @@ fs.readFile(
     )
 
     filterAndWrite(TODO_BuergersteigTaggingFehlt, allHighways, outputFolder)
+    filterAndWrite(TODO_AddIsSidepath, allHighways, outputFolder)
+    filterAndWrite(
+      TODO_ServiceWithoutAccessAndSubtagging,
+      allHighways,
+      outputFolder
+    )
     filterAndWrite(
       TODO_AreaHighwaysCheckIfSeparatelyMappedWaysExist,
       allHighways,
