@@ -9,6 +9,8 @@ export const irrelevanteWege = (feature) => {
     (feature.properties.highway === "footway" &&
       feature.properties.is_sidepath === "yes")
 
+  const begleitenderWeg = feature.properties.is_sidepath === "yes"
+
   const stufen = feature.properties.highway === "steps"
 
   const schnellstrasse = ["motorway_link", "motorway"].includes(
@@ -24,6 +26,7 @@ export const irrelevanteWege = (feature) => {
   return (
     filterGenerallyIrrelevantWays(feature) ||
     gehwege ||
+    begleitenderWeg ||
     stufen ||
     schnellstrasse ||
     ignoreSmallServiceSegments ||
