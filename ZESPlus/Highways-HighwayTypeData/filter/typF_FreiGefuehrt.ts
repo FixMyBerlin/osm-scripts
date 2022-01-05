@@ -20,7 +20,7 @@ export const typFreiGefuehrt = (feature) => {
 
   const includeDurchfahrtswege =
     feature.properties.highway === "service" &&
-    ["drive-through", "alley"].includes(feature.properties.service) &&
+    ["drive-through"].includes(feature.properties.service) &&
     feature.properties.tunnel !== "building_passage"
 
   const includeRadwege =
