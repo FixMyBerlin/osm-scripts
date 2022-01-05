@@ -3,7 +3,13 @@
     "lint": "eslint --fix --ext .ts .",
     "prettier": "prettier --write .",
     "type-check": "tsc --noEmit",
-    "type-check:watch": "npm run type-check -- --watch"
+    "type-check:watch": "npm run type-check -- --watch",
+    "build:prepare:download": "npx ts-node ./ZESPlus/Highways-PrepareData/1-download-highways/download.ts",
+    "build:prepare:transpose": "npx ts-node ./ZESPlus/Highways-PrepareData/2-transpose-highways/transpose",
+    "build:run:BicycleWayData": "npx ts-node ./ZESPlus/Highways-BicycleWayData/process.ts",
+    "build:run:SurfaceData": "npx ts-node ./ZESPlus/Highways-SurfaceData/process.ts",
+    "build:run:HighwayTypeData": "npx ts-node ./ZESPlus/Highways-HighwayTypeData/process.ts",
+    "build": "npm run build:prepare:download && npm run build:prepare:transpose && npm run build:run:BicycleWayData && npm run build:run:SurfaceData && npm run build:run:HighwayTypeData"
   },
   "devDependencies": {
     "@types/node": "^16.11.7",
