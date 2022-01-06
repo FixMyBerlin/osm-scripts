@@ -19,10 +19,16 @@ export const typWohnstrasse = (feature) => {
     feature.properties.name &&
     notDriveThrought
 
+  const serviceWithBikeAccess =
+    feature.properties.highway === "service" &&
+    ["designated", "permissive", "permit"].includes(feature.properties.bicycle)
+
   const serviceWithMaxspeed =
     feature.properties.highway === "service" &&
     feature.properties.maxspeed === "30" &&
     notDriveThrought
 
-  return byType || serviceWithName || serviceWithMaxspeed
+  return (
+    byType || serviceWithName || serviceWithBikeAccess || serviceWithMaxspeed
+  )
 }
