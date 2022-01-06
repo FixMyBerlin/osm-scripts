@@ -1,5 +1,6 @@
 import { highMaxSpeed } from "../utils/highMaxSpeed"
 import { irrelevanteWege } from "./irrelevanteWege"
+import { typWohnstrasse } from "./typA_Wohnstrasse"
 
 // TYP F – Frei geführt / Fußgängerweg [Außerorts]
 export const typFreiGefuehrt = (feature) => {
@@ -28,6 +29,14 @@ export const typFreiGefuehrt = (feature) => {
     feature.properties.highway === "service" &&
     feature.properties.access === "yes"
 
+  // We have a few very long service roads that don't fit in any category.
+  // Let's treat the as FreiGefuehrt instead of ignoring them.
+  // But for simplicity, ignore all typWohnstrasse here.
+  const includeVeryLongServiceWays =
+    feature.properties.highway === "service" &&
+    parseFloat(feature.properties["FMC:length"]) > 600.0 &&
+    !typWohnstrasse(feature)
+
   const includeRadwege =
     feature.properties.highway === "cycleway" &&
     parseFloat(feature.properties["FMC:length"]) > 20.0 &&
@@ -46,6 +55,7 @@ export const typFreiGefuehrt = (feature) => {
     includeGehwegMitRadwegFrei ||
     includeDurchfahrtswege ||
     includeServiceWithExplicitAccessYes ||
+    includeVeryLongServiceWays ||
     includeRadwege ||
     includeZwischenwege ||
     includeUnclassified
