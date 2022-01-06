@@ -32,6 +32,7 @@ export const TODO_ServiceWithoutAccessAndSubtagging = (feature) => {
 export const TODO_AddIsSidepath = (feature) => {
   return (
     ["path", "track", "cycleway"].includes(feature.properties.highway) &&
-    !feature.properties.is_sidepath
+    !feature.properties.is_sidepath &&
+    (!feature.properties.access || feature.properties.acces === "yes")
   )
 }
