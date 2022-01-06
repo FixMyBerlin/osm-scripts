@@ -38,9 +38,8 @@ export const typFreiGefuehrt = (feature) => {
 
   // We include a few "unclassified" as Sammelstraßen. The rest is FreiGeführt.
   const includeUnclassified =
-    !highMaxSpeed(feature) &&
-    feature.properties.highway === "unclassified" &&
-    feature.properties.surface !== "asphalt"
+    !(highMaxSpeed(feature) || feature.properties.surface === "asphalt") &&
+    feature.properties.highway === "unclassified"
 
   return (
     includePathTrack ||

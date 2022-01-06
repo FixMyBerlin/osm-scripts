@@ -12,7 +12,7 @@ export const typHauptUndSammelstrasse = (feature) => {
     feature.properties["cycleway:both"] === "separate"
 
   const unclassified50PlusAlsSammelstrasse =
-    highMaxSpeed(feature) && feature.properties.highway === "unclassified"
+    feature.properties.highway === "unclassified" && highMaxSpeed(feature)
 
   const zubringerMitGuterOberflaeche =
     feature.properties.highway === "unclassified" &&
@@ -27,6 +27,7 @@ export const typHauptUndSammelstrasse = (feature) => {
 
   return (
     residentialMitRadwegIstSammelstrasse ||
+    zubringerMitGuterOberflaeche ||
     unclassified50PlusAlsSammelstrasse ||
     residential50PlusAlsSammelstrasse
   )
