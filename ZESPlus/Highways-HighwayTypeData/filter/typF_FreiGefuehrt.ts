@@ -1,3 +1,4 @@
+import { highMaxSpeed } from "../utils/highMaxSpeed"
 import { irrelevanteWege } from "./irrelevanteWege"
 
 // TYP F – Frei geführt / Fußgängerweg [Außerorts]
@@ -23,22 +24,31 @@ export const typFreiGefuehrt = (feature) => {
     ["drive-through"].includes(feature.properties.service) &&
     feature.properties.tunnel !== "building_passage"
 
+  const includeServiceWithExplicitAccessYes =
+    feature.properties.highway === "service" &&
+    feature.properties.access === "yes"
+
   const includeRadwege =
     feature.properties.highway === "cycleway" &&
     parseFloat(feature.properties["FMC:length"]) > 20.0 &&
     !sidepathOrCrossing
 
   // Haben Charakter einer Zufahrtsstraße zu Gebäuden; Ähnlich Wohnstraße. Vermutlich als "unclassified" falsch getaggt
-  const includeZwischenwege =
-    feature.properties.highway === "pedestrian" ||
-    (feature.properties.highway === "unclassified" &&
-      feature.properties.surface === "unpaved")
+  const includeZwischenwege = feature.properties.highway === "pedestrian"
+
+  // We include a few "unclassified" as Sammelstraßen. The rest is FreiGeführt.
+  const includeUnclassified =
+    !highMaxSpeed(feature) &&
+    feature.properties.highway === "unclassified" &&
+    feature.properties.surface !== "asphalt"
 
   return (
     includePathTrack ||
     includeGehwegMitRadwegFrei ||
     includeDurchfahrtswege ||
+    includeServiceWithExplicitAccessYes ||
     includeRadwege ||
-    includeZwischenwege
+    includeZwischenwege ||
+    includeUnclassified
   )
 }
