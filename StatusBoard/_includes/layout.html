@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html class="no-js" lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ title | default:'todo' }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {% include social_sharing.html %}
+
+    <!-- <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icon.png" /> -->
+
+    <link rel="stylesheet" href="./css/tailwind.output.css" />
+
+    <!-- <meta name="theme-color" content="#fafafa" /> -->
+  </head>
+
+  <body>
+    {{ content | safe }}
+    <script src="./js/javascript.js"></script>
+  </body>
+</html>

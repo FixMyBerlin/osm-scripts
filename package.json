@@ -4,21 +4,33 @@
     "prettier": "prettier --write .",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
-    "build:prepare:download": "npx ts-node ./ZESPlus/Highways-PrepareData/1-download-highways/download.ts",
-    "build:prepare:transpose": "npx ts-node ./ZESPlus/Highways-PrepareData/2-transpose-highways/transpose",
-    "build:run:BicycleWayData": "npx ts-node ./ZESPlus/Highways-BicycleWayData/process.ts",
-    "build:run:SurfaceData": "npx ts-node ./ZESPlus/Highways-SurfaceData/process.ts",
-    "build:run:HighwayTypeData": "npx ts-node ./ZESPlus/Highways-HighwayTypeData/process.ts",
-    "build": "npm run build:prepare:download && npm run build:prepare:transpose && npm run build:run:BicycleWayData && npm run build:run:SurfaceData && npm run build:run:HighwayTypeData"
+    "data:build:download": "npx ts-node ./ZESPlus/Highways-PrepareData/1-download-highways/download.ts",
+    "data:build:transpose": "npx ts-node ./ZESPlus/Highways-PrepareData/2-transpose-highways/transpose",
+    "data:build:BicycleWayData": "npx ts-node ./ZESPlus/Highways-BicycleWayData/process.ts",
+    "data:build:SurfaceData": "npx ts-node ./ZESPlus/Highways-SurfaceData/process.ts",
+    "data:build:HighwayTypeData": "npx ts-node ./ZESPlus/Highways-HighwayTypeData/process.ts",
+    "data:build": "npm run data:build:download && npm run data:build:transpose && npm run data:build:BicycleWayData && npm run data:build:SurfaceData && npm run data:build:HighwayTypeData",
+    "11ty:build": "npm run 11ty:build:11ty && npm run 11ty:build:tailwind",
+    "11ty:build:11ty": "cd StatusBoard && npx @11ty/eleventy",
+    "11ty:build:tailwind": "cd StatusBoard && NODE_ENV=production npx tailwindcss -i css/tailwind.input.css -o css/tailwind.output.css",
+    "11ty:start:11ty": "cd StatusBoard && npx @11ty/eleventy --serve",
+    "11ty:start:tailwind": "cd StatusBoard && npx tailwindcss -i css/tailwind.input.css -o css/tailwind.output.css --watch",
+    "11ty:start": "npm-run-all --parallel 11ty:start:*",
+    "build": "npm run data:build && 11ty:build",
+    "start": "npm run 11ty:start"
   },
   "devDependencies": {
+    "@11ty/eleventy": "^0.12.1",
     "@types/node": "^16.11.7",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
     "fs-extra": "^10.0.0",
     "node-fetch": "^3.1.0",
+    "npm-run-all": "^4.1.5",
     "osmtogeojson": "^3.0.0-beta.4",
     "prettier": "2.4.1",
-    "typescript": "^4.5.2"
+    "typescript": "^4.5.2",
+    "@tailwindcss/typography": "^0.5.0",
+    "tailwindcss": "^3.0.11"
   }
 }
