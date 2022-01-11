@@ -6,15 +6,24 @@ export const addLenghtFromOverpassStatsResultToGeoJson = (
   geoJsonData
 ) => {
   const lengthString = rawJsonData.elements.filter((e) => e.type === "stat")[0]
-    .tags.way_id_length
+    ?.tags?.way_id_length
+
+  if (lengthString) {
+    console.log(
+      "addLenghtFromOverpassStatsResultToGeoJson()",
+      "Adding FMC:length to properties"
+    )
+  } else {
+    console.log(
+      "addLenghtFromOverpassStatsResultToGeoJson()",
+      "No lenght data found"
+    )
+    return
+  }
+
   const lengthObject = Object.fromEntries(
     lengthString.split(";").map((line) => line.split(":"))
   )
-
-  if (!lengthString) {
-    console.log("No lenght data found")
-    return
-  }
 
   geoJsonData.features.forEach((feature) => {
     const featureLength =
