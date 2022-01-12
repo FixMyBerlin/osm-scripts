@@ -15,8 +15,7 @@ const downloadAreaOfInterestBorder = (
     )
     .join("\n")}
 );
->;
-out skel qt;
+out body;>;out skel qt;
 `
 
   overpassDownloadJson({
