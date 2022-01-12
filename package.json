@@ -17,7 +17,7 @@
     "11ty:start:11ty": "cd StatusBoard && npx @11ty/eleventy --serve",
     "11ty:start:tailwind": "cd StatusBoard && npx tailwindcss -i css/tailwind.input.css -o css/tailwind.output.css --watch",
     "11ty:start": "npm-run-all --parallel 11ty:start:*",
-    "build": "npm run data:build && 11ty:build",
+    "build": "npm run data:build #&& 11ty:build # <- 11ty is not running, yet",
     "start": "npm run 11ty:start"
   },
   "devDependencies": {
