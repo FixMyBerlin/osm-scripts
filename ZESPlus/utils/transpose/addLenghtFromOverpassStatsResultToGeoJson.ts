@@ -10,12 +10,12 @@ export const addLenghtFromOverpassStatsResultToGeoJson = (
 
   if (lengthString) {
     console.log(
-      "addLenghtFromOverpassStatsResultToGeoJson()",
-      "Adding FMC:length to properties"
+      "addLenghtFromOverpassStatsResultToGeoJson():",
+      `${lengthString.length} length properties found, adding as 'FMC:length'`
     )
   } else {
     console.log(
-      "addLenghtFromOverpassStatsResultToGeoJson()",
+      "addLenghtFromOverpassStatsResultToGeoJson():",
       "No lenght data found"
     )
     return
