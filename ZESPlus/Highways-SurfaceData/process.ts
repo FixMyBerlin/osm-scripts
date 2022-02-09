@@ -30,6 +30,7 @@ fs.readFile(
       return
     }
     cleanupDirectory(outputFolder)
+    console.timeEnd("Highways-SurfaceData/process.ts")
 
     const allHighways: FeatureCollection = JSON.parse(data)
     const collectedHighways: Feature[] = []
@@ -103,5 +104,7 @@ fs.readFile(
       folder: outputFolder,
       fileNamePart: "collectedHighways",
     })
+
+    console.timeEnd("Highways-SurfaceData/process.ts")
   }
 )

@@ -26,6 +26,7 @@ fs.readFile(
       console.error(err)
       return
     }
+    console.time("Highways-HighwayTypeData/process.ts")
 
     const allHighways: FeatureCollection = JSON.parse(data)
     const collectedHighways: Feature[] = []
@@ -87,5 +88,7 @@ fs.readFile(
       folder: outputFolder,
       fileNamePart: "collectedHighways",
     })
+
+    console.timeEnd("Highways-HighwayTypeData/process.ts")
   }
 )
