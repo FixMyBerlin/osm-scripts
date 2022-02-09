@@ -11,25 +11,30 @@ export const filterGenerallyIrrelevantWays = (feature: Feature) => {
     parseFloat(feature.properties["FMC:length"]) <= 10.0
 
   // Auch 'destination' raus, weil nicht teil der Infrastrutkur
+  // NOTE: Moved to Highways-PrepareData/1-download-highways/download.ts
   const privateWays = ["private", "no", "destination"].includes(
     feature.properties.access
   )
 
   // Grundstückszufahrten ignorieren wir, weil nicht Teil des Netzes
+  // NOTE: Moved to Highways-PrepareData/1-download-highways/download.ts
   const zufahrten =
     feature.properties.service === "driveway" ||
     feature.properties.service === "parking_aisle"
 
   // Construction, Planned ingnorieren wir, weil nicht TEil des Netzes
+  // NOTE: Moved to Highways-PrepareData/1-download-highways/download.ts as positive list
   const baustellen = ["construction", "planned", "proposed"].includes(
     feature.properties.highway
   )
 
   // Haltestellen ingorieren wir
+  // NOTE: Moved to Highways-PrepareData/1-download-highways/download.ts as positive list
   const haltestellen = feature.properties.highway === "platform"
 
   // Flächen neben Schnellstraßen ignorieren wir, da sie nicht Teil des Netzes sind
   // https://wiki.openstreetmap.org/wiki/DE:Tag:highway=rest%20area
+  // NOTE: Moved to Highways-PrepareData/1-download-highways/download.ts as positive list
   const highwayRestArea = feature.properties.highway === "rest_area"
 
   // A general list of the top40 highway values for BerlinBrandenburg that we do not want to work with.
@@ -38,6 +43,8 @@ export const filterGenerallyIrrelevantWays = (feature: Feature) => {
   // 2. Return all values for Key `highway`. The URL filters on 'ways', but the list below does not to cover more edge cases.
   //   https://taginfo.geofabrik.de/europe/germany/brandenburg/keys/highway?filter=ways#values
   //   As JSON: https://taginfo.geofabrik.de/europe/germany/brandenburg/api/4/key/values?key=highway&filter=ways&lang=de&sortname=count&sortorder=desc&page=1&rp=40&qtype=value&format=json_pretty
+  //
+  // NOTE: Moved to Highways-PrepareData/1-download-highways/download.ts as positive list
   const top40FilterList = [
     "street_lamp",
     "bus_stop",
