@@ -3,8 +3,9 @@ export const areas = {
   Eichwalde: "Eichwalde",
   Schulzendorf: "Schulzendorf",
   Wildau: "Wildau",
-  KoenigsWusterhausen: "Königs Wusterhausen",
-  Schoenefeld: "Schönefeld",
+  // Disabled for now, since both take about 30 Sec to generate and we don't need them that urgendly.
+  // KoenigsWusterhausen: "Königs Wusterhausen",
+  // Schoenefeld: "Schönefeld",
 }
 
 export const areaKeys = Object.keys(areas).map((areaKey) => areaKey)
