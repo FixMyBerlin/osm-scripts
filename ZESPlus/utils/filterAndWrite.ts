@@ -1,4 +1,4 @@
-import { addCustomProperties } from "./addCustomProperties"
+import { addCategoryProperty } from "./addFilterNameProperty"
 import { collectFilteredHighways } from "./collectFilteredHighways"
 import { Feature, FeatureCollection } from "./types"
 import { writeGeoJson } from "./writeGeoJson"
@@ -14,7 +14,7 @@ export const filterAndWrite = (
   // Filter Data
   const filteredData = allHighways.features.filter(filterMethod)
 
-  addCustomProperties(filteredData, filterMethod.name)
+  addCategoryProperty(filteredData, filterMethod.name)
 
   collectFilteredHighways(filteredData, filterMethod.name)
 

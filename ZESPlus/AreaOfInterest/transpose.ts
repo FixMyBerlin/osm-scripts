@@ -1,4 +1,4 @@
-import { overpassJsonToGeoJson } from "../utils/overpassJsonToGeoJson"
+import { overpassJsonToGeoJson } from "../utils/overpassToGeoJson/overpassJsonToGeoJson"
 import { FeatureCollection } from "../utils/types"
 import { areaKeys } from "./areas.constant"
 

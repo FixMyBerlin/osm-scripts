@@ -1,15 +1,9 @@
-import { Feature } from "./types"
+import { Feature } from "../types"
 
-/**
- * Add custom `FMC:*` helper properties.
- */
-export const addCustomProperties = (
-  features: Feature[],
-  filterMethodName: string
-) => {
+export const addLinkProperties = (features: Feature[]) => {
+  console.time("addCustomLinkProperties()")
+
   features.forEach((feature) => {
-    feature.properties["FMC:category"] = filterMethodName
-
     feature.properties[
       "FMC:linkToOsmWebsite"
     ] = `https://www.openstreetmap.org/${feature.id}`
@@ -22,4 +16,6 @@ export const addCustomProperties = (
       "FMC:linkToMapillary"
     ] = `https://www.mapillary.com/app/?lat=${latLonInMiddle[1]}&lng=${latLonInMiddle[0]}&z=16&focus=map`
   })
+
+  console.timeEnd("addCustomLinkProperties()")
 }

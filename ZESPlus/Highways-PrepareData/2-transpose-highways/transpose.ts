@@ -1,9 +1,7 @@
 import de9im from "de9im"
 import fs from "fs"
-import {
-  AreaCallbackProps,
-  overpassJsonToGeoJson,
-} from "../../utils/overpassJsonToGeoJson"
+import { overpassComposeToGeoJson } from "../../utils/overpassToGeoJson/overpassComposeToGeoJson"
+import { AreaCallbackProps } from "../../utils/overpassToGeoJson/types"
 
 const enhanceDataWitAreaInformation: AreaCallbackProps = (areaKey, geoJson) => {
   console.time(`enhanceData(): Ergänze FMC:Gebiet:${areaKey}=True|False`)
@@ -26,7 +24,7 @@ const enhanceDataWitAreaInformation: AreaCallbackProps = (areaKey, geoJson) => {
   console.timeEnd(`enhanceData(): Ergänze FMC:Gebiet:${areaKey}=True|False`)
 }
 
-overpassJsonToGeoJson({
+overpassComposeToGeoJson({
   readFile:
     "./ZESPlus/Highways-PrepareData/1-download-highways/osmRawHighways.json",
   outputFolder: "./ZESPlus/Highways-PrepareData/2-transpose-highways/",
