@@ -18,6 +18,7 @@
     "11ty:start:tailwind": "cd StatusBoard && npx tailwindcss -i css/tailwind.input.css -o css/tailwind.output.css --watch",
     "11ty:start": "npm-run-all --parallel 11ty:start:*",
     "build": "npm run data:build #&& 11ty:build # <- 11ty is not running, yet",
+    "build:netlify": "SKIP_LEFTOVER_CHECK=true npm run build",
     "start": "npm run 11ty:start"
   },
   "devDependencies": {

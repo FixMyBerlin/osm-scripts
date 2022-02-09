@@ -118,11 +118,13 @@ fs.readFile(
     )
 
     // Needs to be at the end of the list, since it checks all previously categorised highways
-    filterAndWrite(
-      TODO_filterLeftoverHighwaysToBeCheckedManually,
-      allHighways,
-      outputFolder
-    )
+    if (process.env.SKIP_LEFTOVER_CHECK !== "true") {
+      filterAndWrite(
+        TODO_filterLeftoverHighwaysToBeCheckedManually,
+        allHighways,
+        outputFolder
+      )
+    }
 
     // We can use this list to add notes to the list output/TODO_featuresWithMultipleCategories.json
     const manualCheckList = [

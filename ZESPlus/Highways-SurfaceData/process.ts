@@ -67,11 +67,13 @@ fs.readFile(
     filterAndWrite(TODO_fixSmoothnessValues, allHighways, outputFolder)
 
     // Needs to be at the end of the list, since it checks all previously categorised highways
-    filterAndWrite(
-      TODO_filterLeftoverHighwaysToBeCheckedManually,
-      allHighways,
-      outputFolder
-    )
+    if (process.env.SKIP_LEFTOVER_CHECK !== "true") {
+      filterAndWrite(
+        TODO_filterLeftoverHighwaysToBeCheckedManually,
+        allHighways,
+        outputFolder
+      )
+    }
 
     // For this process, the list it not very usefull until we fix `checkIfHighwayIsInMultipleCategories`.
     // We can use this list to add notes to the list output/TODO_featuresWithMultipleCategories.json
