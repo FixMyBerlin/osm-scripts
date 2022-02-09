@@ -1,5 +1,4 @@
 import fs from "fs"
-import { checkIfHighwayIsInMultipleCategories } from "../utils/checkIfHighwayIsInMultipleCategories"
 import { cleanupDirectory } from "../utils/cleanupDirectory"
 import { filterAndWrite } from "../utils/filterAndWrite"
 import { TODO_filterLeftoverHighwaysToBeCheckedManually } from "../utils/filterLeftoverHighwaysToBeCheckedManually"
@@ -72,27 +71,28 @@ fs.readFile(
       outputFolder
     )
 
+    // For this process, the list it not very usefull until we fix `checkIfHighwayIsInMultipleCategories`.
     // We can use this list to add notes to the list output/TODO_featuresWithMultipleCategories.json
-    const manualCheckList = [
-      {
-        "way/4929432": "Has multiple scopes",
-      },
-      {
-        "way/8067760": "Has multiple scopes",
-      },
-      {
-        "way/23707342": "Has multiple scopes",
-      },
-      {
-        "way/123": "Test eines veralteten Eintrags",
-      },
-    ]
+    // const manualCheckList = [
+    //   {
+    //     "way/4929432": "Has multiple scopes",
+    //   },
+    //   {
+    //     "way/8067760": "Has multiple scopes",
+    //   },
+    //   {
+    //     "way/23707342": "Has multiple scopes",
+    //   },
+    //   {
+    //     "way/123": "Test eines veralteten Eintrags",
+    //   },
+    // ]
 
-    checkIfHighwayIsInMultipleCategories(
-      allHighways as FeatureCollection,
-      outputFolder,
-      manualCheckList
-    )
+    // checkIfHighwayIsInMultipleCategories(
+    //   allHighways as FeatureCollection,
+    //   outputFolder,
+    //   manualCheckList
+    // )
 
     writeGeoJson({
       data: collectedHighways,
