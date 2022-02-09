@@ -30,12 +30,11 @@ export const addSmoothnessConfidenceCategorySmoothnessValue = (
   checkSmoothness: string,
   scope: ScopeValues
 ) => {
+  const normalizedSmoothnessValue = normalizedSmoothness(checkSmoothness)
   let sourceString =
-    checkSmoothness === normalizedSmoothness(checkSmoothness)
+    checkSmoothness === normalizedSmoothnessValue
       ? `Based on 'smoothness=${checkSmoothness}'`
-      : `Based on 'smoothness=${checkSmoothness}', which we normalize to '${normalizedSmoothness(
-          checkSmoothness
-        )}'`
+      : `Based on 'smoothness=${checkSmoothness}', which we normalize to '${normalizedSmoothnessValue}'`
 
   addSmoothnessConfidenceCategory(
     featureToAddHelperProps,

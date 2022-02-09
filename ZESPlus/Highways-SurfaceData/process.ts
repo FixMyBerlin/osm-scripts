@@ -14,6 +14,7 @@ import {
 } from "./filter/smoothnessCategories"
 import {
   TODO_fixSmoothnessValues,
+  TODO_fixSurfaceValues,
   TODO_WegeOhneSmoothnessAberMitSurface,
   TODO_WegeOhneSurface,
 } from "./filter/todos"
@@ -62,6 +63,7 @@ fs.readFile(
       allHighways,
       outputFolder
     )
+    filterAndWrite(TODO_fixSurfaceValues, allHighways, outputFolder)
     filterAndWrite(TODO_fixSmoothnessValues, allHighways, outputFolder)
 
     // Needs to be at the end of the list, since it checks all previously categorised highways
