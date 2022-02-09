@@ -1,5 +1,4 @@
 import fs from "fs"
-import { cleanupDirectory } from "../utils/cleanupDirectory"
 import { filterAndWrite } from "../utils/filterAndWrite"
 import { TODO_filterLeftoverHighwaysToBeCheckedManually } from "../utils/filterLeftoverHighwaysToBeCheckedManually"
 import { Feature, FeatureCollection } from "../utils/types"
@@ -29,7 +28,6 @@ fs.readFile(
       console.error(err)
       return
     }
-    cleanupDirectory(outputFolder)
     console.timeEnd("Highways-SurfaceData/process.ts")
 
     const allHighways: FeatureCollection = JSON.parse(data)

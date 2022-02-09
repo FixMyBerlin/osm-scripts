@@ -1,6 +1,5 @@
 import fs from "fs"
 import { checkIfHighwayIsInMultipleCategories } from "../utils/checkIfHighwayIsInMultipleCategories"
-import { cleanupOutputFolder } from "../utils/cleanupOutputFolder"
 import { filterAndWrite } from "../utils/filterAndWrite"
 import { TODO_filterLeftoverHighwaysToBeCheckedManually } from "../utils/filterLeftoverHighwaysToBeCheckedManually"
 import { Feature, FeatureCollection } from "../utils/types"
@@ -35,8 +34,6 @@ fs.readFile(
       console.error(err)
       return
     }
-
-    // cleanupOutputFolder(outputFolder)
     console.time("Highways-BicycleWayData/process.ts")
 
     const allHighways: FeatureCollection = JSON.parse(data)
