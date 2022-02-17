@@ -13,6 +13,14 @@ export const filterAndWrite = (
 
   // Filter Data
   const filteredData = allHighways.features.filter(filterMethod)
+  const length =
+    (filteredData &&
+      filteredData.reduce(
+        (partialSum, feature) =>
+          partialSum + parseFloat(feature.properties["FMC:length"]),
+        0
+      )) ||
+    0
 
   addCategoryProperty(filteredData, filterMethod.name)
 
@@ -27,4 +35,6 @@ export const filterAndWrite = (
     fileNamePart: filterMethod.name,
   })
   console.timeEnd(`filterAndWrite(): ${filterMethod.name}`)
+
+  return length.toFixed(2)
 }
