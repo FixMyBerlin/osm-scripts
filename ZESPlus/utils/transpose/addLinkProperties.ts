@@ -9,9 +9,12 @@ export const addLinkProperties = (features: Feature[]) => {
     ] = `https://www.openstreetmap.org/${feature.id}`
 
     const latLonInMiddle =
-      feature.geometry.coordinates[
-        Math.floor(feature.geometry.coordinates.length - 1 / 2)
-      ]
+      feature.geometry.type === "Point"
+        ? feature.geometry.coordinates
+        : feature.geometry.coordinates[
+            Math.floor(feature.geometry.coordinates.length - 1 / 2)
+          ]
+
     feature.properties[
       "FMC:linkToMapillary"
     ] = `https://www.mapillary.com/app/?lat=${latLonInMiddle[1]}&lng=${latLonInMiddle[0]}&z=16&focus=map`
