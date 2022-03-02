@@ -1,5 +1,6 @@
 import fs from "fs"
 import { areaKeys } from "../../AreaOfInterest/areas.constant"
+import { addFilenameProperty } from "../transpose/addFilenameProperty"
 import { addLinkProperties } from "../transpose/addLinkProperties"
 import { processingDateProperty } from "../transpose/addProcessingDateProperty"
 import { FeatureCollection } from "../types"
@@ -50,6 +51,7 @@ export const overpassComposeToGeoJson = ({
     } as FeatureCollection
 
     // addProcessingDateProperty(geoJsonData.features) // Done via spread operator above
+    addFilenameProperty(geoJsonData.features, fileNamePart)
     addLinkProperties(geoJsonData.features)
     filterCallback && filterCallback(geoJsonData)
     areaCallback &&

@@ -1,6 +1,7 @@
 import fs from "fs"
 import osmtogeojson from "osmtogeojson"
 import { areaKeys } from "../../AreaOfInterest/areas.constant"
+import { addFilenameProperty } from "../transpose/addFilenameProperty"
 import { addLinkProperties } from "../transpose/addLinkProperties"
 import { addProcessingDateProperty } from "../transpose/addProcessingDateProperty"
 import { FeatureCollection } from "../types"
@@ -29,6 +30,7 @@ export const overpassJsonToGeoJson = ({
     const geoJsonData = osmtogeojson(rawJsonData) as FeatureCollection
 
     addProcessingDateProperty(geoJsonData.features)
+    addFilenameProperty(geoJsonData.features, fileNamePart)
     addLinkProperties(geoJsonData.features)
     filterCallback && filterCallback(geoJsonData)
     addPropertiesCallback && addPropertiesCallback(geoJsonData)
