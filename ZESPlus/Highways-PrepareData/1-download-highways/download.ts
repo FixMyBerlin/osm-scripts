@@ -1,3 +1,4 @@
+import { bboxBetrachtungsraum } from "../../AreaOfInterest/areas.constant"
 import { overpassDownloadJson } from "../../utils/overpassDownloadJson"
 
 // Overpass BBox-Edges:
@@ -18,7 +19,7 @@ const overpassQuery = `
   [highway~"^(bridleway|cycleway|footway|living_street|motorway|motorway_link|path|pedestrian|primary|primary_link|residential|secondary|secondary_link|service|steps|tertiary|tertiary_link|track|trunk|trunk_link|unclassified)$"]
   [access!~"^(private|no|destination)$"]
   [service!~"^(driveway|parking_aisle)$"]
-  (52.2587,13.4529,52.4646,13.7730);
+  (${bboxBetrachtungsraum.join(", ")});
 );
 convert result ::=::,::geom= geom(),::id=id(),"__type"=type(),"FMC:length"=length();
 out geom;
