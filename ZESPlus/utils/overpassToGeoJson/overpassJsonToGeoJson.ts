@@ -12,6 +12,7 @@ export const overpassJsonToGeoJson = ({
   outputFolder,
   fileNamePart,
   filterCallback,
+  addPropertiesCallback,
   areaCallback,
 }: OverpassToGeoJson) => {
   fs.readFile(readFile, "utf8", (err, _data) => {
@@ -30,6 +31,7 @@ export const overpassJsonToGeoJson = ({
     addProcessingDateProperty(geoJsonData.features)
     addLinkProperties(geoJsonData.features)
     filterCallback && filterCallback(geoJsonData)
+    addPropertiesCallback && addPropertiesCallback(geoJsonData)
     areaCallback &&
       areaKeys.forEach((areaKey) => areaCallback(areaKey, geoJsonData))
 

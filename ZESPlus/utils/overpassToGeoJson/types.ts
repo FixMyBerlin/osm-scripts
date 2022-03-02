@@ -10,5 +10,6 @@ export type OverpassToGeoJson = {
   outputFolder: string
   fileNamePart: string
   filterCallback?: (geoJson: FeatureCollection) => void
+  addPropertiesCallback?: (geoJson: FeatureCollection) => void
   areaCallback?: AreaCallbackProps
 }
