@@ -1,4 +1,6 @@
 import fs from "fs"
+import { WriteUrlToAllFilesFile } from "../../AllFiles/WriteFileToAllFiles"
+import { netlifyFileUrl } from "./netfilfyFileUrl"
 
 type Props = {
   dataString: string
@@ -26,5 +28,7 @@ export const writeFile = ({
         format == "geojson" ? "Feature" : "Zeilen/Elementen"
       } geschrieben.`
     )
+
+    WriteUrlToAllFilesFile(netlifyFileUrl(filePathAndName))
   })
 }

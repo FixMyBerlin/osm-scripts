@@ -8,6 +8,10 @@ Details can be found in the README files in each folder.
 
 - [ ] Add link to general process documentation
 
+## List of files
+
+All generated files are listed at https://osm-scripts.netlify.app/AllFiles/AllFiles.json
+
 ## Custom properties
 
 **General custom properties:**
