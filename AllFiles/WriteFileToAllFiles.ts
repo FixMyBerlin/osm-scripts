@@ -6,7 +6,7 @@ export const WriteUrlToAllFilesFile = (url?: string) => {
   if (!url)
     console.error("👉 WriteUrlToAllFilesFile(): Did not receive an URL.")
 
-  const string = `\n  "${url}",`
+  const string = `\n    "${url}",`
 
   fs.appendFile(allFilesFile, string, (err) => {
     if (err) throw err
