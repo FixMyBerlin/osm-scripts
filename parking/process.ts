@@ -19,7 +19,7 @@ fs.readFile(
       console.error(err)
       return
     }
-    console.timeEnd("Highways-SurfaceData/process.ts")
+    console.time("parking/process.ts")
 
     const allHighways: FeatureCollection = JSON.parse(data)
 
@@ -65,6 +65,6 @@ fs.readFile(
       format: "json",
     })
 
-    console.timeEnd("Highways-SurfaceData/process.ts")
+    console.timeEnd("parking/process.ts")
   }
 )
