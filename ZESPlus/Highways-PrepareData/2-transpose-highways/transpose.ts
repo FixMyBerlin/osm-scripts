@@ -27,7 +27,7 @@ const enhanceDataWitAreaInformation: AreaCallbackProps = (areaKey, geoJson) => {
 overpassComposeToGeoJson({
   readFile:
     "./ZESPlus/Highways-PrepareData/1-download-highways/osmRawHighways.json",
-  outputFolder: "./ZESPlus/Highways-PrepareData/2-transpose-highways/",
+  outputFolder: __dirname,
   fileNamePart: "osmHighwaysUnclipped",
   areaCallback: enhanceDataWitAreaInformation,
 })
