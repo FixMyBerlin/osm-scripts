@@ -1,4 +1,4 @@
-import { assumedSmoothnessBasedOnSurface } from "./assumedSmoothnessBasedOnSurface"
+import { extrapolatedSmoothnessBasedOnSurface } from "./extrapolatedSmoothnessBasedOnSurface"
 
 export const highwayToAssumedSurface = {
   bridleway: "pebblestone",
@@ -11,7 +11,7 @@ export const highwayToAssumedSurface = {
   pedestrian: "paving_stones",
   primary_link: "asphalt",
   primary: "asphalt",
-  residential: "sett", // This is very ZES+ specific, in other reagions it is likely 'asphalt'
+  residential: "sett", // This is very ZES+ specific, in other regions it is likely 'asphalt'
   rest_area: "asphalt",
   secondary: "asphalt",
   service: "paving_stones",
@@ -21,16 +21,17 @@ export const highwayToAssumedSurface = {
   trunk_link: "asphalt",
   trunk: "asphalt",
   unclassified: "asphalt",
+  steps: "asphalt",
 }
 
-export const assumedSmoothnessBasedOnHighway = (highwayValue: string) => {
+export const extrapolatedSmoothnessBasedOnHighway = (highwayValue: string) => {
   const assumedSurface = highwayToAssumedSurface[highwayValue]
 
   if (!assumedSurface) {
     console.error(
-      `Error: Cannot find assumed surface for highway=${highwayValue}`
+      `Error: Cannot extrapolate surface for highway=${highwayValue}`
     )
   }
 
-  return assumedSmoothnessBasedOnSurface(assumedSurface)
+  return extrapolatedSmoothnessBasedOnSurface(assumedSurface)
 }

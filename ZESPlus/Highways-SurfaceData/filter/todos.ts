@@ -1,5 +1,5 @@
 import { Feature } from "../../utils/types"
-import { surfaceToSmoothnessNonStandardValues } from "../utils/assumedSmoothnessBasedOnSurface"
+import { surfaceToSmoothnessNonStandardValues } from "../utils/extrapolatedSmoothnessBasedOnSurface"
 import { smoothnessNormalizationTypos } from "../utils/normalizedSmoothness"
 import { irrelevanteWege } from "./irrelevanteWege"
 

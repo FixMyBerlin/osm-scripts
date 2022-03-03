@@ -18,6 +18,7 @@ const surfaceToSmoothness = {
   metal: "good",
   paved: "intermediate",
   paving_stones: "intermediate",
+  "paving_stones:30": "intermediate",
   pebblestone: "very_bad",
   sand: "very_bad",
   mud: "very_bad",
@@ -33,7 +34,7 @@ export const surfaceToSmoothnessNonStandardValues = {
   grund: "bad",
 }
 
-export const assumedSmoothnessBasedOnSurface = (surfaceValue: string) => {
+export const extrapolatedSmoothnessBasedOnSurface = (surfaceValue: string) => {
   const assumedSmoothness = {
     ...surfaceToSmoothness,
     ...surfaceToSmoothnessNonStandardValues,
@@ -41,7 +42,7 @@ export const assumedSmoothnessBasedOnSurface = (surfaceValue: string) => {
 
   if (!assumedSmoothness) {
     console.error(
-      `Error: Cannot find assumed smoothness for surface=${surfaceValue}`
+      `Error: Cannot extrapolate smoothness for surface=${surfaceValue}`
     )
   }
 

@@ -13,7 +13,7 @@
     "data:build:zes:download": "npx ts-node ./ZESPlus/Highways-PrepareData/1-download-highways/download.ts",
     "data:build:zes:transpose": "npx ts-node ./ZESPlus/Highways-PrepareData/2-transpose-highways/transpose",
     "data:build:zes:BicycleWayData": "npx ts-node ./ZESPlus/Highways-BicycleWayData/process.ts",
-    "data:build:zes:SurfaceData": "npx ts-node ./ZESPlus/Highways-SurfaceData/process.ts",
+    "data:build:zes:SurfaceData": "npx ts-node ./ZESPlus/Highways-SurfaceData/process.ts && npx ts-node ./ZESPlus/Highways-SurfaceData/split.ts",
     "data:build:zes:HighwayTypeData": "npx ts-node ./ZESPlus/Highways-HighwayTypeData/process.ts",
     "data:build:zes:MaxspeedData": "npx ts-node ./ZESPlus/Highways-MaxspeedData/process.ts",
     "data:build:zes": "npm run data:build:zes:downloadArea && npm run data:build:zes:POI && npm run data:build:zes:download && npm run data:build:zes:transpose && npm run data:build:zes:BicycleWayData && npm run data:build:zes:SurfaceData && npm run data:build:zes:HighwayTypeData && npm run data:build:zes:MaxspeedData",

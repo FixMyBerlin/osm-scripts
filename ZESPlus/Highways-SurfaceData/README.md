@@ -1,7 +1,34 @@
-# Generate files
+# About
+
+A street network with surface quality data for all bicycle relevant lanes.
+
+If no `smoothness` is tagged, the script extrapolates a value based on `surface` values ([mapping table](./utils/extrapolatedSmoothnessBasedOnSurface.ts)) or `highway` values ([mapping table](./utils/extrapolatedSmoothnessBasedOnHighway.ts)). Since this lowers the confidence of the data, there are custom properties describing the confidence.
+
+If bicycle infrastracture was mapped as part of the main way, the script will add multiple custom properties with scopes. This way the surface quality of the car centered infrastructure can be evaluated separate from bicycles centered infrastructure even if mapped on one OSM way.
+
+For legacy reasons and to visualize the data easily on a uMap the resulting `smoothness.geojson` is split into additional files that hold only ways with a given smoothness (in any of the scopes).
+
+## Custom properties
+
+- `"FMC:Smoothness:Scope<ScopeName>": "very_bad"`
+- `"FMC:Smoothness:Scope<ScopeName>:Confidence": "High"` – A string desribing the confidence of the given "FMC:Smoothness:…"
+
+  - "High" = `smoothness` mapped explicitly
+  - "Medium" = `smoothness` extrapolated based on `surface`
+  - "Low" = `smoothness` extrapolated based on `highway` values
+
+- `"FMC:Smoothness:Scope<ScopeName>:Source": "Based on 'smoothness=excellent'"` – An explanation about how the smoothmess value came to be.
+- `"FMC:appliedScopes": ["MainWay", "CyclewayOnMainWay"]` – An array of all scopes to easily evaluate the (number of) applied scopes. Possible scopes are…
+
+  - "MainWay"
+  - "SidewalkOnMainWay"
+  - "CyclewayOnMainWay"
+
+## Download and transpose
 
 ```
 npx ts-node ./ZESPlus/Highways-SurfaceData/process.ts
+npx ts-node ./ZESPlus/Highways-SurfaceData/split.ts
 ```
 
 ## References for the used smoothness categories
