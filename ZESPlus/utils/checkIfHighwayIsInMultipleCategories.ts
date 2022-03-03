@@ -33,6 +33,8 @@ export const checkIfHighwayIsInMultipleCategories = (
   outputFolder: string,
   manualCheckList?: object[]
 ) => {
+  if (process.env.SKIP_MULTIPLE_CATEGORY_CHECK === "true") return
+
   // Filter: Include only features with multiple categories
   const featureIdsWithMultipleCategories = Object.keys(
     filteredHighwayFeatureIdsWithCategories
