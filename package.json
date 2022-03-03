@@ -32,7 +32,7 @@
     "11ty:start:tailwind": "cd StatusBoard && npx tailwindcss -i css/tailwind.input.css -o css/tailwind.output.css --watch",
     "11ty:start": "npm-run-all --parallel 11ty:start:*",
     "build": "npm run data:allFiles:clear && npm run data:build:zes && npm run data:build:parking && npm run data:allFiles:close #&& 11ty:build # <- 11ty is not running, yet",
-    "build:netlify": "SKIP_LEFTOVER_CHECK=true SKIP_MULTIPLE_CATEGORY_CHECK=true npm run build",
+    "build:netlify": "SKIP_LEFTOVER_CHECK=true SKIP_MULTIPLE_CATEGORY_CHECK=true WRITE_ALL_FILES_FILE=true npm run build",
     "start": "npm run 11ty:start"
   },
   "devDependencies": {
