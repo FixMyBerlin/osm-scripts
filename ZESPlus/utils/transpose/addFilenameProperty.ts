@@ -7,7 +7,7 @@ export const addFilenameProperty = (
   console.time("addFilenameProperty()")
 
   features.forEach((feature) => {
-    feature.properties["FMC:Filename"] = fileNamePart
+    feature.properties["FMC:DataCategory"] = fileNamePart
   })
 
   console.timeEnd("addFilenameProperty()")
