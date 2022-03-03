@@ -9,7 +9,7 @@ export const filterAndWrite = (
   outputFolder: string,
   collectedHighways?: Feature[]
 ) => {
-  console.time(`filterAndWrite(): ${filterMethod.name}`)
+  console.time(`⏱ filterAndWrite(): ${filterMethod.name}`)
 
   // Filter Data
   const filteredData = allHighways.features.filter(filterMethod)
@@ -34,7 +34,7 @@ export const filterAndWrite = (
     folder: outputFolder,
     fileNamePart: filterMethod.name,
   })
-  console.timeEnd(`filterAndWrite(): ${filterMethod.name}`)
+  console.timeEnd(`⏱ filterAndWrite(): ${filterMethod.name}`)
 
   return length.toFixed(2)
 }

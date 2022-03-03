@@ -10,11 +10,11 @@ export const processingDateProperty = {
 }
 
 export const addProcessingDateProperty = (features: Feature[]) => {
-  console.time("addProcessingDateProperty()")
+  console.time("⏱ addProcessingDateProperty()")
 
   features.forEach((feature) => {
     feature.properties = { ...feature.properties, ...processingDateProperty }
   })
 
-  console.timeEnd("addProcessingDateProperty()")
+  console.timeEnd("⏱ addProcessingDateProperty()")
 }

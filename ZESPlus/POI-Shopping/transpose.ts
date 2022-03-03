@@ -22,7 +22,7 @@ const addCategoryProperty = (geoJson) => {
     // Everything else is undefined, yet
     feature.properties["FMC:ShopCategory"] = "No category specified"
     console.error(
-      "addCategoryProperty()",
+      "👉 addCategoryProperty():",
       "Missing category for",
       feature.properties?.amenity
     )

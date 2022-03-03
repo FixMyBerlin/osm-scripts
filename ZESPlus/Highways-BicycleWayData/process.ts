@@ -29,10 +29,10 @@ const outputFolder = `${__dirname}/output`
 
 fs.readFile(osmHighwaysUnclipped, "utf8", (err, data) => {
   if (err) {
-    console.error(err)
+    console.error("🧨", err)
     return
   }
-  console.time("Highways-BicycleWayData/process.ts")
+  console.time("⏱ Highways-BicycleWayData/process.ts")
 
   const allHighways: FeatureCollection = JSON.parse(data)
   const collectedHighways: Feature[] = []
@@ -136,5 +136,5 @@ fs.readFile(osmHighwaysUnclipped, "utf8", (err, data) => {
     fileNamePart: "collectedHighways",
   })
 
-  console.timeEnd("Highways-BicycleWayData/process.ts")
+  console.timeEnd("⏱ Highways-BicycleWayData/process.ts")
 })

@@ -18,7 +18,7 @@ export const overpassJsonToGeoJson = ({
 }: OverpassToGeoJson) => {
   fs.readFile(readFile, "utf8", (err, _data) => {
     if (err) {
-      console.error(err)
+      console.error("🧨", err)
       return
     }
     console.log(

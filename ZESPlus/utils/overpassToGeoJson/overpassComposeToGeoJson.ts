@@ -16,14 +16,14 @@ export const overpassComposeToGeoJson = ({
 }: OverpassToGeoJson) => {
   fs.readFile(readFile, "utf8", (err, _data) => {
     if (err) {
-      console.error(err)
+      console.error("🧨", err)
       return
     }
     console.log(
       "overpassComposeToGeoJson()",
       "Parse, Transform, Enhance and Write file"
     )
-    console.time(`overpassComposeToGeoJson(): Transform, enhance, write`)
+    console.time(`⏱ overpassComposeToGeoJson(): Transform, enhance, write`)
 
     const rawJsonData = JSON.parse(_data)
     const geoJsonData = {
@@ -65,6 +65,6 @@ export const overpassComposeToGeoJson = ({
       format: "geojson",
     })
 
-    console.timeEnd(`overpassComposeToGeoJson(): Transform, enhance, write`)
+    console.timeEnd(`⏱ overpassComposeToGeoJson(): Transform, enhance, write`)
   })
 }

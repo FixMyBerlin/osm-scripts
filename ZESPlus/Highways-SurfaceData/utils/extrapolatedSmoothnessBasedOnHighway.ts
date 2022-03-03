@@ -29,7 +29,7 @@ export const extrapolatedSmoothnessBasedOnHighway = (highwayValue: string) => {
 
   if (!assumedSurface) {
     console.error(
-      `Error: Cannot extrapolate surface for highway=${highwayValue}`
+      `🧨 Error: Cannot extrapolate surface for highway=${highwayValue}`
     )
   }
 

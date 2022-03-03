@@ -24,7 +24,7 @@ export const normalizedSmoothness = (smoothnessValue: string) => {
 
   if (!normalizedSmoothness) {
     console.error(
-      `Error: Cannot find normalized smoothness for smoothness=${smoothnessValue}`
+      `🧨 Error: Cannot find normalized smoothness for smoothness=${smoothnessValue}`
     )
     console.log("normalizedSmoothness", smoothnessValue, normalizedSmoothness)
   }

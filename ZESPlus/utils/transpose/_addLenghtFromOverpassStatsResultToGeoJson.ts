@@ -21,7 +21,7 @@ export const addLenghtFromOverpassStatsResultToGeoJson = (
     return
   }
 
-  console.time("addLenghtFromOverpassStatsResultToGeoJson()")
+  console.time("⏱ addLenghtFromOverpassStatsResultToGeoJson()")
 
   const lengthObject = Object.fromEntries(
     lengthString.split(";").map((line) => line.split(":"))
@@ -34,11 +34,11 @@ export const addLenghtFromOverpassStatsResultToGeoJson = (
       ]
 
     if (!featureLength)
-      console.error("Could not find lenght for", feature.properties.id)
+      console.error("🧨 Could not find lenght for", feature.properties.id)
 
     // Add length to GeoJSON as string (since all keys and values are of type string)
     feature.properties["FMC:length"] = `${parseFloat(featureLength)}`
   })
 
-  console.timeEnd("addLenghtFromOverpassStatsResultToGeoJson()")
+  console.timeEnd("⏱ addLenghtFromOverpassStatsResultToGeoJson()")
 }

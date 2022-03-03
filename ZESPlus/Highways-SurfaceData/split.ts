@@ -47,10 +47,10 @@ const smoothnessVeryBad = (feature: Feature) =>
 
 fs.readFile(`${outputFolder}/smoothness.geojson`, "utf8", (err, data) => {
   if (err) {
-    console.error(err)
+    console.error("🧨", err)
     return
   }
-  console.time("Highways-SurfaceData/split.ts")
+  console.time("⏱ Highways-SurfaceData/split.ts")
 
   const allHighways: FeatureCollection = JSON.parse(data)
 
@@ -60,5 +60,5 @@ fs.readFile(`${outputFolder}/smoothness.geojson`, "utf8", (err, data) => {
   filterAndWrite(smoothnessBad, allHighways, outputFolder)
   filterAndWrite(smoothnessVeryBad, allHighways, outputFolder)
 
-  console.timeEnd("Highways-SurfaceData/split.ts")
+  console.timeEnd("⏱ Highways-SurfaceData/split.ts")
 })

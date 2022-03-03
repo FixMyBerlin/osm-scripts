@@ -42,7 +42,7 @@ export const extrapolatedSmoothnessBasedOnSurface = (surfaceValue: string) => {
 
   if (!assumedSmoothness) {
     console.error(
-      `Error: Cannot extrapolate smoothness for surface=${surfaceValue}`
+      `🧨 Error: Cannot extrapolate smoothness for surface=${surfaceValue}`
     )
   }
 

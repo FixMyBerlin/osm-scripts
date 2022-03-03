@@ -16,10 +16,10 @@ fs.readFile(
   "utf8",
   (err, data) => {
     if (err) {
-      console.error(err)
+      console.error("🧨", err)
       return
     }
-    console.time("parking/process.ts")
+    console.time("⏱ parking/process.ts")
 
     const allHighways: FeatureCollection = JSON.parse(data)
 
@@ -65,6 +65,6 @@ fs.readFile(
       format: "json",
     })
 
-    console.timeEnd("parking/process.ts")
+    console.timeEnd("⏱ parking/process.ts")
   }
 )

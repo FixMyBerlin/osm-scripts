@@ -12,7 +12,7 @@ export const overpassDownloadJson = ({
   outputFolder,
   fileName,
 }: Props) => {
-  console.log("downloadData()", "Overpass Query:", overpassQuery)
+  console.log("📥 downloadData():", "Overpass Query:", overpassQuery)
 
   const file = fs.createWriteStream(`${outputFolder}/${fileName}.json`)
 
@@ -24,7 +24,7 @@ export const overpassDownloadJson = ({
   https
     .get(overpassUrl, (response) => {
       console.log(
-        `downloadData() for ${fileName}`,
+        `📥 downloadData() for ${fileName}.`,
         "Response StatusCode:",
         response.statusCode
       )
@@ -33,7 +33,7 @@ export const overpassDownloadJson = ({
     })
     .on("error", (error) => {
       console.error(
-        `downloadData() for ${fileName}`,
+        `🧨 downloadData() for ${fileName}.`,
         "Response Status Code:",
         error
       )

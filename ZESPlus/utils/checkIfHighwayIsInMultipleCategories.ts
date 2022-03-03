@@ -88,5 +88,5 @@ export const checkIfHighwayIsInMultipleCategories = (
     fileNamePart: "TODO_featuresWithMultipleCategories",
     format: "json",
   })
-  console.error("featuresWithMultipleCategories", featuresToCheck)
+  console.error("👉 featuresWithMultipleCategories", featuresToCheck)
 }

@@ -23,7 +23,7 @@ export const writeFile = ({
     if (error) throw error
 
     console.log(
-      "writeFile()",
+      "📄 writeFile():",
       `${format} ${fileNamePart} mit ${dataLength} ${
         format == "geojson" ? "Feature" : "Zeilen/Elementen"
       } geschrieben.`
