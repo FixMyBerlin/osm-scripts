@@ -1,8 +1,16 @@
-# Download and transpose
+# About
+
+A list of shopping relevant POIs, transformed to point data by Overpass.
+
+## Custom categories
+
+- None
+
+## Download and transpose
 
 ```
-npx ts-node ./ZESPlus/BusyAreas-Landuse/download.ts
-npx ts-node ./ZESPlus/BusyAreas-Landuse/transpose.ts
+npx ts-node ./ZESPlus/POI-Landuse/download.ts
+npx ts-node ./ZESPlus/POI-Landuse/transpose.ts
 ```
 
 ## Evaluation of `landuse`-values

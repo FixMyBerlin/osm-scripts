@@ -1,5 +1,6 @@
 import { bboxBetrachtungsraum } from "../AreaOfInterest/areas.constant"
 import { overpassDownloadJson } from "../utils/overpassDownloadJson"
+import { fileName, rawOutputFolder } from "./filesFolders.const"
 
 const overpassQuery = `
 [out:json][timeout:25];
@@ -16,6 +17,6 @@ out center;
 
 overpassDownloadJson({
   query: overpassQuery,
-  outputFolder: "./ZESPlus/BusyAreas-SchoolData/output/raw",
-  fileName: "schools",
+  outputFolder: rawOutputFolder,
+  fileName: fileName,
 })

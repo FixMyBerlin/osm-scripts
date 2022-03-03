@@ -1,4 +1,14 @@
-# Download and transpose
+# About
+
+Line and area data that represents barrier for cycling infrastructure.
+
+[`download.ts` shows which data is included](./download.ts).
+
+## Custom categories
+
+- None
+
+## Download and transpose
 
 ```
 npx ts-node ./ZESPlus/POI-Barriers/download.ts

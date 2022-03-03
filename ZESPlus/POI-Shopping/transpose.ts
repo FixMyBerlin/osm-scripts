@@ -1,4 +1,5 @@
 import { overpassJsonToGeoJson } from "../utils/overpassToGeoJson/overpassJsonToGeoJson"
+import { fileName, outputFolder, rawFile } from "./filesFolders.const"
 import { categories } from "./utils/shopCategories.const"
 
 const addCategoryProperty = (geoJson) => {
@@ -30,8 +31,8 @@ const addCategoryProperty = (geoJson) => {
 }
 
 overpassJsonToGeoJson({
-  readFile: "./ZESPlus/BusyAreas-ShopData/output/raw/shops.json",
-  outputFolder: "./ZESPlus/BusyAreas-ShopData/output/",
-  fileNamePart: "shops",
+  readFile: rawFile,
+  outputFolder: outputFolder,
+  fileNamePart: fileName,
   addPropertiesCallback: addCategoryProperty,
 })
