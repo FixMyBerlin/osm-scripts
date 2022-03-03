@@ -1,4 +1,5 @@
 import { overpassDownloadJson } from "../ZESPlus/utils/overpassDownloadJson"
+import { outputFolder } from "./files.const"
 
 // Script from https://github.com/SupaplexOSM/strassenraumkarte-neukoelln/tree/main/scripts/parking_lanes#how-to-use
 // Area Xhain
@@ -60,6 +61,6 @@ out geom;
 
 overpassDownloadJson({
   query: overpassQuery,
-  outputFolder: __dirname,
+  outputFolder: outputFolder,
   fileName: "osmRawHighways",
 })

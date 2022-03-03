@@ -1,7 +1,8 @@
 import { overpassComposeToGeoJson } from "../ZESPlus/utils/overpassToGeoJson/overpassComposeToGeoJson"
+import { osmRawHighways, outputFolder } from "./files.const"
 
 overpassComposeToGeoJson({
-  readFile: "./parking/output/osmRawHighways.json",
-  outputFolder: __dirname,
+  readFile: osmRawHighways,
+  outputFolder: outputFolder,
   fileNamePart: "osmHighwaysUnclipped",
 })
