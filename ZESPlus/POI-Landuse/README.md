@@ -2,7 +2,7 @@
 
 A list of shopping relevant POIs, transformed to point data by Overpass.
 
-## Custom categories
+## Custom properties
 
 - None
 

@@ -4,7 +4,7 @@ Line and area data that represents barrier for cycling infrastructure.
 
 [`download.ts` shows which data is included](./download.ts).
 
-## Custom categories
+## Custom properties
 
 - None
 
