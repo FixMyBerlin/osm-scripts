@@ -5,7 +5,7 @@ import { FeatureCollection } from "../ZESPlus/utils/types"
 import { writeFile } from "../ZESPlus/utils/writeFile"
 import { parkingLanePosition, parkingLaneTagging } from "./filter"
 
-const outputFolder = "./parking/output/"
+const outputFolder = __dirname
 
 // Different thinks are happen here.
 // It creates (filter+write) the specified files.

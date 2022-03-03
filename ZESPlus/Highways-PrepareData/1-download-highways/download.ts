@@ -27,6 +27,6 @@ out geom;
 
 overpassDownloadJson({
   query: overpassQuery,
-  outputFolder: "./ZESPlus/Highways-PrepareData/1-download-highways/",
+  outputFolder: __dirname,
   fileName: "osmRawHighways",
 })

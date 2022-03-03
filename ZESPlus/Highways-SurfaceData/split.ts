@@ -13,7 +13,7 @@ import {
 } from "./filter/todos"
 import { addSmoothnessPropsAllScopes } from "./utils/addSmoothnessPropsAllScopes"
 
-const outputFolder = `${__dirname}/output/`
+const outputFolder = `${__dirname}/output`
 
 // This file takes the generated smoothness file and splits it into separate files per smoothness.
 

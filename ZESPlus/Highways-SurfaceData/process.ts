@@ -13,7 +13,7 @@ import {
 } from "./filter/todos"
 import { addSmoothnessPropsAllScopes } from "./utils/addSmoothnessPropsAllScopes"
 
-const outputFolder = `${__dirname}/output/`
+const outputFolder = `${__dirname}/output`
 
 fs.readFile(osmHighwaysUnclipped, "utf8", (err, data) => {
   if (err) {

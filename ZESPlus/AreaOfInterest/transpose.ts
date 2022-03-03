@@ -2,8 +2,8 @@ import { overpassJsonToGeoJson } from "../utils/overpassToGeoJson/overpassJsonTo
 import { FeatureCollection } from "../utils/types"
 import { areaKeys } from "./areas.constant"
 
-const inputPath = "./ZESPlus/AreaOfInterest/output/raw/"
-const outputFolder = "./ZESPlus/AreaOfInterest/output/"
+const inputPath = `${__dirname}/output/raw`
+const outputFolder = `${__dirname}/output`
 
 const filterPointsFromGeoJson = (geoJson: FeatureCollection): void => {
   // https://stackoverflow.com/a/41271541/729221

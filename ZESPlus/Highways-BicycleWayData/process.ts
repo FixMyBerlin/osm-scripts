@@ -25,7 +25,7 @@ import {
 } from "./filter/todos"
 import { verkehrsberuhigterBereichMitFahrradFrei } from "./filter/verkehrsberuhigterBereichMitFahrradFrei"
 
-const outputFolder = "./ZESPlus/Highways-BicycleWayData/output/"
+const outputFolder = `${__dirname}/output`
 
 fs.readFile(osmHighwaysUnclipped, "utf8", (err, data) => {
   if (err) {

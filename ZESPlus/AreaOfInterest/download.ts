@@ -20,7 +20,7 @@ out body;>;out skel qt;
 
   overpassDownloadJson({
     query: overpassQuery,
-    outputFolder: "./ZESPlus/AreaOfInterest/output/raw",
+    outputFolder: `${__dirname}/output/raw`,
     fileName: fileName,
   })
 }

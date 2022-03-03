@@ -17,7 +17,7 @@ export const writeFile = ({
   fileNamePart,
   format,
 }: Props) => {
-  const filePathAndName = `${outputFolder}${fileNamePart}.${format}`
+  const filePathAndName = `${outputFolder}/${fileNamePart}.${format}`
 
   fs.writeFile(filePathAndName, dataString, function (error) {
     if (error) throw error

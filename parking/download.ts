@@ -60,6 +60,6 @@ out geom;
 
 overpassDownloadJson({
   query: overpassQuery,
-  outputFolder: "./parking/output",
+  outputFolder: __dirname,
   fileName: "osmRawHighways",
 })

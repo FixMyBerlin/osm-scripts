@@ -8,7 +8,7 @@ import { filterMaxspeed } from "./filter/filterMaxspeed"
 import { addMaxspeedProperty } from "./utils/addMaxspeedProperty"
 import { addMaxspeedSourceProperty } from "./utils/addMaxspeedSourceProperty"
 
-const outputFolder = "./ZESPlus/Highways-MaxspeedData/output/"
+const outputFolder = `${__dirname}/output`
 
 fs.readFile(osmHighwaysUnclipped, "utf8", (err, data) => {
   if (err) {

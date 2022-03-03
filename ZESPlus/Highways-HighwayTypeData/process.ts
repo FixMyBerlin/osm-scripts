@@ -17,7 +17,7 @@ import { Feature, FeatureCollection } from "../utils/types"
 import { writeGeoJson } from "../utils/writeGeoJson"
 import { osmHighwaysUnclipped } from "../Highways-PrepareData/2-transpose-highways/files.const"
 
-const outputFolder = "./ZESPlus/Highways-HighwayTypeData/output/"
+const outputFolder = `${__dirname}/output`
 
 fs.readFile(osmHighwaysUnclipped, "utf8", (err, data) => {
   if (err) {
