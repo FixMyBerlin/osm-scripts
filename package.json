@@ -8,6 +8,7 @@
     "data:build:zes:BusyAareaSchool": "npx ts-node ./ZESPlus/BusyAreas-SchoolData/download.ts && npx ts-node ./ZESPlus/BusyAreas-SchoolData/transpose.ts",
     "data:build:zes:BusyAareaShop": "npx ts-node ./ZESPlus/BusyAreas-ShopData/download.ts && npx ts-node ./ZESPlus/BusyAreas-ShopData/transpose.ts",
     "data:build:zes:BusyAareaLanduse": "npx ts-node ./ZESPlus/BusyAreas-Landuse/download.ts && npx ts-node ./ZESPlus/BusyAreas-Landuse/transpose.ts",
+    "data:build:zes:POI:Barriers": "npx ts-node ./ZESPlus/POI-Barriers/download.ts && npx ts-node ./ZESPlus/POI-Barriers/transpose.ts",
     "data:build:zes:download": "npx ts-node ./ZESPlus/Highways-PrepareData/1-download-highways/download.ts",
     "data:build:zes:transpose": "npx ts-node ./ZESPlus/Highways-PrepareData/2-transpose-highways/transpose",
     "data:build:zes:BicycleWayData": "npx ts-node ./ZESPlus/Highways-BicycleWayData/process.ts",
