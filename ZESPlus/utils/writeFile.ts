@@ -15,8 +15,7 @@ export const writeFile = ({
   fileNamePart,
   format,
 }: Props) => {
-  const resultPostFix = dataLength ? "" : "--empty"
-  const filePathAndName = `${outputFolder}${fileNamePart}${resultPostFix}.${format}`
+  const filePathAndName = `${outputFolder}${fileNamePart}.${format}`
 
   fs.writeFile(filePathAndName, dataString, function (error) {
     if (error) throw error
