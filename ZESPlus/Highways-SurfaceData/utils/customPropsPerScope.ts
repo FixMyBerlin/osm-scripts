@@ -1,7 +1,7 @@
 import { Feature } from "../../utils/types"
 import { pickBestSmoothnessSourceAndAddCustomProps } from "./pickBestSmoothnessSourceAndAddCustomProps"
 
-export const addSmoothnessPropsAllScopes = (feature: Feature) => {
+export const customPropsPerScope = (feature: Feature) => {
   // MainWay
   pickBestSmoothnessSourceAndAddCustomProps(
     feature.properties.smoothness,

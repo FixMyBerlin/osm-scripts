@@ -3,7 +3,7 @@ import {
   addCustomPropsBasedOnHighway,
   addCustomPropsBasedOnSmoothness,
   addCustomPropsBasedOnSurface,
-} from "./addCustomProps"
+} from "./addCustomSmoothnessProps"
 import { extrapolatedSmoothnessBasedOnHighway } from "./extrapolatedSmoothnessBasedOnHighway"
 import { extrapolatedSmoothnessBasedOnSurface } from "./extrapolatedSmoothnessBasedOnSurface"
 import { normalizedSmoothness } from "./normalizedSmoothness"

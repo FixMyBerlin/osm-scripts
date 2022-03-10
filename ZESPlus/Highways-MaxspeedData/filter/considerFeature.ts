@@ -2,8 +2,8 @@ import { filterGenerallyIrrelevantWays } from "../../utils/filterGenerallyIrrele
 
 // https://wiki.openstreetmap.org/wiki/DE:Key:maxspeed
 // Site node https://wiki.openstreetmap.org/wiki/Proposed_features/maxspeed_walk
-export const filterMaxspeed = (feature) => {
-  if (filterGenerallyIrrelevantWays(feature)) return
+export const considerFeature = (feature) => {
+  if (filterGenerallyIrrelevantWays(feature)) return false
 
   // We don't exclude it but use the value
   // const excludeExplicitNone = feature.properties["maxspeed"] === "none"
@@ -23,5 +23,5 @@ export const filterMaxspeed = (feature) => {
   // https://wiki.openstreetmap.org/wiki/DE:Tag:highway%3Dliving_street
   const includeIndirectlyTagged = feature.properties.highway === "living_street"
 
-  return includeDirectlyTagged || includeByType || includeIndirectlyTagged
+  return !!(includeDirectlyTagged || includeByType || includeIndirectlyTagged)
 }

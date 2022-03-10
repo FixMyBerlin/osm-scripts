@@ -10,15 +10,25 @@ For legacy reasons and to visualize the data easily on a uMap the resulting `smo
 
 ## Custom properties
 
-- `"FMC:Smoothness:Scope<ScopeName>": "very_bad"`
-- `"FMC:Smoothness:Scope<ScopeName>:Confidence": "High"` – A string desribing the confidence of the given "FMC:Smoothness:…"
+- `"FMC:Category:SurfaceData:Scope<ScopeName>": "very_bad"` – Possible values are…
+
+  - "bad"
+  - "excellent"
+  - "good"
+  - "intermediate"
+  - "very_bad"
+
+- `"FMC:Category:SurfaceData:AllSmoothnessValues": ["MainWay", "CyclewayOnMainWay"]` – An array of all smoothness values to easily evaluate the (number of) applied smoothness regardless of their scope
+
+- `"FMC:Category:SurfaceData:Scope<ScopeName>:Confidence": "High"` – A string desribing the confidence of the given "FMC:Category:SurfaceData:…"
 
   - "High" = `smoothness` mapped explicitly
   - "Medium" = `smoothness` extrapolated based on `surface`
   - "Low" = `smoothness` extrapolated based on `highway` values
 
-- `"FMC:Smoothness:Scope<ScopeName>:Source": "Based on 'smoothness=excellent'"` – An explanation about how the smoothmess value came to be.
-- `"FMC:appliedScopes": ["MainWay", "CyclewayOnMainWay"]` – An array of all scopes to easily evaluate the (number of) applied scopes. Possible scopes are…
+- `"FMC:Category:SurfaceData:Scope<ScopeName>:Source": "Based on 'smoothness=excellent'"` – An explanation about how the smoothmess value came to be.
+
+- `"FMC:Category:SurfaceData:AllScopesValues": ["MainWay", "CyclewayOnMainWay"]` – An array of all scopes to easily evaluate the (number of) applied scopes. Possible scopes are…
 
   - "MainWay"
   - "SidewalkOnMainWay"

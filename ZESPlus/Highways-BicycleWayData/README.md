@@ -8,10 +8,4 @@ The filter create fine grained categories of cycle infrastructure that can be me
 
 ## Custom properties
 
-- None
-
-## Download and transpose
-
-```
-npx ts-node ./ZESPlus/Highways-BicycleWayData/process.ts
-```
+- TODO

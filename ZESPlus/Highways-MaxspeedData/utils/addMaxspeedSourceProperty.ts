@@ -3,7 +3,8 @@ export const addMaxspeedSourceProperty = (feature) => {
   // Handle the special case where no maxspeed present (usually)
   // More at https://wiki.openstreetmap.org/wiki/DE:Tag:highway%3Dliving_street
   if (feature.properties.highway === "living_street") {
-    feature.properties["FMC:maxspeed:source"] = "Verkehrsberuhigter Bereich"
+    feature.properties["FMC:Category:MaxspeedData:Source"] =
+      "Verkehrsberuhigter Bereich"
     return
   }
 
@@ -11,7 +12,7 @@ export const addMaxspeedSourceProperty = (feature) => {
     feature.properties["maxspeed:type"] === "DE:bicycle_road" ||
     feature.properties["source:maxspeed"] === "DE:bicycle_road"
   ) {
-    feature.properties["FMC:maxspeed:source"] = "Fahrradstraße"
+    feature.properties["FMC:Category:MaxspeedData:Source"] = "Fahrradstraße"
     return
   }
 
@@ -29,7 +30,7 @@ export const addMaxspeedSourceProperty = (feature) => {
     feature.properties["source:maxspeed:forward"] === "sign" ||
     feature.properties["source:maxspeed:backward"] === "sign"
   ) {
-    feature.properties["FMC:maxspeed:source"] = "Beschilderung"
+    feature.properties["FMC:Category:MaxspeedData:Source"] = "Beschilderung"
     return
   }
 
@@ -40,7 +41,7 @@ export const addMaxspeedSourceProperty = (feature) => {
     feature.properties["source:maxspeed:forward"] === "DE:urban" ||
     feature.properties["source:maxspeed:backward"] === "DE:urban"
   ) {
-    feature.properties["FMC:maxspeed:source"] = "Innerorts"
+    feature.properties["FMC:Category:MaxspeedData:Source"] = "Innerorts"
     return
   }
 
@@ -51,7 +52,7 @@ export const addMaxspeedSourceProperty = (feature) => {
     feature.properties["source:maxspeed:forward"] === "DE:rural" ||
     feature.properties["source:maxspeed:backward"] === "DE:rural"
   ) {
-    feature.properties["FMC:maxspeed:source"] = "Außerorts"
+    feature.properties["FMC:Category:MaxspeedData:Source"] = "Außerorts"
     return
   }
 
@@ -71,10 +72,10 @@ export const addMaxspeedSourceProperty = (feature) => {
     feature.properties["zone:maxspeed"] === "20" ||
     feature.properties["source:maxspeed"] === "DE:zone"
   ) {
-    feature.properties["FMC:maxspeed:source"] = "Zone"
+    feature.properties["FMC:Category:MaxspeedData:Source"] = "Zone"
     return
   }
 
   // Fallback: Notify about missing value
-  feature.properties["FMC:maxspeed:source"] = "No source given"
+  feature.properties["FMC:Category:MaxspeedData:Source"] = "No source given"
 }

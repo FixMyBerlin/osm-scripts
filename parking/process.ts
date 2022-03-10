@@ -1,5 +1,5 @@
 import fs from "fs"
-import { filterAndWrite } from "../ZESPlus/utils/filterAndWrite"
+import { filterAndWrite } from "./utils/filterAndWrite"
 import { TODO_filterLeftoverHighwaysToBeCheckedManually } from "../ZESPlus/utils/filterLeftoverHighwaysToBeCheckedManually"
 import { FeatureCollection } from "../ZESPlus/utils/types"
 import { writeFile } from "../ZESPlus/utils/writeFile"

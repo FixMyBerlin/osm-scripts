@@ -1,7 +1,9 @@
 import { filterGenerallyIrrelevantWays } from "../../utils/filterGenerallyIrrelevantWays"
 
 // Wege, die wir aktiv ausschließen von allen Abfragen
-export const irrelevanteWege = (feature) => {
+export const considerFeature = (feature) => {
+  if (filterGenerallyIrrelevantWays(feature)) return false
+
   // Alle reinen Gehwege (sie müssen noch nicht mal `is_sidepath=yes` getaggt sein.)
   // Auch wenn diese Wege geteilte Radwege sind (DE:239,1022-10)
   const gehwege =
@@ -23,8 +25,7 @@ export const irrelevanteWege = (feature) => {
 
   const ignoreByAccess = feature.properties.access === "delivery"
 
-  return (
-    filterGenerallyIrrelevantWays(feature) ||
+  return !(
     gehwege ||
     begleitenderWeg ||
     stufen ||

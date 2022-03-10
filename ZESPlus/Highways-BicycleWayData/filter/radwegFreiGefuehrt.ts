@@ -1,4 +1,4 @@
-import { irrelevanteWege } from "./irrelevanteWege"
+import { considerFeature } from "./considerFeature"
 import { radwegVerbindungsstueck } from "./radwegVerbindungsstueck"
 
 // Dedicated and signed bicycle ways
@@ -6,7 +6,7 @@ import { radwegVerbindungsstueck } from "./radwegVerbindungsstueck"
 // - that are not connection pieces of a road
 // Eg. https://www.openstreetmap.org/way/27701956
 export const radwegFreiGefuehrt = (feature) => {
-  if (irrelevanteWege(feature)) return false
+  if (!considerFeature(feature)) return false
   if (radwegVerbindungsstueck(feature)) return false
 
   // https://osmtools.de/traffic_signs/?signs=237

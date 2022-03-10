@@ -13,10 +13,4 @@ There is no type B anymore.
 
 ## Custom properties
 
-- None
-
-## Download and transpose
-
-```
-npx ts-node ./ZESPlus/Highways-HighwayTypeData/process.ts
-```
+- TODO

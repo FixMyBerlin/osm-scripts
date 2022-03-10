@@ -1,21 +1,22 @@
 import { Feature } from "../../utils/types"
 import { surfaceToSmoothnessNonStandardValues } from "../utils/extrapolatedSmoothnessBasedOnSurface"
 import { smoothnessNormalizationTypos } from "../utils/normalizedSmoothness"
-import { irrelevanteWege } from "./irrelevanteWege"
+import { considerFeature } from "./considerFeature"
 
-export const TODO_WegeOhneSurface = (feature: Feature) => {
-  if (irrelevanteWege(feature)) return false
+export const TODO_addMissingSurface = (feature: Feature) => {
+  if (!considerFeature(feature)) return false
 
   return !feature.properties.surface
 }
-export const TODO_WegeOhneSmoothnessAberMitSurface = (feature: Feature) => {
-  if (irrelevanteWege(feature)) return false
 
-  return feature.properties.surface && !feature.properties.smoothness
+export const TODO_addMissingSmoothness = (feature: Feature) => {
+  if (!considerFeature(feature)) return false
+
+  return !feature.properties.smoothness
 }
 
-export const TODO_fixSurfaceValues = (feature: Feature) => {
-  if (irrelevanteWege(feature)) return false
+export const TODO_fixSurfaceValue = (feature: Feature) => {
+  if (!considerFeature(feature)) return false
 
   // A list of non standard values that we need to cleanup in OSM.
   const hasNonStandardValue = Object.keys(
@@ -25,8 +26,8 @@ export const TODO_fixSurfaceValues = (feature: Feature) => {
   return hasNonStandardValue
 }
 
-export const TODO_fixSmoothnessValues = (feature: Feature) => {
-  if (irrelevanteWege(feature)) return false
+export const TODO_fixSmoothnessValue = (feature: Feature) => {
+  if (!considerFeature(feature)) return false
 
   // A list of broken smoothness values that we need to cleanup in OSM.
   const hasTypos = Object.keys(smoothnessNormalizationTypos).includes(

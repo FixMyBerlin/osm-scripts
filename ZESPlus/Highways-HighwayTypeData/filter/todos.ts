@@ -1,7 +1,7 @@
 // Add footway=sidewalk to all Bürgersteige. The filter tries to exclude false positives.
 // like path's with traffic_sign=DE:239,1022-10 https://www.openstreetmap.org/way/883876171
 // which are _not_ mapped as sidewalk.
-export const TODO_BuergersteigTaggingFehlt = (feature) => {
+export const TODO_addMissingSidewalkTagging = (feature) => {
   return (
     feature.properties.highway === "footway" &&
     feature.properties.is_sidepath === "yes" &&
@@ -15,12 +15,12 @@ export const TODO_BuergersteigTaggingFehlt = (feature) => {
 }
 
 // highway and area=yes is fine, but we should need to make sure there are way-/line-highways as well, or the script will leave an empty spot
-export const TODO_AreaHighwaysCheckIfSeparatelyMappedWaysExist = (feature) => {
+export const TODO_checkIfAreaHighwayHasSeparatelyMappedWays = (feature) => {
   return feature.properties.highway && feature.properties.area === "yes"
 }
 
 // highway-service without a subtag is fine, but hard to deal with. Ideally, we have an access=yes|no|… for those.
-export const TODO_ServiceWithoutAccessAndSubtagging = (feature) => {
+export const TODO_addSubtaggingOrAccessTagsToServiceWay = (feature) => {
   return (
     feature.properties.highway === "service" &&
     !feature.properties.service &&
@@ -29,7 +29,7 @@ export const TODO_ServiceWithoutAccessAndSubtagging = (feature) => {
 }
 
 // `is_sidepath` is important to filter paths(…). Ideally, we have it set to yes|no for all path|track|cycleway
-export const TODO_AddIsSidepath = (feature) => {
+export const TODO_addIsSidepathTagging = (feature) => {
   return (
     ["path", "track", "cycleway"].includes(feature.properties.highway) &&
     !feature.properties.is_sidepath &&

@@ -1,10 +1,11 @@
-import { irrelevanteWege } from "./irrelevanteWege"
+import { Feature } from "../../utils/types"
+import { considerFeature } from "./considerFeature"
 import { typHauptUndSammelstrasse } from "./typC_HauptUndSammelstrasse"
 
 // TYP A + B – Wohnweg/Wohnstraße (Erschließungsstraßen)
 // Mindset: Wir müssen hier präzise sein, um eine Abgrenung zu TypHauptUndSammelstrasse zu erreichen
-export const typWohnstrasse = (feature) => {
-  if (irrelevanteWege(feature)) return false
+export const typWohnstrasse = (feature: Feature) => {
+  if (!considerFeature(feature)) return false
   if (typHauptUndSammelstrasse(feature)) return false
 
   const byType = ["residential", "living_street"].includes(
@@ -28,7 +29,10 @@ export const typWohnstrasse = (feature) => {
     feature.properties.maxspeed === "30" &&
     notDriveThrought
 
-  return (
-    byType || serviceWithName || serviceWithBikeAccess || serviceWithMaxspeed
+  return !!(
+    byType ||
+    serviceWithName ||
+    serviceWithBikeAccess ||
+    serviceWithMaxspeed
   )
 }

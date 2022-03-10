@@ -1,10 +1,11 @@
+import { Feature } from "../../utils/types"
 import { highMaxSpeed } from "../utils/highMaxSpeed"
-import { irrelevanteWege } from "./irrelevanteWege"
+import { considerFeature } from "./considerFeature"
 import { typWohnstrasse } from "./typA_Wohnstrasse"
 
 // TYP F – Frei geführt / Fußgängerweg [Außerorts]
-export const typFreiGefuehrt = (feature) => {
-  if (irrelevanteWege(feature)) return false
+export const typFreiGefuehrt = (feature: Feature) => {
+  if (!considerFeature(feature)) return false
 
   const sidepathOrCrossing =
     feature.properties.is_sidepath ||
@@ -50,7 +51,7 @@ export const typFreiGefuehrt = (feature) => {
     !(highMaxSpeed(feature) || feature.properties.surface === "asphalt") &&
     feature.properties.highway === "unclassified"
 
-  return (
+  return !!(
     includePathTrack ||
     includeGehwegMitRadwegFrei ||
     includeDurchfahrtswege ||

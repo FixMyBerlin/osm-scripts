@@ -1,10 +1,11 @@
+import { Feature } from "../../utils/types"
 import { highMaxSpeed } from "../utils/highMaxSpeed"
-import { irrelevanteWege } from "./irrelevanteWege"
+import { considerFeature } from "./considerFeature"
 import { typAusserorts } from "./typE_Ausserorts"
 
 // TYP C – Haupt-/Sammel-[Wohn]straße
-export const typHauptUndSammelstrasse = (feature) => {
-  if (irrelevanteWege(feature)) return false
+export const typHauptUndSammelstrasse = (feature: Feature) => {
+  if (!considerFeature(feature)) return false
   if (typAusserorts(feature)) return false
 
   const residentialMitRadwegIstSammelstrasse =
@@ -25,7 +26,7 @@ export const typHauptUndSammelstrasse = (feature) => {
     // Beispiel https://www.openstreetmap.org/way/4935069
     parseFloat(feature.properties["FMC:length"]) >= 50.0
 
-  return (
+  return !!(
     residentialMitRadwegIstSammelstrasse ||
     zubringerMitGuterOberflaeche ||
     unclassified50PlusAlsSammelstrasse ||

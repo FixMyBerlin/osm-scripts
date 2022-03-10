@@ -1,9 +1,9 @@
-import { irrelevanteWege } from "./irrelevanteWege"
+import { considerFeature } from "./considerFeature"
 
 // Fahrradstraße (ggf. mit Zusatzzeichen)
 // https://wiki.openstreetmap.org/wiki/DE:Key:bicycle%20road
 export const fahrradstrasse = (feature) => {
-  if (irrelevanteWege(feature)) return false
+  if (!considerFeature(feature)) return false
 
   return (
     feature.properties.bicycle_road === "yes" ||

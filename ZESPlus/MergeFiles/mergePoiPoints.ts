@@ -3,6 +3,7 @@ import { outputFile as poiShoppingOutputFile } from "../POI-Shopping/filesFolder
 import { outputFile as poiPublicTransportOutputFile } from "../POI-PublicTransport/filesFolders.const"
 import { outputFile as poiEducationOutputFile } from "../POI-Education/filesFolders.const"
 import { writeGeoJson } from "../utils/writeGeoJson"
+import { FeatureCollection } from "../utils/types"
 
 const filesToMerge = [
   poiShoppingOutputFile,
@@ -20,7 +21,7 @@ filesToMerge.forEach((file) => {
   console.timeEnd(`⏱ merge/forEach ${file}`)
 })
 
-mergedDataAsGeoJson: FeatureCollection = {
+const mergedDataAsGeoJson: FeatureCollection = {
   type: "FeatureCollection",
   features: mergedData,
 }

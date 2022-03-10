@@ -1,13 +1,12 @@
-import { addCategoryProperty } from "./addFilterNameProperty"
-import { collectFilteredHighways } from "./collectFilteredHighways"
-import { Feature, FeatureCollection } from "./types"
-import { writeGeoJson } from "./writeGeoJson"
+import { addCategoryProperty } from "../../ZESPlus/utils/addFilterNameProperty"
+import { collectFilteredHighways } from "../../ZESPlus/utils/collectFilteredHighways"
+import { Feature, FeatureCollection } from "../../ZESPlus/utils/types"
+import { writeGeoJson } from "../../ZESPlus/utils/writeGeoJson"
 
 export const filterAndWrite = (
   filterMethod: (feature: Feature) => boolean,
   allHighways: FeatureCollection,
-  outputFolder: string,
-  collectedHighways?: Feature[]
+  outputFolder: string
 ) => {
   console.time(`⏱ filterAndWrite(): ${filterMethod.name}`)
 
@@ -26,11 +25,13 @@ export const filterAndWrite = (
 
   collectFilteredHighways(filteredData, filterMethod.name)
 
-  collectedHighways &&
-    filteredData.forEach((feature) => collectedHighways.push(feature))
+  const filteredGeoJson: FeatureCollection = {
+    type: "FeatureCollection",
+    features: filteredData,
+  }
 
   writeGeoJson({
-    data: filteredData,
+    geoJsonData: filteredGeoJson,
     folder: outputFolder,
     fileNamePart: filterMethod.name,
   })

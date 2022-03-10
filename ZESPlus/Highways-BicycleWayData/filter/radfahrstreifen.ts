@@ -1,10 +1,10 @@
-import { irrelevanteWege } from "./irrelevanteWege"
+import { considerFeature } from "./considerFeature"
 
 // Radfahrstreifen, ein Radweg auf der Fahrbahn. Er wird durch einen durchgezogene oder gestrichelte Linie von der Fahrbahn abgeteilt.
 // https://wiki.openstreetmap.org/wiki/DE:Tag:cycleway%3Dlane
 // https://wiki.openstreetmap.org/wiki/DE:Tag:cycleway%3Dopposite_lane
 export const radfahrstreifen = (feature) => {
-  if (irrelevanteWege(feature)) return false
+  if (!considerFeature(feature)) return false
 
   return (
     feature.properties.cycleway === "lane" ||

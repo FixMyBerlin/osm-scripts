@@ -1,5 +1,5 @@
 import { gehUndRadwegGemeinsam } from "./gehUndRadwegGemeinsam"
-import { irrelevanteWege } from "./irrelevanteWege"
+import { considerFeature } from "./considerFeature"
 import { radwegBaulichAbgesetzt } from "./radwegBaulichAbgesetzt"
 
 // Small pieces of cycleway that are needed to create a routing network.
@@ -11,7 +11,7 @@ import { radwegBaulichAbgesetzt } from "./radwegBaulichAbgesetzt"
 // Note, that this cannot catch all those connection ways, like https://www.openstreetmap.org/way/901972206,
 //    which is categorized differently, but that is all we can do based on the signage (see pictures) and tagging.
 export const radwegVerbindungsstueck = (feature) => {
-  if (irrelevanteWege(feature)) return false
+  if (!considerFeature(feature)) return false
   if (radwegBaulichAbgesetzt(feature)) return false
   if (gehUndRadwegGemeinsam(feature)) return false
 

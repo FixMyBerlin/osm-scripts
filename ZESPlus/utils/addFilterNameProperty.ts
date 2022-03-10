@@ -5,6 +5,6 @@ export const addCategoryProperty = (
   filterMethodName: string
 ) => {
   features.forEach((feature) => {
-    feature.properties["FMC:DataCategory"] = filterMethodName
+    feature.properties[`FMC:Category:${filterMethodName}`] = "true"
   })
 }

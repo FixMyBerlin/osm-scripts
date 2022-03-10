@@ -3,7 +3,7 @@ import { fussgaengerzonenWegFahrradFrei } from "./fussgaengerzonenWegFahrradFrei
 import { gehUndRadwegGemeinsam } from "./gehUndRadwegGemeinsam"
 import { gehUndRadwegGetrennt } from "./gehUndRadwegGetrennt"
 import { gehwegRadfarerFrei } from "./gehwegRadfarerFrei"
-import { irrelevanteWege } from "./irrelevanteWege"
+import { considerFeature } from "./considerFeature"
 import { radfahrstreifen } from "./radfahrstreifen"
 import { radwegBaulichAbgesetzt } from "./radwegBaulichAbgesetzt"
 import { radwegFreiGefuehrt } from "./radwegFreiGefuehrt"
@@ -11,7 +11,7 @@ import { radwegVerbindungsstueck } from "./radwegVerbindungsstueck"
 import { verkehrsberuhigterBereichMitFahrradFrei } from "./verkehrsberuhigterBereichMitFahrradFrei"
 
 export const TODO_VerkehrsberuhigterBereich_AccessPruefen = (feature) => {
-  if (irrelevanteWege(feature)) return false
+  if (!considerFeature(feature)) return false
 
   return (
     feature.properties.highway === "living_street" &&
@@ -20,7 +20,7 @@ export const TODO_VerkehrsberuhigterBereich_AccessPruefen = (feature) => {
 }
 
 export const TODO_FussgaengerzonenWeg_AccessPruefen = (feature) => {
-  if (irrelevanteWege(feature)) return false
+  if (!considerFeature(feature)) return false
 
   return (
     feature.properties.highway === "pedestrian" &&
@@ -31,7 +31,7 @@ export const TODO_FussgaengerzonenWeg_AccessPruefen = (feature) => {
 // https://wiki.openstreetmap.org/wiki/DE:Bicycle/Radverkehrsanlagen_kartieren
 // traffic_sign=DE:1022-10
 export const TODO_FahrradFrei_CheckTagging = (feature) => {
-  if (irrelevanteWege(feature)) return false
+  if (!considerFeature(feature)) return false
 
   return (
     feature.properties.traffic_sign === "DE:1022-10" &&
@@ -42,7 +42,7 @@ export const TODO_FahrradFrei_CheckTagging = (feature) => {
 // Eigenständiger Radweg (aber nicht als Fahrradstraße, oder Radfahrstreifen)
 // https://wiki.openstreetmap.org/wiki/DE:Tag:highway=cycleway
 export const TODO_RadwegUnspezifisch = (feature) => {
-  if (irrelevanteWege(feature)) return false
+  if (!considerFeature(feature)) return false
   if (gehUndRadwegGemeinsam(feature)) return false
   if (gehUndRadwegGetrennt(feature)) return false
   if (gehwegRadfarerFrei(feature)) return false
@@ -58,7 +58,7 @@ export const TODO_RadwegUnspezifisch = (feature) => {
 // traffic_sign=DE:241-30, https://wiki.openstreetmap.org/wiki/DE:Tag:traffic_sign%3DDE:241-30
 // traffic_sign=DE:241-31, https://wiki.openstreetmap.org/wiki/DE:Tag:traffic_sign%3DDE:241-31
 export const TODO_TrafficSignRequiresSeggregationYes = (feature) => {
-  if (irrelevanteWege(feature)) return false
+  if (!considerFeature(feature)) return false
 
   return (
     feature.properties.traffic_sign?.startsWith("DE:241") &&
@@ -69,7 +69,7 @@ export const TODO_TrafficSignRequiresSeggregationYes = (feature) => {
 // Gemeinsamer Geh- und Radweg
 // traffic_sign=DE:240, https://wiki.openstreetmap.org/wiki/DE:Tag:traffic_sign%3DDE:240
 export const TODO_TrafficSignRequiresSeggregationNo = (feature) => {
-  if (irrelevanteWege(feature)) return false
+  if (!considerFeature(feature)) return false
 
   return (
     feature.properties.traffic_sign?.startsWith("DE:240") &&
@@ -78,7 +78,7 @@ export const TODO_TrafficSignRequiresSeggregationNo = (feature) => {
 }
 
 export const TODO_MissingSeggregationForTrafficSign = (feature) => {
-  if (irrelevanteWege(feature)) return false
+  if (!considerFeature(feature)) return false
 
   return (
     (feature.properties.traffic_sign?.startsWith("DE:240") &&
@@ -89,7 +89,7 @@ export const TODO_MissingSeggregationForTrafficSign = (feature) => {
 }
 
 export const TODO_AreaHighwaysCheckIfSeparatelyMappedWaysExist = (feature) => {
-  if (irrelevanteWege(feature)) return false
+  if (!considerFeature(feature)) return false
 
   return feature.properties.highway && feature.properties.area === "yes"
 }

@@ -1,12 +1,12 @@
 import { gehUndRadwegGemeinsam } from "./gehUndRadwegGemeinsam"
 import { gehUndRadwegGetrennt } from "./gehUndRadwegGetrennt"
-import { irrelevanteWege } from "./irrelevanteWege"
+import { considerFeature } from "./considerFeature"
 
 // Baulich abgesetzter Radweg
 // https://wiki.openstreetmap.org/wiki/DE:Tag:cycleway%3Dtrack
 // https://wiki.openstreetmap.org/wiki/DE:Tag:cycleway%3Dopposite_track
 export const radwegBaulichAbgesetzt = (feature) => {
-  if (irrelevanteWege(feature)) return false
+  if (!considerFeature(feature)) return false
   // Wenn "Getrennter Rad- und Gehweg" oder "Gemeinsamer Geh- und Radweg", dann gewinnt das Verkehrszeichen
   if (gehUndRadwegGemeinsam(feature)) return false
   if (gehUndRadwegGetrennt(feature)) return false

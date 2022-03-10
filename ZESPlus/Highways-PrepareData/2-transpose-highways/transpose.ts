@@ -4,7 +4,7 @@ import { overpassComposeToGeoJson } from "../../utils/overpassToGeoJson/overpass
 import { AreaCallbackProps } from "../../utils/overpassToGeoJson/types"
 
 const enhanceDataWitAreaInformation: AreaCallbackProps = (areaKey, geoJson) => {
-  console.time(`⏱ enhanceData(): Ergänze FMC:Gebiet:${areaKey}=True|False`)
+  console.time(`⏱ enhanceData(): Ergänze FMC:Gebiete:${areaKey}=True|False`)
 
   const file = `./ZESPlus/AreaOfInterest/output/${areaKey}.geojson`
   // Needs to be .readFileSync or otherise all needs to become async
@@ -12,16 +12,16 @@ const enhanceDataWitAreaInformation: AreaCallbackProps = (areaKey, geoJson) => {
 
   geoJson.features.forEach((feature) => {
     const partOfOrOverlaps = de9im.intersects(area, feature.geometry)
-    feature.properties[`FMC:Gebiet:${areaKey}`] = `${partOfOrOverlaps}`
+    feature.properties[`FMC:Gebiete:${areaKey}`] = `${partOfOrOverlaps}`
     if (partOfOrOverlaps) {
-      feature.properties["FMC:Gebiet"] = [
+      feature.properties["FMC:Gebiete"] = [
         areaKey,
-        feature.properties["FMC:Gebiet"],
+        feature.properties["FMC:Gebiete"],
       ].join(",")
     }
   })
 
-  console.timeEnd(`⏱ enhanceData(): Ergänze FMC:Gebiet:${areaKey}=True|False`)
+  console.timeEnd(`⏱ enhanceData(): Ergänze FMC:Gebiete:${areaKey}=True|False`)
 }
 
 overpassComposeToGeoJson({

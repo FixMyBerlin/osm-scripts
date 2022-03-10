@@ -1,11 +1,11 @@
 import { fussgaengerzonenWegFahrradFrei } from "./fussgaengerzonenWegFahrradFrei"
-import { irrelevanteWege } from "./irrelevanteWege"
+import { considerFeature } from "./considerFeature"
 import { stufen } from "./stufen"
 
 // Gehweg, Fahrrad frei
 // traffic_sign=DE:239,1022-10, https://wiki.openstreetmap.org/wiki/DE:Tag:traffic_sign%3DDE:239
 export const gehwegRadfarerFrei = (feature) => {
-  if (irrelevanteWege(feature)) return false
+  if (!considerFeature(feature)) return false
   if (stufen(feature)) return false
   if (fussgaengerzonenWegFahrradFrei(feature)) return false
   // The access based tagging would include free running path through woods
