@@ -20,6 +20,9 @@ const overpassQuery = `
   node
   ["place"="suburb"]["name"="Schönefeld"]
   (${bboxBetrachtungsraum.join(", ")});
+  node
+  ["place"="suburb"]["name"="Wildau"]
+  (${bboxBetrachtungsraum.join(", ")});
 );
 out body;>;out skel qt;
 `
