@@ -2,13 +2,16 @@ import fs from "fs"
 import { outputFile as poiShoppingOutputFile } from "../POI-Shopping/filesFolders.const"
 import { outputFile as poiPublicTransportOutputFile } from "../POI-PublicTransport/filesFolders.const"
 import { outputFile as poiEducationOutputFile } from "../POI-Education/filesFolders.const"
+import { outputFile as poiPlacesOutputFile } from "../POI-Places/filesFolders.const"
 import { writeGeoJson } from "../utils/writeGeoJson"
 import { FeatureCollection } from "../utils/types"
+import { outputFolder } from "./filesFolders.const"
 
 const filesToMerge = [
   poiShoppingOutputFile,
   poiPublicTransportOutputFile,
   poiEducationOutputFile,
+  poiPlacesOutputFile,
 ]
 
 const mergedData = []
@@ -28,6 +31,6 @@ const mergedDataAsGeoJson: FeatureCollection = {
 
 writeGeoJson({
   geoJsonData: mergedDataAsGeoJson,
-  folder: __dirname,
+  folder: outputFolder,
   fileNamePart: "mergedPoiPoints",
 })
