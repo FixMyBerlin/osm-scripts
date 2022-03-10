@@ -9,5 +9,5 @@
 ## Download and transpose
 
 ```
-npx ts-node ./ZESPlus/MergeFiles/mergePoiPoints.ts
+npx ts-node ./ZESPlus/MergeFiles/mergePoi.ts
 ```
