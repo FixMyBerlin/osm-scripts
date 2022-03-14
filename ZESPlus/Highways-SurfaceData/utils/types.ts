@@ -1,6 +1,6 @@
 export type ScopeValues =
   | "MainWay"
-  | "SidewalkOnMainWay:Left"
-  | "SidewalkOnMainWay:Right"
-  | "CyclewayOnMainWay:Left"
-  | "CyclewayOnMainWay:Right"
+  | "SidewalkBikeYes:Left"
+  | "SidewalkBikeYes:Right"
+  | "Cycleway:Left"
+  | "Cycleway:Right"

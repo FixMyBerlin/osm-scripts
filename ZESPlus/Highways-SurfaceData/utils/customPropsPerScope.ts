@@ -11,14 +11,14 @@ export const customPropsPerScope = (feature: Feature) => {
     feature
   )
 
-  // SidewalkOnMainWay
-  addSmoothnessPropsForSidewalkOnMainWay(feature)
+  // SidewalkBikeYes
+  addSmoothnessPropsForSidewalkBikeYes(feature)
 
-  // CyclewayOnMainWay
-  addSmoothnessPropsForCyclewayOnMainWay(feature)
+  // Cycleway
+  addSmoothnessPropsForCycleway(feature)
 }
 
-const addSmoothnessPropsForSidewalkOnMainWay = (feature: Feature) => {
+const addSmoothnessPropsForSidewalkBikeYes = (feature: Feature) => {
   // Gehwege mit Radwegfreigabe: Beide Seiten
   if (feature.properties["sidewalk:both:bicycle"] === "yes") {
     const smoothness =
@@ -31,14 +31,14 @@ const addSmoothnessPropsForSidewalkOnMainWay = (feature: Feature) => {
       smoothness,
       surface,
       "footway",
-      "SidewalkOnMainWay:Left",
+      "SidewalkBikeYes:Left",
       feature
     )
     pickBestSmoothnessSourceAndAddCustomProps(
       smoothness,
       surface,
       "footway",
-      "SidewalkOnMainWay:Right",
+      "SidewalkBikeYes:Right",
       feature
     )
   }
@@ -48,7 +48,7 @@ const addSmoothnessPropsForSidewalkOnMainWay = (feature: Feature) => {
       feature.properties["sidewalk:left:smoothness"],
       feature.properties["sidewalk:left:surface"],
       "footway",
-      "SidewalkOnMainWay:Left",
+      "SidewalkBikeYes:Left",
       feature
     )
   }
@@ -58,13 +58,13 @@ const addSmoothnessPropsForSidewalkOnMainWay = (feature: Feature) => {
       feature.properties["sidewalk:right:smoothness"],
       feature.properties["sidewalk:right:surface"],
       "footway",
-      "SidewalkOnMainWay:Right",
+      "SidewalkBikeYes:Right",
       feature
     )
   }
 }
 
-const addSmoothnessPropsForCyclewayOnMainWay = (feature: Feature) => {
+const addSmoothnessPropsForCycleway = (feature: Feature) => {
   // Radweg an der Haupt way gemapped: Beide Seiten
   if (
     ["yes", "designated"].includes(feature.properties["cycleway:both:bicycle"])
@@ -79,14 +79,14 @@ const addSmoothnessPropsForCyclewayOnMainWay = (feature: Feature) => {
       smoothness,
       surface,
       "cycleway",
-      "CyclewayOnMainWay:Left",
+      "Cycleway:Left",
       feature
     )
     pickBestSmoothnessSourceAndAddCustomProps(
       smoothness,
       surface,
       "cycleway",
-      "CyclewayOnMainWay:Right",
+      "Cycleway:Right",
       feature
     )
   }
@@ -98,7 +98,7 @@ const addSmoothnessPropsForCyclewayOnMainWay = (feature: Feature) => {
       feature.properties["cycleway:left:smoothness"],
       feature.properties["cycleway:left:surface"],
       "cycleway",
-      "CyclewayOnMainWay:Left",
+      "Cycleway:Left",
       feature
     )
   }
@@ -110,7 +110,7 @@ const addSmoothnessPropsForCyclewayOnMainWay = (feature: Feature) => {
       feature.properties["cycleway:right:smoothness"],
       feature.properties["cycleway:right:surface"],
       "cycleway",
-      "CyclewayOnMainWay:Right",
+      "Cycleway:Right",
       feature
     )
   }
