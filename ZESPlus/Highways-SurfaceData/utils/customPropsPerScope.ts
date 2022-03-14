@@ -20,7 +20,10 @@ export const customPropsPerScope = (feature: Feature) => {
 
 const addSmoothnessPropsForSidewalkBikeYes = (feature: Feature) => {
   // Gehwege mit Radwegfreigabe: Beide Seiten
-  if (feature.properties["sidewalk:both:bicycle"] === "yes") {
+  if (
+    feature.properties["sidewalk:both:bicycle"] === "yes" ||
+    feature.properties["sidewalk:bicycle"] === "yes"
+  ) {
     const smoothness =
       feature.properties["sidewalk:smoothness"] ||
       feature.properties["sidewalk:both:smoothness"]
@@ -67,7 +70,10 @@ const addSmoothnessPropsForSidewalkBikeYes = (feature: Feature) => {
 const addSmoothnessPropsForCycleway = (feature: Feature) => {
   // Radweg an der Haupt way gemapped: Beide Seiten
   if (
-    ["yes", "designated"].includes(feature.properties["cycleway:both:bicycle"])
+    ["yes", "designated"].includes(
+      feature.properties["cycleway:both:bicycle"]
+    ) ||
+    ["yes", "designated"].includes(feature.properties["cycleway:bicycle"])
   ) {
     const smoothness =
       feature.properties["cycleway:smoothness"] ||
