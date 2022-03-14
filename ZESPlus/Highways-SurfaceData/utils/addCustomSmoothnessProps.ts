@@ -4,6 +4,7 @@ import {
   highwayToAssumedSurface,
 } from "./extrapolatedSmoothnessBasedOnHighway"
 import { extrapolatedSmoothnessBasedOnSurface } from "./extrapolatedSmoothnessBasedOnSurface"
+import { addCollecorProp } from "./handleCollectorProp"
 import { normalizedSmoothness } from "./normalizedSmoothness"
 import { ScopeValues } from "./types"
 
@@ -19,18 +20,8 @@ const addCustomProps = (
     conficenceString
   feature.properties[`FMC:Category:SurfaceData:Scope${scope}:Source`] =
     sourceString
-  // Cannot get the types working for this one…
-  feature.properties["FMC:Category:SurfaceData:AllScopeValues"] = [
-    ...((feature.properties["FMC:Category:SurfaceData:AllScopeValues"] ||
-      []) as any),
-    scope,
-  ] as any
-  // Cannot get the types working for this one…
-  feature.properties["FMC:Category:SurfaceData:AllSmoothnessValues"] = [
-    ...((feature.properties["FMC:Category:SurfaceData:AllSmoothnessValues"] ||
-      []) as any),
-    smoothness,
-  ] as any
+  addCollecorProp(feature, `${scope}`, "AllScopeValues")
+  addCollecorProp(feature, smoothness, "AllSmoothnessValues")
 }
 
 export const addCustomPropsBasedOnSmoothness = (

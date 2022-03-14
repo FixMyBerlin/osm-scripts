@@ -6,12 +6,18 @@ import {
   TODO_addMissingSmoothness,
   TODO_addMissingSurface,
 } from "../filter/todos"
+import { collectorPropArrayToString } from "./handleCollectorProp"
 import { customPropsPerScope } from "./customPropsPerScope"
 
 export const addCustomPropsSurfaceData = (feature: Feature) => {
   feature.properties["FMC:Category:SurfaceData"] = `${considerFeature(feature)}`
 
   customPropsPerScope(feature)
+  collectorPropArrayToString(feature, "FMC:Category:SurfaceData:AllScopeValues")
+  collectorPropArrayToString(
+    feature,
+    "FMC:Category:SurfaceData:AllSmoothnessValues"
+  )
 
   const todoCategories = [
     TODO_addMissingSurface,
