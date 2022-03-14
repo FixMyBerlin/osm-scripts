@@ -17,7 +17,9 @@ const enhanceDataWitAreaInformation: AreaCallbackProps = (areaKey, geoJson) => {
       feature.properties["FMC:Gebiete"] = [
         areaKey,
         feature.properties["FMC:Gebiete"],
-      ].join(",")
+      ]
+        .filter((n) => n) // Remove unfefined and null values. Ruby, I miss you.
+        .join(",")
     }
   })
 
