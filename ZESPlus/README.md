@@ -12,6 +12,21 @@ Details can be found in the README files in each folder.
 
 All generated files are listed at https://osm-scripts.netlify.app/AllFiles/AllFiles.json
 
+## General process
+
+1. Run `npm run build:netlify`
+2. Upload data to Mapbox Studio using [the Tileset web uploader](https://studio.mapbox.com/tilesets/)
+
+**For the [allHighways.geojson](./Highways/output/allHighways.geojson)**
+
+We need to prepare the data before uploading it. Uploading it direcly does not give us control over the min/max zoom level of the data. Using [tippecanoe](https://github.com/mapbox/tippecanoe) allows us to do just that.
+
+Run this command from the folder `./Highways/output/`
+
+```
+tippecanoe -z16 -Z10 -o zesplus-allhighways.mbtiles --drop-densest-as-needed --name="ZES+ AllHighways" --attribution="OpenStreetMap Contributors, FixMyCity" --description="https://github.com/FixMyBerlin/osm-scripts/tree/main/ZESPlus" allHighways.geojson
+```
+
 ## Custom properties
 
 **General custom properties:**
