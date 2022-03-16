@@ -11,9 +11,10 @@ const smoothnessNormalization = {
 }
 
 export const smoothnessNormalizationTypos = {
-  verbad: "very_bad",
-  vea: "very_bad", // well, what can we do?
+  escellent: "excellent",
   excelent: "excellent",
+  vea: "very_bad", // well, what can we do?
+  verbad: "very_bad",
 }
 
 export const normalizedSmoothness = (smoothnessValue: string) => {
