@@ -1,5 +1,9 @@
+type Props = {
+  [key: string]: "Besorgungen" | "Bildung" | "Einkauf" | "Freizeit"
+}
+
 // Initial source of this list https://docs.google.com/spreadsheets/d/1YekkPvujoGQoNO9izg2wRyFql2nTZzKfXzhAUMWwDys/edit#gid=372987930
-export const categories = {
+export const categories: Props = {
   arts_centre: "Freizeit",
   artwork: "Freizeit",
   attraction: "Freizeit",
@@ -13,7 +17,7 @@ export const categories = {
   bicycle_shop: "Einkauf",
   biergarten: "Freizeit",
   boat_rental: "Freizeit",
-  boat_school: "Education",
+  boat_school: "Bildung",
   boat_sharing: "Freizeit",
   boat_storage: "Freizeit",
   boathouse: "Freizeit",
