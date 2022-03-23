@@ -45,7 +45,7 @@ export const overpassComposeToGeoJson = ({
             ...processingDateProperty,
           },
           geometry: element.geometry,
-          id: osmId,
+          id: parseInt(element.id), // needs to be numeric due to https://github.com/mapbox/tippecanoe/issues/357
         }
       }),
     } as FeatureCollection
