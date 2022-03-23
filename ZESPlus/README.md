@@ -15,17 +15,63 @@ All generated files are listed at https://osm-scripts.netlify.app/AllFiles/AllFi
 ## General process
 
 1. Run `npm run build:netlify`
-2. Upload data to Mapbox Studio using [the Tileset web uploader](https://studio.mapbox.com/tilesets/)
+1. For allHighways.geojson: Generate vector tiles – see below
+1. Upload data to Mapbox Studio using [the Tileset web uploader](https://studio.mapbox.com/tilesets/)
 
-**For the [allHighways.geojson](./Highways/output/allHighways.geojson)**
+**For the [allHighways.geojson](./Highways/output/allHighways.geojson):**
 
-We need to prepare the data before uploading it. Uploading it direcly does not give us control over the min/max zoom level of the data. Using [tippecanoe](https://github.com/mapbox/tippecanoe) allows us to do just that.
+We need to prepare the data before uploading it. Uploading it direcly does not give us control over the min/max zoom level of the data and which data to show per zoom level. Using [tippecanoe](https://github.com/mapbox/tippecanoe) ([as recommeded in the MapBox Docs](https://docs.mapbox.com/help/troubleshooting/adjust-tileset-zoom-extent/)) allows us to do just that.
 
-Run this command from the folder `./Highways/output/`
+_Reminder about Zoom level:_ ([Docs](https://github.com/mapbox/tippecanoe#zoom-levels))
+
+0 = World; 7 = country; 11 = city; 12 = district; 16 = neighbourhood
+
+_Detailed data set for zoom 16-11:_
+
+* We try to keep all data, but for zoom 11 tippecanoe needs `drop-smallest-as-needed` ([Docs](https://github.com/mapbox/tippecanoe#dropping-a-fraction-of-features-to-keep-under-tile-size-limits)) to be able to remove data that is less important.
+* [Direct link in Mapbox Studio](https://studio.mapbox.com/tilesets/hejco.815n378j/)
+
+_Simplified data set for zoom 11-7:_
+
+* We tell tippecanoe to reduce nodes in lines with `simplification=5` ([Docs](https://github.com/mapbox/tippecanoe#line-and-polygon-simplification)). We tried `10` which removed too much, `5` looked good.
+* We tell tippacanoe to merge small road segments into larger once with `coalesce-smallest-as-needed` (loosing their attributes) ([Docs](https://github.com/mapbox/tippecanoe#dropping-a-fraction-of-features-to-keep-under-tile-size-limits))
+* Since this reduces the data quality, we only use this data set when zoomed out.
+* [Direct link in Mapbox Studio](https://studio.mapbox.com/tilesets/hejco.07eoj5mg/)
 
 ```
-tippecanoe -z16 -Z10 -o zesplus-allhighways.mbtiles --drop-densest-as-needed --name="ZES+ AllHighways" --attribution="OpenStreetMap Contributors, FixMyCity" --description="https://github.com/FixMyBerlin/osm-scripts/tree/main/ZESPlus" allHighways.geojson
+cd ZESPlus/Highways/output/
+
+tippecanoe \
+ --output=zesplus-allhighways-detailed.mbtiles \
+ --minimum-zoom=11 \
+ --maximum-zoom=16 \
+ --drop-smallest-as-needed \
+ --name="ZES+ AllHighways (Detailed)" \
+ --attribution="OpenStreetMap Contributors, FixMyCity" \
+ --description="https://github.com/FixMyBerlin/osm-scripts/tree/main/ZESPlus" \
+ --force allHighways.geojson
+
+tippecanoe \
+ --output=zesplus-allhighways-simplified.mbtiles \
+ --minimum-zoom=7 \
+ --maximum-zoom=11 \
+ --simplification=5 \
+ --coalesce-smallest-as-needed \
+ --name="ZES+ AllHighways (Simplified)" \
+ --attribution="OpenStreetMap Contributors, FixMyCity" \
+ --description="https://github.com/FixMyBerlin/osm-scripts/tree/main/ZESPlus" \
+ --force allHighways.geojson
 ```
+
+**Possible Improvements:**
+
+* Merge both mbtiles back into one with `tile-join`.
+  More at https://github.com/mapbox/tippecanoe#selectively-remove-and-replace-features-census-tracts-to-update-a-tileset
+* Filter data via `-f` option using vector style filter clauses.
+  More at https://github.com/mapbox/tippecanoe#filtering-features-by-attributes
+* Specify zoom level per feature as part of the GeoJSON.
+  More at https://github.com/mapbox/tippecanoe#geojson-extension
+
 
 ## Custom properties
 
