@@ -43,6 +43,7 @@ export const categories: Props = {
   computer_shop: "Einkauf",
   convenience: "Einkauf",
   courthouse: "Besorgungen",
+  dancing_school: "Bildung",
   deli: "Einkauf",
   dentist: "Besorgungen",
   department_store: "Einkauf",

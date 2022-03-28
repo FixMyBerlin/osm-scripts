@@ -68,6 +68,7 @@ const overpassQuery = `
   ["amenity"!="vending_machine"]
   ["amenity"!="washing_machine"]
   ["amenity"!="waste_basket"]
+  ["amenity"!="waste_basket;vending_machine"]
   ["amenity"!="waste_disposal"]
   ["amenity"!="water_point"]
   ["amenity"!="workshop"]
