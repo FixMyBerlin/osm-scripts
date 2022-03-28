@@ -1,16 +1,15 @@
 # About
 
-The scripts here use OSM data to generate maps for https://www.zesplus.de/forschungsprojekt. Those maps are used to plan the bicycle infrastructure in the reagion.
+The scripts here use OSM data to generate maps for [www.zesplus.de](https://www.zesplus.de). Those maps are used to plan the bicycle infrastructure in the reagion.
 
-Details can be found in the README files in each folder.
+In addition to this readme, details can be found in the README files in each folder.
 
-## TODOs
-
-- [ ] Add link to general process documentation
+- [ ] TODO @tordans: Add link to general process documentation
 
 ## List of files
 
 All generated files are listed at https://osm-scripts.netlify.app/AllFiles/AllFiles.json
+
 
 ## General process
 

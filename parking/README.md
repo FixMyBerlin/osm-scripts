@@ -1,4 +1,8 @@
-# TODO
+# WIP!
+
+This is just an experiment at the moment.
+
+## TODO
 
 - Daten normalisieren (kein both, immer right, left; auch non-both (root tag) übersetzen)
 - Datensatz aller relevanten Straßen + Länge + Parking:lane-Daten
