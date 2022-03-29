@@ -11,6 +11,7 @@ export const addFilenameProperty = (
     // Custom layer name for the vector tiles
     //  Docs: https://github.com/mapbox/tippecanoe#geojson-extension
     //  We can do this whenever there is only one category per feature (like with our POI data)
+    //  Note, we don't use tippecanoe ATM, so this line does not have any effect, yet.
     feature['tippecanoe'] = { layer: fileNamePart }
   })
 
