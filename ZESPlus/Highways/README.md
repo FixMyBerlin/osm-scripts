@@ -108,6 +108,7 @@ A list of think we learned while working on this topic…
 **Merging/joining mbtiles with Sqlite:**
 
 - We could change the `merge.sh` to use Node, possibly with https://github.com/kriasoft/node-sqlite. However, the script works for now…
+- https://sqlitebrowser.org/ is a good tool to look into the Sqlite DB that each mbiltes file is and motify it manually.
 
 **Preview mbtiles:**
 
