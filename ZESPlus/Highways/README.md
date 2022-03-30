@@ -14,33 +14,37 @@ Preparation: You might need to `chmod 755 *.sh`.
 
 1. **Create two mbtiles based on the GeoJSON**
 
-```sh
-./tippecanoe.sh
-```
+   ```sh
+   ./tippecanoe.sh
+   ```
 
 1. **Merge the mbtiles back into one file**
 
-```sh
-./merge.sh ./output/zesplus-allhighways-detailed.mbtiles ./output/zesplus-allhighways-simplified.mbtiles
-```
+   ```sh
+   ./merge.sh ./output/zesplus-allhighways-detailed.mbtiles ./output/zesplus-allhighways-simplified.mbtiles
+   ```
 
 1. **Cleanup the filename of the merged file**
 
-```sh
-mv ./output/zesplus-allhighways-simplified.mbtiles ./output/zesplus-allhighways-combined.mbtiles
-```
+   ```sh
+   mv ./output/zesplus-allhighways-simplified.mbtiles ./output/zesplus-allhighways-combined.mbtiles
+   ```
 
-1. **Preview the merged file** Using the docker image of [tileserve](https://github.com/maptiler/tileserver-gl)). You need to reload the URL after Docker finished starting.
+1. **Preview the merged file**
 
-```sh
-./preview.sh
-```
+   Using the docker image of [tileserve](https://github.com/maptiler/tileserver-gl)). You need to reload the URL after Docker finished starting.
 
-1. **Upload the merged file** Replace the data at https://studio.mapbox.com/tilesets/hejco.815n378j
+   ```sh
+   ./preview.sh
+   ```
+
+1. **Upload the merged file**
+
+   Replace the data at https://studio.mapbox.com/tilesets/hejco.815n378j
 
 ## `tippecanoe.sh` – About two tippecanoe-files
 
-## Detailed data set for zoom 16-11
+### Detailed data set for zoom 16-11
 
 - We try to keep all data, but for zoom 11 tippecanoe needs `drop-smallest-as-needed` ([Docs](https://github.com/mapbox/tippecanoe#dropping-a-fraction-of-features-to-keep-under-tile-size-limits)) to be able to remove data that is less important.
 - [Direct link in Mapbox Studio](https://studio.mapbox.com/tilesets/hejco.815n378j/)

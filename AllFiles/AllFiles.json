@@ -1,5 +1,5 @@
 {
-  "GeneratedAt": "2022-03-23T12:09:55.857Z",
+  "GeneratedAt": "2022-03-30T15:51:14.222Z",
   "AllFiles": [
     "https://osm-scripts.netlify.app/ZESPlus/AreaOfInterest/output/Schulzendorf.geojson",
     "https://osm-scripts.netlify.app/ZESPlus/AreaOfInterest/output/Zeuthen.geojson",
@@ -11,7 +11,9 @@
     "https://osm-scripts.netlify.app/ZESPlus/POI-Shopping/output/poiShopping.geojson",
     "https://osm-scripts.netlify.app/ZESPlus/POI-Landuse/output/poiLanduse.geojson",
     "https://osm-scripts.netlify.app/ZESPlus/POI-Barriers/output/poiBarriers.geojson",
-    "https://osm-scripts.netlify.app/ZESPlus/MergeFiles/mergedPoiPoints.geojson",
+    "https://osm-scripts.netlify.app/ZESPlus/POI-Places/output/poiPlaces.geojson",
+    "https://osm-scripts.netlify.app/ZESPlus/POI-MergeFiles/output/mergedPoiPoints.geojson",
+    "https://osm-scripts.netlify.app/ZESPlus/POI-MergeFiles/output/mergedPoiAreasWays.geojson",
     "https://osm-scripts.netlify.app/ZESPlus/Highways-PrepareData/2-transpose-highways/osmHighwaysUnclipped.geojson",
     "https://osm-scripts.netlify.app/ZESPlus/Highways/output/allHighways.geojson",
     "https://osm-scripts.netlify.app/parking/output/osmHighwaysUnclipped.geojson",
