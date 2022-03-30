@@ -1,6 +1,12 @@
+import { cleanupPropsFromPoiPoints } from "../POI/utils/cleanupPropsFromPoiPoints"
 import { overpassJsonToGeoJson } from "../utils/overpassToGeoJson/overpassJsonToGeoJson"
 import { fileName, outputFolder, rawFile } from "./filesFolders.const"
 import { categories } from "./utils/shopCategories.const"
+
+const categoriseAndCleanup = (geoJson) => {
+  addCategoryProperty(geoJson)
+  cleanupPropsFromPoiPoints(geoJson)
+}
 
 const addCategoryProperty = (geoJson) => {
   const categoryKeys = Object.keys(categories).map((key) => key)
@@ -34,5 +40,5 @@ overpassJsonToGeoJson({
   readFile: rawFile,
   outputFolder: outputFolder,
   fileNamePart: fileName,
-  addPropertiesCallback: addCategoryProperty,
+  addPropertiesCallback: categoriseAndCleanup,
 })
