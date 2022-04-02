@@ -55,7 +55,7 @@ const overpassQuery = `
   node["highway"="stop"](area.searchArea);
   node["highway"="give_way"](area.searchArea);
 );
-convert result ::=::,::geom= geom(),::id=id(),"__type"=type(),"FMC:length"=length();
+convert result ::=::,::geom=geom(),::id=id(),"__type"=type(),"FMC:length"=length();
 out geom;
 `
 

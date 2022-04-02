@@ -21,7 +21,7 @@ const overpassQuery = `
   [service!~"^(driveway|parking_aisle)$"]
   (${bboxBetrachtungsraum.join(", ")});
 );
-convert result ::=::,::geom= geom(),::id=id(),"__type"=type(),"FMC:length"=length();
+convert result ::=::,::geom=geom(),::id=id(),"__type"=type(),"FMC:length"=length();
 out geom;
 `
 
