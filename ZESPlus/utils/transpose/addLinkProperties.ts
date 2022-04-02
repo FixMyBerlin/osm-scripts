@@ -6,7 +6,7 @@ export const addLinkProperties = (features: Feature[]) => {
   features.forEach((feature) => {
     feature.properties[
       "FMC:linkToOsmWebsite"
-    ] = `https://www.openstreetmap.org/${feature.id}`
+    ] = `https://www.openstreetmap.org/${feature.properties.id}`
 
     const latLonInMiddle =
       feature.geometry.type === "Point"
