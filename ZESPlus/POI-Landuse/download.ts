@@ -2,6 +2,8 @@ import { bboxBetrachtungsraum } from "../AreaOfInterest/areas.constant"
 import { overpassDownloadJson } from "../utils/overpassDownloadJson"
 import { fileName, rawOutputFolder } from "./filesFolders.const"
 
+// For some areas, the land usage is only described with area+amenity.
+// For those, I only look at ways so I don't have to handle single nodes here.
 const overpassQuery = `
 [out:json][timeout:25];
 (
@@ -17,6 +19,9 @@ const overpassQuery = `
   nwr["landuse"="religious"](${bboxBetrachtungsraum.join(", ")});
   nwr["landuse"="residential"](${bboxBetrachtungsraum.join(", ")});
   nwr["landuse"="retail"](${bboxBetrachtungsraum.join(", ")});
+  way["amenity"="university"](${bboxBetrachtungsraum.join(", ")});
+  way["amenity"="school"](${bboxBetrachtungsraum.join(", ")});
+  way["amenity"="college"](${bboxBetrachtungsraum.join(", ")});
 );
 out body;>;out skel qt;
 `
