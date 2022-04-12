@@ -6,22 +6,22 @@ const overpassQuery = `
 [out:json][timeout:25];
 (
   node
-  ["place"="village"]["name"="Zeuthen"]
+  ["place"]["name"="Zeuthen"]
   (${bboxBetrachtungsraum.join(", ")});
   node
-  ["place"="village"]["name"="Eichwalde"]
+  ["place"]["name"="Eichwalde"]
   (${bboxBetrachtungsraum.join(", ")});
   node
-  ["place"="village"]["name"="Schulzendorf"]
+  ["place"]["name"="Schulzendorf"]
   (${bboxBetrachtungsraum.join(", ")});
   node
-  ["place"="town"]["name"="Königs Wusterhausen"]
+  ["place"]["name"="Königs Wusterhausen"]
   (${bboxBetrachtungsraum.join(", ")});
   node
-  ["place"="suburb"]["name"="Schönefeld"]
+  ["place"]["name"="Schönefeld"]
   (${bboxBetrachtungsraum.join(", ")});
   node
-  ["place"="suburb"]["name"="Wildau"]
+  ["place"]["name"="Wildau"]
   (${bboxBetrachtungsraum.join(", ")});
 );
 out body;>;out skel qt;
