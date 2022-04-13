@@ -12,6 +12,12 @@ We need to prepare the data before uploading it. Uploading it direcly does not g
 
 Preparation: You might need to `chmod 755 *.sh`.
 
+1. **Open Folder**
+
+   ```sh
+   cd ./ZESPlus/Highways/
+   ```
+
 1. **Create two mbtiles based on the GeoJSON**
 
    ```sh

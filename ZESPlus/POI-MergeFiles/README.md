@@ -23,6 +23,12 @@ Note, that this approach is complely [different from what we do with the highway
 
 Preparation: You might need to `chmod 755 *.sh`.
 
+1. **Open Folder**
+
+   ```sh
+   cd ./ZESPlus/POI-MergeFiles/
+   ```
+
 1. **Create two mbtiles based on the GeoJSON and merge them into our final file**
 
    ```sh
