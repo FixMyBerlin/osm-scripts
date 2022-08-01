@@ -6,11 +6,13 @@
 
 (See also [Highway/README](./Highway/README.md).)
 
-1. **Edit the geojson**
+1. **~~Edit the geojson~~**
 
-   Use VS Code to format the GeoJSON, then Duplicate the properties.layer line and rename it to "tippecanoe.layer".
+   _Update: We do not want to do this. If done, we cannot select the data source as one in Mapbox Studio but only every layer separate. However, we want to select the whole file and style based on properties._
 
-   BEFORE:
+   ~~Use VS Code to format the GeoJSON, then Duplicate the properties.layer line and rename it to "tippecanoe.layer".~~
+
+   ~~BEFORE:~~
 
    ```json
       …
@@ -20,7 +22,7 @@
       …
    ```
 
-   AFTER:
+   ~~AFTER:~~
 
    ```json
       …
@@ -56,4 +58,5 @@
    Replace the data at
 
    - school-routes https://studio.mapbox.com/tilesets/hejco.9p1g2072
-   - bicycle-networks https://studio.mapbox.com/tilesets/hejco.cicz8d7x
+   - bicycle-networks https://studio.mapbox.com/tilesets/hejco.8cpvm1l1
+   - TODO, was ist mit dieser Datei? https://studio.mapbox.com/tilesets/hejco.cicz8d7x
