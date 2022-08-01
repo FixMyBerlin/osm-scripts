@@ -8,12 +8,7 @@ Areas are tranformed to points by overpass.
 
 ## Custom properties
 
-- `"FMC:ShopCategory": Einkauf` – Categorizes OSM shop data in one of 4 categories + fallback. [Show full list](./utils/shopCategories.const.ts)
-  - "Besorgungen"
-  - "Bildung"
-  - "Einkauf"
-  - "Freizeit"
-  - "No category specified"
+- `"FMC:ShopCategory": Einkauf` – [Learn more …](/utils/POI-Shopping/shopCategories.const.ts)
 
 ## Download and transpose
 

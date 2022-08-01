@@ -1,7 +1,7 @@
+import { categories } from "../../utils"
 import { cleanupPropsFromPoiPoints } from "../POI/utils/cleanupPropsFromPoiPoints"
 import { overpassJsonToGeoJson } from "../utils/overpassToGeoJson/overpassJsonToGeoJson"
 import { fileName, outputFolder, rawFile } from "./filesFolders.const"
-import { categories } from "./utils/shopCategories.const"
 
 const categoriseAndCleanup = (geoJson) => {
   addCategoryProperty(geoJson)
