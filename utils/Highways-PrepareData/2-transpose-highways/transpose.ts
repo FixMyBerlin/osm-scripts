@@ -1,12 +1,17 @@
+import { AreasForIntersection } from "../../overpassToGeoJson"
 import { overpassComposeToGeoJson } from "../../overpassToGeoJson/overpassComposeToGeoJson"
 import { cleanupNonNeededTags } from "./utils/cleanupNonNeededTags"
-import { enhanceDataWitAreaInformation } from "./utils/enhanceDataWitAreaInformation"
+
+type Props = {
+  inputFile: string
+  outputFolder: string
+} & AreasForIntersection
 
 export const transposeHighways = ({
   inputFile,
   outputFolder,
-  areasForIntersection = {},
-}) => {
+  areasForIntersection,
+}: Props) => {
   overpassComposeToGeoJson({
     readFile: inputFile,
     outputFolder,

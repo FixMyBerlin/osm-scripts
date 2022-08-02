@@ -1,6 +1,5 @@
 import fs from "fs"
 import osmtogeojson from "osmtogeojson"
-import { areaKeys } from "../../ZESPlus/AreaOfInterest/areas.constant"
 import { addFilenameProperty } from "../transpose/addFilenameProperty"
 import { addLinkProperties } from "../transpose/addLinkProperties"
 import { addProcessingDateProperty } from "../transpose/addProcessingDateProperty"
@@ -14,7 +13,6 @@ export const overpassJsonToGeoJson = ({
   fileNamePart,
   filterCallback,
   addPropertiesCallback,
-  areaCallback,
 }: OverpassToGeoJson) => {
   fs.readFile(readFile, "utf8", (err, _data) => {
     if (err) {
@@ -34,8 +32,6 @@ export const overpassJsonToGeoJson = ({
     addLinkProperties(geoJsonData.features)
     filterCallback && filterCallback(geoJsonData)
     addPropertiesCallback && addPropertiesCallback(geoJsonData)
-    areaCallback &&
-      areaKeys.forEach((areaKey) => areaCallback(areaKey, geoJsonData))
 
     writeFile({
       dataString: JSON.stringify(geoJsonData, null, 2),

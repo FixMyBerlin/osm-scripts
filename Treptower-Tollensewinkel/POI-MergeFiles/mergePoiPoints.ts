@@ -1,10 +1,10 @@
+import { mergeFiles, wrapAsFeatureCollection } from "../../utils/mergeFiles"
+import { writeGeoJson } from "../../utils/write"
 import { outputFile as poiEducationOutputFile } from "../POI-Education/filesFolders.const"
 import { outputFile as poiPlacesOutputFile } from "../POI-Places/filesFolders.const"
 import { outputFile as poiPublicTransportOutputFile } from "../POI-PublicTransport/filesFolders.const"
 import { outputFile as poiShoppingOutputFile } from "../POI-Shopping/filesFolders.const"
-import { writeGeoJson } from "../utils/writeGeoJson"
 import { outputFolder } from "./filesFolders.const"
-import { mergeFiles, wrapAsFeatureCollection } from "../../utils/mergeFiles"
 
 const filesToMerge = [
   poiEducationOutputFile,

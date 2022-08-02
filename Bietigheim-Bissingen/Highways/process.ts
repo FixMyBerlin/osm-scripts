@@ -3,9 +3,9 @@ import { addCustomPropsBicycleWayData } from "../../utils/Highways-BicycleWayDat
 import { addCustomPropsHighwayTypeData } from "../../utils/Highways-HighwayTypeData"
 import { addCustomPropsMaxSpeedData } from "../../utils/Highways-MaxspeedData"
 import { addCustomPropsSurfaceData } from "../../utils/Highways-SurfaceData"
+import { FeatureCollection } from "../../utils/types"
+import { writeGeoJson } from "../../utils/write"
 import { osmHighwaysUnclipped } from "../Highways-PrepareData/files.const"
-import { FeatureCollection } from "../utils/types"
-import { writeGeoJson } from "../utils/writeGeoJson"
 import { outputFolder } from "./filesFolders"
 
 fs.readFile(osmHighwaysUnclipped, "utf8", (err, data) => {

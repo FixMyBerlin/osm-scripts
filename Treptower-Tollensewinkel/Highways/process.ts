@@ -1,11 +1,11 @@
 import fs from "fs"
-import { osmHighwaysUnclipped } from "../Highways-PrepareData/files.const"
 import { addCustomPropsBicycleWayData } from "../../utils/Highways-BicycleWayData/utils/addCustomProps"
 import { addCustomPropsHighwayTypeData } from "../../utils/Highways-HighwayTypeData"
 import { addCustomPropsMaxSpeedData } from "../../utils/Highways-MaxspeedData"
 import { addCustomPropsSurfaceData } from "../../utils/Highways-SurfaceData"
-import { FeatureCollection } from "../utils/types"
-import { writeGeoJson } from "../utils/writeGeoJson"
+import { FeatureCollection } from "../../utils/types"
+import { writeGeoJson } from "../../utils/write"
+import { osmHighwaysUnclipped } from "../Highways-PrepareData/files.const"
 import { outputFolder } from "./filesFolders"
 
 fs.readFile(osmHighwaysUnclipped, "utf8", (err, data) => {
