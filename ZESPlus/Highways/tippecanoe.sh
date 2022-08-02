@@ -9,7 +9,7 @@ tippecanoe \
  --drop-smallest-as-needed \
  --name="ZES+ AllHighways (Detailed)" \
  --attribution="OpenStreetMap Contributors, FixMyCity" \
- --description="https://github.com/FixMyBerlin/osm-scripts/tree/main/ZESPlus" \
+ --description="https://github.com/FixMyBerlin/osm-scripts" \
  ./output/allHighways.geojson
 
 tippecanoe \
@@ -22,5 +22,5 @@ tippecanoe \
  --coalesce-smallest-as-needed \
  --name="ZES+ AllHighways" \
  --attribution="OpenStreetMap Contributors, FixMyCity" \
- --description="https://github.com/FixMyBerlin/osm-scripts/tree/main/ZESPlus" \
+ --description="https://github.com/FixMyBerlin/osm-scripts" \
  ./output/allHighways.geojson

@@ -9,8 +9,8 @@
 ## Download and transpose
 
 ```
-npx ts-node ./ZESPlus/POI-MergeFiles/mergePoiAreasWays.ts
-npx ts-node ./ZESPlus/POI-MergeFiles/mergePoiPoints.ts
+npx ts-node ./Treptower-Tollensewinkel/POI-MergeFiles/mergePoiAreasWays.ts
+npx ts-node ./Treptower-Tollensewinkel/POI-MergeFiles/mergePoiPoints.ts
 ```
 
 ## Process the data for Mapbox Studio
@@ -26,7 +26,7 @@ Preparation: You might need to `chmod 755 *.sh`.
 1. **Open Folder**
 
    ```sh
-   cd ./ZESPlus/POI-MergeFiles/
+   cd ./Treptower-Tollensewinkel/POI-MergeFiles/
    ```
 
 1. **Create two mbtiles based on the GeoJSON and merge them into our final file**
@@ -40,7 +40,7 @@ Preparation: You might need to `chmod 755 *.sh`.
    Using the docker image of [tileserve](https://github.com/maptiler/tileserver-gl)). You need to reload the URL after Docker finished starting.
 
    ```sh
-   ./preview.sh zesplus-poi-merged
+   ./preview.sh tt-poi-merged
    ```
 
 1. **Upload the merged file**
