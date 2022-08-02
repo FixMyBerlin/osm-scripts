@@ -44,6 +44,7 @@ export const surfaceToSmoothnessNonStandardValues = {
   "cobblestone;ground": "bad",
   "compacted;paving_s": "bad",
   "compacted;paving_stones": "intermediate",
+  "dirt;grass": "bad",
   "dirt/sand": "very_bad",
   "grass;gravel": "bad",
   "ground;grass": "bad",
