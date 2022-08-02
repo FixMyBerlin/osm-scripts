@@ -1,12 +1,6 @@
 # About
 
-Point data of public transport stops.
-
-[`download.ts` shows which data is included](./download.ts).
-
-## Custom properties
-
-- None
+Learn more at [/utils/poiPublicTransport](/utils/poiPublicTransport).
 
 ## Download and transpose
 

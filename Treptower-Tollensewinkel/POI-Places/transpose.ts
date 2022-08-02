@@ -1,4 +1,4 @@
-import { cleanupPropsFromPoiPoints } from "../POI/utils/cleanupPropsFromPoiPoints"
+import { cleanupPropsFromPoiPoints } from "../../utils/propsHelper"
 import { overpassJsonToGeoJson } from "../utils/overpassToGeoJson/overpassJsonToGeoJson"
 import { fileName, outputFolder, rawFile } from "./filesFolders.const"
 

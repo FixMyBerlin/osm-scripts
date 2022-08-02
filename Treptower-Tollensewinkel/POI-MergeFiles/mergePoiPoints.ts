@@ -4,7 +4,7 @@ import { outputFile as poiPublicTransportOutputFile } from "../POI-PublicTranspo
 import { outputFile as poiShoppingOutputFile } from "../POI-Shopping/filesFolders.const"
 import { writeGeoJson } from "../utils/writeGeoJson"
 import { outputFolder } from "./filesFolders.const"
-import { mergeFiles, wrapAsFeatureCollection } from "./utils"
+import { mergeFiles, wrapAsFeatureCollection } from "../../utils/mergeFiles"
 
 const filesToMerge = [
   poiEducationOutputFile,

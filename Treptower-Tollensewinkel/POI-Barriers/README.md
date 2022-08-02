@@ -1,12 +1,6 @@
 # About
 
-Line and area data that represents barrier for cycling infrastructure.
-
-[`download.ts` shows which data is included](./download.ts).
-
-## Custom properties
-
-- None
+Learn more at [/utils/poiBarriers](/utils/poiBarriers).
 
 ## Download and transpose
 

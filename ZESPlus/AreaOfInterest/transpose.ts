@@ -1,5 +1,5 @@
-import { overpassJsonToGeoJson } from "../utils/overpassToGeoJson/overpassJsonToGeoJson"
-import { FeatureCollection } from "../utils/types"
+import { overpassJsonToGeoJson } from "../../utils/overpassToGeoJson/overpassJsonToGeoJson"
+import { FeatureCollection } from "../../utils/types"
 import { areaKeys } from "./areas.constant"
 
 const inputPath = `${__dirname}/output/raw`

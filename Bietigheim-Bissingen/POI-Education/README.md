@@ -1,14 +1,6 @@
 # About
 
-Point data of places for education that represent important destinations for cycling infrastructure.
-
-Areas are tranformed to points by overpass.
-
-[`download.ts` shows which data is included](./download.ts).
-
-## Custom properties
-
-- None
+Learn more at [/utils/poiEducation](/utils/poiEducation).
 
 ## Download and transpose
 

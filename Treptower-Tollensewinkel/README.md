@@ -10,13 +10,13 @@ In addition to this readme, details can be found in the README files in each fol
 
 All generated files are listed at https://osm-scripts.netlify.app/AllFiles/AllFiles.json
 
-
 ## General process
 
 1. Run `npm run build:netlify`
 2. Upload data to Mapbox Studio using [the Tileset web uploader](https://studio.mapbox.com/tilesets/)
-  - `./POI-MergedFiles/output/mergedPoi.geojson` is uploadded directly via the Web UI
-  - `./Highways/output/allHighways.geosjon` [nedd to processed first and then uploaded – see README for details](./Highways/)
+
+- `./POI-MergedFiles/output/mergedPoi.geojson` is uploadded directly via the Web UI
+- `./Highways/output/allHighways.geosjon` [nedd to processed first and then uploaded – see README for details](./Highways/)
 
 ## Custom properties
 
@@ -27,20 +27,6 @@ All generated files are listed at https://osm-scripts.netlify.app/AllFiles/AllFi
 - `"FMC:linkToMapillary": "https://www.mapillary.com/app/?lat=52.40392&lng=13.569952&z=16&focus=map"` – A link to Mapillary for the given location. Will pick the center of the way if given.
 - `"FMC:linkToOsmWebsite": "https://www.openstreetmap.org/way/24154870"` – A link to the given OSM object.
 - `"FMC:length": "163.804"` – Length of the segment in meter, calculated by Overpass.
-
-**Highways: Custom area properties:**
-
-Files that are based on "Highways-PrepareData" hold a set of custom properties that describe the area that the way belongs to.
-
-The areas are specified in [`AreaOfInterest/areas.constant.ts`](./AreaOfInterest/areas.constant.ts). We include only a few for performance reasons.
-
-We check for an overlap with a given area. Therefore a way may be part of multipe areas.
-
-- `"FMC:Gebiete": "Eichwalde,"` – A list of all areas, that this way belongs to.
-- `"FMC:Gebiete:Zeuthen": "false"` – Specifies if the way has an overlap with the given area.
-- `"FMC:Gebiete:Eichwalde": "true"` – Same
-- `"FMC:Gebiete:Schulzendorf": "false"` – Same
-- `"FMC:Gebiete:Wildau": "false"` – Same
 
 **Data set specific custom properties:**
 

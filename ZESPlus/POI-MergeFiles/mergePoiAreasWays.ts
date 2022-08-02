@@ -1,8 +1,8 @@
+import { mergeFiles, wrapAsFeatureCollection } from "../../utils/mergeFiles"
+import { writeGeoJson } from "../../utils/write"
 import { outputFile as poiBarriersOutputFile } from "../POI-Barriers/filesFolders.const"
 import { outputFile as poiLanduseOutputFile } from "../POI-Landuse/filesFolders.const"
-import { writeGeoJson } from "../utils/writeGeoJson"
 import { outputFolder } from "./filesFolders.const"
-import { mergeFiles, wrapAsFeatureCollection } from "./utils"
 
 const filesToMerge = [poiBarriersOutputFile, poiLanduseOutputFile]
 

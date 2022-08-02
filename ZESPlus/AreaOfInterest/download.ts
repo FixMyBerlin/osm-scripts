@@ -1,4 +1,4 @@
-import { overpassDownloadJson } from "../utils/overpassDownloadJson"
+import { overpassDownloadJson } from "../../utils/overpassDownload"
 import { areaKeys, areas, areaValues } from "./areas.constant"
 
 const downloadAreaOfInterestBorder = (

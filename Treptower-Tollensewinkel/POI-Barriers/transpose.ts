@@ -1,10 +1,4 @@
-import { cleanupPropsFromPoiPoints } from "../POI/utils/cleanupPropsFromPoiPoints"
-import { overpassJsonToGeoJson } from "../utils/overpassToGeoJson/overpassJsonToGeoJson"
-import { fileName, outputFolder, rawFile } from "./filesFolders.const"
+import { transposePoiBarriers } from "../../utils/poiBarriers/transposePoiBarriers"
+import { outputFolder, rawFile } from "./filesFolders.const"
 
-overpassJsonToGeoJson({
-  readFile: rawFile,
-  outputFolder: outputFolder,
-  fileNamePart: fileName,
-  addPropertiesCallback: cleanupPropsFromPoiPoints,
-})
+transposePoiBarriers({ inputFile: rawFile, outputFolder })

@@ -1,5 +1,5 @@
+import { overpassDownloadJson } from "../../utils/overpassDownload"
 import { bboxBetrachtungsraum } from "../AreaOfInterest/areas.constant"
-import { overpassDownloadJson } from "../utils/overpassDownloadJson"
 import { fileName, rawOutputFolder } from "./filesFolders.const"
 
 const overpassQuery = `

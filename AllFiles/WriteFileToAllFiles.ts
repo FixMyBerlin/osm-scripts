@@ -1,5 +1,5 @@
 import fs from "fs"
-import { netlifyFileUrl } from "../ZESPlus/utils/netfilfyFileUrl"
+import { netlifyFileUrl } from "../utils/netlify"
 import { allFilesFile } from "./files.const"
 
 export const WriteUrlToAllFilesFile = (url?: string) => {
