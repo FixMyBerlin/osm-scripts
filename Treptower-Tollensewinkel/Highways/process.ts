@@ -6,7 +6,7 @@ import { addCustomPropsSurfaceData } from "../../utils/Highways-SurfaceData"
 import { FeatureCollection } from "../../utils/types"
 import { writeGeoJson } from "../../utils/write"
 import { osmHighwaysUnclipped } from "../Highways-PrepareData/files.const"
-import { outputFolder } from "./filesFolders"
+import { outputFolder } from "./filesFolders.const"
 
 fs.readFile(osmHighwaysUnclipped, "utf8", (err, data) => {
   if (err) {
