@@ -2,7 +2,7 @@
 
 import { FeatureCollection } from "../../../types"
 
-// This reduces teh filesize from 48,4 to 47,1 MB.
+// This reduces the filesize from 48,4 to 47,1 MB.
 const keysToDelete = [
   "name:",
   "destination",
