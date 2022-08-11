@@ -7,7 +7,7 @@ const processingDateCreatedAt = new Date()
 
 export const processingDateProperty = {
   "FMC:DataCreatedAndProcessedAt": `${processingDateCreatedAt}`,
-}
+} as Feature["properties"]
 
 export const addProcessingDateProperty = (features: Feature[]) => {
   console.time("⏱ addProcessingDateProperty()")

@@ -1,5 +1,6 @@
 import fs from "fs"
 import osmtogeojson from "osmtogeojson"
+import { storeNumbersAsTypeofNumber } from "../transpose"
 import { addFilenameProperty } from "../transpose/addFilenameProperty"
 import { addLinkProperties } from "../transpose/addLinkProperties"
 import { addProcessingDateProperty } from "../transpose/addProcessingDateProperty"
@@ -14,7 +15,7 @@ export const overpassJsonToGeoJson = ({
   filterCallback,
   addPropertiesCallback,
 }: OverpassToGeoJson) => {
-  fs.readFile(readFile, "utf8", (err, _data) => {
+  fs.readFile(readFile, "utf8", (err, rawData) => {
     if (err) {
       console.error("🧨", err)
       return
@@ -24,9 +25,10 @@ export const overpassJsonToGeoJson = ({
       "Parse, Transform, Enhance and Write file"
     )
 
-    const rawJsonData = JSON.parse(_data)
+    const rawJsonData = JSON.parse(rawData)
     const geoJsonData = osmtogeojson(rawJsonData) as FeatureCollection
 
+    storeNumbersAsTypeofNumber(geoJsonData.features)
     addProcessingDateProperty(geoJsonData.features)
     addFilenameProperty(geoJsonData.features, fileNamePart)
     addLinkProperties(geoJsonData.features)
