@@ -14,6 +14,7 @@ tippecanoe \
  --name="Bietigheim-Bissingen POI Area and Way Data" \
  --attribution="OpenStreetMap Contributors, FixMyCity" \
  --description="https://github.com/FixMyBerlin/osm-scripts" \
+ --attribute-type=population:int \
  ./output/mergedPoiAreasWays.geojson
 
 tippecanoe \
@@ -26,6 +27,7 @@ tippecanoe \
  --name="Bietigheim-Bissingen POI Point Data" \
  --attribution="OpenStreetMap Contributors, FixMyCity" \
  --description="https://github.com/FixMyBerlin/osm-scripts" \
+ --attribute-type=population:int \
  ./output/mergedPoiPoints.geojson
 
 tile-join  --force -o ./output/bb-poi-merged.mbtiles ./output/intermediate-steps/bb-poi-areas-ways.mbtiles ./output/intermediate-steps/bb-poi-points.mbtiles
