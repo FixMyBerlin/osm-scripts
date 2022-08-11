@@ -15,6 +15,8 @@ export const smoothnessNormalizationTypos = {
   excelent: "excellent",
   vea: "very_bad", // well, what can we do?
   verbad: "very_bad",
+  paved: "intermediate", // just an error
+  f: "bad", // the clean way for this would be to delete the value and re-run this part…
 }
 
 export const normalizedSmoothness = (smoothnessValue: string) => {
