@@ -1,5 +1,7 @@
 import { overpassDownloadJson } from "../../overpassDownload"
 
+// Alles TXT? Oder LUA? (wo es einfacher ist)
+// SQL: Längeberechnungen
 export const downloadHighways = ({ bboxBetrachtungsraum, outputFolder }) => {
   // Overpass BBox-Edges:
   //  south west north east

@@ -3,6 +3,7 @@ import { bboxBetrachtungsraum } from "../AreaOfInterest/areas.constant"
 import { fileName, rawOutputFolder } from "./filesFolders.const"
 
 // TODO: Präzisieren
+// TXT: Die drei Typen
 const overpassQuery = `
 [out:json][timeout:25];
 (

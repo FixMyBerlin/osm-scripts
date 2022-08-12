@@ -2,6 +2,7 @@ import { overpassDownloadJson } from "../../utils/overpassDownload"
 import { bboxBetrachtungsraum } from "../AreaOfInterest/areas.constant"
 import { fileName, rawOutputFolder } from "./filesFolders.const"
 
+// TXT (alle, kein Filter nach Name)
 const overpassQuery = `
 [out:json][timeout:25];
 (

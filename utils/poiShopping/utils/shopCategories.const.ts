@@ -1,3 +1,5 @@
+// LUA oder SQL
+
 type Props = {
   [key: string]: "Besorgungen" | "Bildung" | "Einkauf" | "Freizeit"
 }

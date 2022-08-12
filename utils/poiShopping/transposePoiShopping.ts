@@ -2,6 +2,7 @@ import { cleanupPropsFromPoiPoints } from "../propsHelper"
 import { overpassJsonToGeoJson } from "../overpassToGeoJson"
 import { categories } from "./utils/shopCategories.const"
 
+// LUA oder SQL: Kategorien
 export const transposePoiShopping = ({ inputFile, outputFolder }) => {
   const categoriseAndCleanup = (geoJson) => {
     addCategoryProperty(geoJson)

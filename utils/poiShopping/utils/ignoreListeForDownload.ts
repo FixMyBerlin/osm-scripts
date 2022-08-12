@@ -1,3 +1,5 @@
+// LUA (ODER TXT)
+
 export const ignoreListeForDownload = [
   "adult_gaming_centre",
   "animal_boarding",

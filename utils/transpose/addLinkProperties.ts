@@ -1,5 +1,7 @@
 import { Feature } from "../types"
 
+// TBD: Macht es Sinn den Teil "latLonInMiddle" (Punkt in der Mitte der Linie, aber auf der Linie) in SQL zu berehnen und dann fertig ans Frontend zu liefern?
+// Links nicht in SQL (etc), sondern im Frontend generieren.
 export const addLinkProperties = (features: Feature[]) => {
   console.time("⏱ addCustomLinkProperties()")
 

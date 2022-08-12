@@ -1,5 +1,7 @@
 import { overpassDownloadJson } from "../overpassDownload"
 
+// TXT
+// Evtl. später Kategorie Wohnen vs. Arbeiten (dann in LUA? oder SQL)
 export const downloadPoiLanduse = ({ bboxBetrachtungsraum, outputFolder }) => {
   // For some areas, the land usage is only described with area+amenity.
   // For those, I only look at ways so I don't have to handle single nodes here.

@@ -1,6 +1,7 @@
 import { overpassDownloadJson } from "../../utils/overpassDownload"
 import { areaKeys, areas, areaValues } from "./areas.constant"
 
+// TXT; vermtulcih erstmal (fast) alle Adminlevel und Namen; dann Filter in Viewer
 const downloadAreaOfInterestBorder = (
   areaNames: string[],
   fileName: string

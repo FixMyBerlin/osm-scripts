@@ -1,5 +1,7 @@
 import { overpassDownloadJson } from "../overpassDownload"
 
+// TXT für Filter
+// SQL für Flächenberechnung, dann all kleinen Seen und Teiche rauswerfen
 export const downloadPoiBarriers = ({ bboxBetrachtungsraum, outputFolder }) => {
   // The `natural=water` case is something special.
   // We want the geometry of water bodies which represent the barrier of water better than the waterway-line.

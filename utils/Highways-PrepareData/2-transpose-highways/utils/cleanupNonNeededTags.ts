@@ -2,6 +2,8 @@
 
 import { FeatureCollection } from "../../../types"
 
+// Blacklist der Spalten in SQL; wir müssen die Whitelist
+
 // This reduces the filesize from 48,4 to 47,1 MB.
 const keysToDelete = [
   "name:",

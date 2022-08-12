@@ -1,5 +1,6 @@
 import { overpassDownloadJson } from "../overpassDownload"
 
+// TXT inkl. values vermtlich
 export const downloadPoiPublicTransport = ({
   bboxBetrachtungsraum,
   outputFolder,
